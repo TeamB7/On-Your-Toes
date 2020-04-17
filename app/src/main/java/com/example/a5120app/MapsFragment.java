@@ -17,8 +17,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -55,9 +58,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     Button searchPlaceBtn;
     String searchString = "";
     EditText edSearch;
+    Spinner spFacilityType;
     double latitude;
     double longitude;
-    String facilities = "parks";
+    String facilities = "park";
     MapView mapView;
     LocationManager locationManager;
     private GoogleMap gMap;
@@ -71,8 +75,28 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         searchFacilitiesBtn = view.findViewById(R.id.search_facilities);
         searchPlaceBtn = view.findViewById(R.id.search_place);
         edSearch = view.findViewById(R.id.ed_search);
+        spFacilityType = view.findViewById(R.id.sp_facility_type);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MainActivity", MODE_PRIVATE);
         searchString = sharedPreferences.getString("address", "");
+
+        List<String> types = new ArrayList<String>();
+        types.add("gym");
+        types.add("stadium");
+        types.add("campground");
+        types.add("park");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, types);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spFacilityType.setAdapter(adapter);
+        spFacilityType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                facilities = spFacilityType.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         searchPlaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +108,12 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         searchFacilitiesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String facilitiesType = spFacilityType.getSelectedItem().toString();
+                if (!facilitiesType.isEmpty()) {
+                    facilities = facilitiesType;
+                }
+
                 gMap.clear();
                 String url = getUrl(latitude, longitude, facilities);
                 Object[] dataTransfer = new Object[2];
@@ -103,6 +133,103 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         return view;
     }
 
+    private void geoLocate() {
+        String search = edSearch.getText().toString();
+        List<Address> addressList = new ArrayList<>();
+        if (!search.isEmpty()) {
+            searchString = search;
+
+            Geocoder geocoder = new Geocoder(getContext());
+
+            try {
+                addressList = geocoder.getFromLocationName(searchString, 1);
+            } catch (IOException e) {
+                Log.e("GeoLocate", "Exception" + e.getMessage());
+                return;
+            }
+
+
+        } else {
+            getLocalLocation();
+            if (!(localAddress == null)) {
+                addressList.add(localAddress);
+            }
+        }
+
+        if (addressList.size() > 0) {
+//            MarkerOptions markerOptions = new MarkerOptions();
+            Address address = addressList.get(0);
+            latitude = address.getLatitude();
+            longitude = address.getLongitude();
+            LatLng latLng = new LatLng(latitude, longitude);
+
+//            String placeName = address.getFeatureName();
+//            String vicinity = address.getThoroughfare();
+//
+//            markerOptions.position(latLng);
+//            markerOptions.title(placeName + " : " + vicinity);
+
+            String str = addressList.get(0).getLocality() + ", ";
+            str += addressList.get(0).getThoroughfare();
+            gMap.clear();
+            gMap.addMarker(new MarkerOptions().position(latLng).title(str)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+            gMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        }
+    }
+
+
+    public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
+
+        String googlePlacesData;
+        GoogleMap mMap;
+        String url;
+
+        @Override
+        protected String doInBackground(Object... params) {
+            try {
+                Log.d("GetNearbyPlacesData", "doInBackground entered");
+                mMap = (GoogleMap) params[0];
+                url = (String) params[1];
+                DownloadUrl downloadUrl = new DownloadUrl();
+                googlePlacesData = downloadUrl.readUrl(url);
+                Log.d("GooglePlacesReadTask", "doInBackground Exit");
+            } catch (Exception e) {
+                Log.d("GooglePlacesReadTask", e.toString());
+            }
+            return googlePlacesData;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("GooglePlacesReadTask", "onPostExecute Entered");
+            List<HashMap<String, String>> nearbyPlacesList = null;
+            DataParser dataParser = new DataParser();
+            nearbyPlacesList = dataParser.parse(result);
+            ShowNearbyPlaces(nearbyPlacesList);
+            Log.d("GooglePlacesReadTask", "onPostExecute Exit");
+        }
+
+        private void ShowNearbyPlaces(List<HashMap<String, String>> nearbyPlacesList) {
+            for (int i = 0; i < nearbyPlacesList.size(); i++) {
+                Log.d("onPostExecute", "Entered into showing locations");
+                MarkerOptions markerOptions = new MarkerOptions();
+                HashMap<String, String> googlePlace = nearbyPlacesList.get(i);
+                double lat = Double.parseDouble(googlePlace.get("lat"));
+                double lng = Double.parseDouble(googlePlace.get("lng"));
+                String placeName = googlePlace.get("place_name");
+                String vicinity = googlePlace.get("vicinity");
+                LatLng latLng = new LatLng(lat, lng);
+                markerOptions.position(latLng);
+                markerOptions.title(placeName + " : " + vicinity);
+                mMap.addMarker(markerOptions);
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));//snippet(placeName).
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
+            }
+        }
+    }
 
     public void getLocalLocation() {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -231,7 +358,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + 5000);
+        googlePlacesUrl.append("&radius=" + 2000);
         googlePlacesUrl.append("&type=" + nearbyPlace);
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyD6xOdM_HrZN3jzNr38x4JAqGAPvgtqXh0");
@@ -282,104 +409,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
-    }
-
-    private void geoLocate() {
-        String search = edSearch.getText().toString();
-        List<Address> addressList = new ArrayList<>();
-        if (!search.isEmpty()) {
-            searchString = search;
-
-            Geocoder geocoder = new Geocoder(getContext());
-
-            try {
-                addressList = geocoder.getFromLocationName(searchString, 1);
-            } catch (IOException e) {
-                Log.e("GeoLocate", "Exception" + e.getMessage());
-                return;
-            }
-
-
-        } else {
-            getLocalLocation();
-            if (!(localAddress == null)) {
-                addressList.add(localAddress);
-            }
-        }
-
-        if (addressList.size() > 0) {
-//            MarkerOptions markerOptions = new MarkerOptions();
-            Address address = addressList.get(0);
-            latitude = address.getLatitude();
-            longitude = address.getLongitude();
-            LatLng latLng = new LatLng(latitude, longitude);
-
-//            String placeName = address.getFeatureName();
-//            String vicinity = address.getThoroughfare();
-//
-//            markerOptions.position(latLng);
-//            markerOptions.title(placeName + " : " + vicinity);
-
-            String str = addressList.get(0).getLocality() + ", ";
-            str += addressList.get(0).getThoroughfare();
-            gMap.clear();
-            gMap.addMarker(new MarkerOptions().position(latLng).title(str)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
-            gMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-        }
-    }
-
-
-    public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
-
-        String googlePlacesData;
-        GoogleMap mMap;
-        String url;
-
-        @Override
-        protected String doInBackground(Object... params) {
-            try {
-                Log.d("GetNearbyPlacesData", "doInBackground entered");
-                mMap = (GoogleMap) params[0];
-                url = (String) params[1];
-                DownloadUrl downloadUrl = new DownloadUrl();
-                googlePlacesData = downloadUrl.readUrl(url);
-                Log.d("GooglePlacesReadTask", "doInBackground Exit");
-            } catch (Exception e) {
-                Log.d("GooglePlacesReadTask", e.toString());
-            }
-            return googlePlacesData;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            Log.d("GooglePlacesReadTask", "onPostExecute Entered");
-            List<HashMap<String, String>> nearbyPlacesList = null;
-            DataParser dataParser = new DataParser();
-            nearbyPlacesList = dataParser.parse(result);
-            ShowNearbyPlaces(nearbyPlacesList);
-            Log.d("GooglePlacesReadTask", "onPostExecute Exit");
-        }
-
-        private void ShowNearbyPlaces(List<HashMap<String, String>> nearbyPlacesList) {
-            for (int i = 0; i < nearbyPlacesList.size(); i++) {
-                Log.d("onPostExecute", "Entered into showing locations");
-                MarkerOptions markerOptions = new MarkerOptions();
-                HashMap<String, String> googlePlace = nearbyPlacesList.get(i);
-                double lat = Double.parseDouble(googlePlace.get("lat"));
-                double lng = Double.parseDouble(googlePlace.get("lng"));
-                String placeName = googlePlace.get("place_name");
-                String vicinity = googlePlace.get("vicinity");
-                LatLng latLng = new LatLng(lat, lng);
-                markerOptions.position(latLng);
-                markerOptions.title(placeName + " : " + vicinity);
-                mMap.addMarker(markerOptions);
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));//snippet(placeName).
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-            }
-        }
     }
 
     public class DownloadUrl {
