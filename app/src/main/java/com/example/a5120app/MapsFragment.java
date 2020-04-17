@@ -50,6 +50,7 @@ import java.util.List;
 import static android.content.Context.MODE_PRIVATE;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
+    final static int TAG_CODE_PERMISSION_LOCATION = 0;
     Button searchFacilitiesBtn;
     Button searchPlaceBtn;
     String searchString = "";
@@ -58,10 +59,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     double longitude;
     String facilities = "parks";
     MapView mapView;
+    LocationManager locationManager;
     private GoogleMap gMap;
     private UiSettings mUiSettings;
     private View view;
-    LocationManager locationManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         searchPlaceBtn = view.findViewById(R.id.search_place);
         edSearch = view.findViewById(R.id.ed_search);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MainActivity", MODE_PRIVATE);
-        searchString = sharedPreferences.getString("address", "melbourne");
+        searchString = sharedPreferences.getString("address", "");
 
         searchPlaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,11 +85,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             public void onClick(View view) {
                 gMap.clear();
                 String url = getUrl(latitude, longitude, facilities);
-                Object[] DataTransfer = new Object[2];
-                DataTransfer[0] = gMap;
-                DataTransfer[1] = url;
+                Object[] dataTransfer = new Object[2];
+                dataTransfer[0] = gMap;
+                dataTransfer[1] = url;
                 GetNearbyPlaces getNearbyPlacesData = new GetNearbyPlaces();
-                getNearbyPlacesData.execute(DataTransfer);
+                getNearbyPlacesData.execute(dataTransfer);
                 Toast.makeText(getContext(), "Nearby Facilities", Toast.LENGTH_LONG).show();
             }
         });
@@ -115,24 +116,30 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-             return ;
+            ActivityCompat.requestPermissions(getActivity(), new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION},
+                    TAG_CODE_PERMISSION_LOCATION);
         }
         if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
-                    latitude =location.getLatitude();
-                    longitude = location.getLongitude();
-                    LatLng latLng = new LatLng(latitude, longitude);
-                    Geocoder geocoder = new Geocoder(getContext());
-                    try {
-                        List<Address> addressList = geocoder.getFromLocation(latitude,longitude,1);
-                        String str = addressList.get(0).getLocality() + ", ";
-                        str += addressList.get(0).getCountryName();
-                        gMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,10.2f));
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (searchString.equals("")) {
+                        latitude = location.getLatitude();
+                        longitude = location.getLongitude();
+                        LatLng latLng = new LatLng(latitude, longitude);
+                        Geocoder geocoder = new Geocoder(getContext());
+
+                        try {
+                            List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
+                            String str = addressList.get(0).getLocality() + ", ";
+                            str += addressList.get(0).getThoroughfare();
+                            gMap.addMarker(new MarkerOptions().position(latLng).title(str));
+                            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 
@@ -151,22 +158,26 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
                 }
             });
-        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && searchString.equals("")) {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
-                    latitude =location.getLatitude();
-                    longitude = location.getLongitude();
-                    LatLng latLng = new LatLng(latitude, longitude);
-                    Geocoder geocoder = new Geocoder(getContext());
-                    try {
-                        List<Address> addressList = geocoder.getFromLocation(latitude,longitude,1);
-                        String str = addressList.get(0).getLocality() + ", ";
-                        str += addressList.get(0).getCountryName();
-                        gMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                        gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,10.2f));
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (searchString.equals("")) {
+                        latitude = location.getLatitude();
+                        longitude = location.getLongitude();
+                        LatLng latLng = new LatLng(latitude, longitude);
+                        Geocoder geocoder = new Geocoder(getContext());
+
+                        try {
+                            List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
+                            String str = addressList.get(0).getLocality() + ", ";
+                            str += addressList.get(0).getThoroughfare();
+
+                            gMap.addMarker(new MarkerOptions().position(latLng).title(str));
+                            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 
@@ -187,34 +198,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             });
         }
 
-    }
-
-    private void geoLocate() {
-        String search = edSearch.getText().toString();
-        if (!search.isEmpty()) {
-            searchString = search;
-        }
-        Geocoder geocoder = new Geocoder(getContext());
-        List<Address> addressList = new ArrayList<>();
-        try {
-            addressList = geocoder.getFromLocationName(searchString, 1);
-        } catch (IOException e) {
-            Log.e("GeoLocate", "Exception" + e.getMessage());
-            return;
-        }
-
-        if (addressList.size() > 0) {
-            Address address = addressList.get(0);
-            latitude = address.getLatitude();
-            longitude = address.getLongitude();
-            LatLng latLng = new LatLng(latitude, longitude);
-            String str = addressList.get(0).getLocality() + ", ";
-            str += addressList.get(0).getCountryName();
-            gMap.clear();
-            gMap.addMarker(new MarkerOptions().position(latLng).title(str)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
-        }
     }
 
     @Override
@@ -223,7 +206,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         gMap.getUiSettings().setMyLocationButtonEnabled(true);
         mUiSettings = gMap.getUiSettings();
         mUiSettings.setZoomControlsEnabled(true);
-        geoLocate();
+//        geoLocate();
     }
 
     private String getUrl(double latitude, double longitude, String nearbyPlace) {
@@ -265,26 +248,60 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         return latLng;
     }
 
-//    @Override
-//    public void onMapReady(GoogleMap map) {
-//        gMap = map;
-//        new AsyncTask<String, Void, LatLng>() {
-//            @Override
-//            protected LatLng doInBackground(String... params) {
-//                LatLng loc = null;
-//                loc = getLocation(addressStr);
-//                return loc;
-//            }
+    @Override
+    public void onResume() {
+        mapView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    private void geoLocate() {
+        String search = edSearch.getText().toString();
+        if (!search.isEmpty()) {
+            searchString = search;
+        }
+        Geocoder geocoder = new Geocoder(getContext());
+        List<Address> addressList = new ArrayList<>();
+        try {
+            addressList = geocoder.getFromLocationName(searchString, 1);
+        } catch (IOException e) {
+            Log.e("GeoLocate", "Exception" + e.getMessage());
+            return;
+        }
+
+        if (addressList.size() > 0) {
+//            MarkerOptions markerOptions = new MarkerOptions();
+            Address address = addressList.get(0);
+            latitude = address.getLatitude();
+            longitude = address.getLongitude();
+            LatLng latLng = new LatLng(latitude, longitude);
+
+//            String placeName = address.getFeatureName();
+//            String vicinity = address.getThoroughfare();
 //
-//            @Override
-//            protected void onPostExecute(LatLng loc) {
-//                gMap.addMarker(new MarkerOptions().position(loc));
-//                gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 12));
-//                mUiSettings = gMap.getUiSettings();
-//                mUiSettings.setZoomControlsEnabled(true);
-//            }
-//        }.execute();
-//    }
+//            markerOptions.position(latLng);
+//            markerOptions.title(placeName + " : " + vicinity);
+
+            String str = addressList.get(0).getLocality() + ", ";
+            str += addressList.get(0).getThoroughfare();
+            gMap.clear();
+            gMap.addMarker(new MarkerOptions().position(latLng).title(str)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+        }
+    }
+
 
     public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
 
@@ -324,8 +341,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 HashMap<String, String> googlePlace = nearbyPlacesList.get(i);
                 double lat = Double.parseDouble(googlePlace.get("lat"));
                 double lng = Double.parseDouble(googlePlace.get("lng"));
+                String placeName = googlePlace.get("place_name");
+                String vicinity = googlePlace.get("vicinity");
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);
+                markerOptions.title(placeName + " : " + vicinity);
                 mMap.addMarker(markerOptions);
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));//snippet(placeName).
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -432,24 +452,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             }
             return googlePlaceMap;
         }
-    }
-
-    @Override
-    public void onResume() {
-        mapView.onResume();
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
     }
 
 
