@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="48dp"
+    android:padding="4dp">
+
+
+    <EditText
+        android:id="@+id/ed_search"
+        android:layout_width="393dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Enter address"
+        android:imeOptions="actionSearch"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+    <RelativeLayout
+        android:id="@+id/relLayout"
+        android:layout_width="367dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/ed_search"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="10dp"
+        android:background="@android:color/transparent"
+        android:elevation="10dp">
+
+        <Button
+            android:id="@+id/search_place"
+            android:layout_width="174dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:text="search place" />
+
+        <Button
+            android:id="@+id/search_facilities"
+            android:layout_width="183dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/search_place"
+            android:text="Search Facilities">
+
+        </Button>
+    </RelativeLayout>
+
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_below="@+id/relLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="480dp" />
+
+
+</RelativeLayout>
