@@ -11,7 +11,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -25,7 +24,6 @@ import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
@@ -48,6 +46,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.location.LocationManager.GPS_PROVIDER;
+import static android.location.LocationManager.NETWORK_PROVIDER;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
     final static int TAG_CODE_PERMISSION_LOCATION = 0;
@@ -63,6 +63,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap gMap;
     private UiSettings mUiSettings;
     private View view;
+    private Address localAddress;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -94,19 +95,16 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         mapView = (MapView) view.findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
         mapView.getMapAsync(this);
 
-        MapsInitializer.initialize(getContext());
+        return view;
+    }
 
+
+    public void getLocalLocation() {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -121,8 +119,22 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                             Manifest.permission.ACCESS_COARSE_LOCATION},
                     TAG_CODE_PERMISSION_LOCATION);
         }
-        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
+
+        if (locationManager.isProviderEnabled(NETWORK_PROVIDER)) {
+            Location location = locationManager.getLastKnownLocation(NETWORK_PROVIDER);
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+            LatLng latLng = new LatLng(latitude, longitude);
+            Geocoder geocoder = new Geocoder(getContext());
+
+            try {
+                List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
+                localAddress = addressList.get(0);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            locationManager.requestLocationUpdates(NETWORK_PROVIDER, 0, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
                     if (searchString.equals("")) {
@@ -133,10 +145,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
                         try {
                             List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
-                            String str = addressList.get(0).getLocality() + ", ";
-                            str += addressList.get(0).getThoroughfare();
-                            gMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+                            localAddress = addressList.get(0);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -158,23 +167,31 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
                 }
             });
-        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && searchString.equals("")) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new LocationListener() {
+        } else if (locationManager.isProviderEnabled(GPS_PROVIDER)) {
+            Location location = locationManager.getLastKnownLocation(GPS_PROVIDER);
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
+            LatLng latLng = new LatLng(latitude, longitude);
+            Geocoder geocoder = new Geocoder(getContext());
+
+            try {
+                List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
+                localAddress = addressList.get(0);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            locationManager.requestLocationUpdates(GPS_PROVIDER, 0, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
                     if (searchString.equals("")) {
                         latitude = location.getLatitude();
                         longitude = location.getLongitude();
-                        LatLng latLng = new LatLng(latitude, longitude);
                         Geocoder geocoder = new Geocoder(getContext());
 
                         try {
                             List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
-                            String str = addressList.get(0).getLocality() + ", ";
-                            str += addressList.get(0).getThoroughfare();
+                            localAddress = addressList.get(0);
 
-                            gMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                            gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -197,7 +214,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 }
             });
         }
-
     }
 
     @Override
@@ -206,7 +222,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         gMap.getUiSettings().setMyLocationButtonEnabled(true);
         mUiSettings = gMap.getUiSettings();
         mUiSettings.setZoomControlsEnabled(true);
-//        geoLocate();
+
+        gMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        geoLocate();
     }
 
     private String getUrl(double latitude, double longitude, String nearbyPlace) {
@@ -268,16 +286,25 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
     private void geoLocate() {
         String search = edSearch.getText().toString();
+        List<Address> addressList = new ArrayList<>();
         if (!search.isEmpty()) {
             searchString = search;
-        }
-        Geocoder geocoder = new Geocoder(getContext());
-        List<Address> addressList = new ArrayList<>();
-        try {
-            addressList = geocoder.getFromLocationName(searchString, 1);
-        } catch (IOException e) {
-            Log.e("GeoLocate", "Exception" + e.getMessage());
-            return;
+
+            Geocoder geocoder = new Geocoder(getContext());
+
+            try {
+                addressList = geocoder.getFromLocationName(searchString, 1);
+            } catch (IOException e) {
+                Log.e("GeoLocate", "Exception" + e.getMessage());
+                return;
+            }
+
+
+        } else {
+            getLocalLocation();
+            if (!(localAddress == null)) {
+                addressList.add(localAddress);
+            }
         }
 
         if (addressList.size() > 0) {
@@ -299,6 +326,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             gMap.addMarker(new MarkerOptions().position(latLng).title(str)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+            gMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
     }
 
@@ -349,7 +377,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 mMap.addMarker(markerOptions);
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));//snippet(placeName).
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
             }
         }
     }
