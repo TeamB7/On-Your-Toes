@@ -52,14 +52,14 @@
         android:background="@android:color/transparent"
         android:elevation="10dp">
 
-        <Button
-            android:id="@+id/search_place"
-            android:layout_width="174dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:text="search place" />
+        <!--<Button-->
+            <!--android:id="@+id/search_place"-->
+            <!--android:layout_width="174dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="2dp"-->
+            <!--android:text="search place" />-->
 
         <Button
             android:id="@+id/search_facilities"
@@ -68,7 +68,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/search_place"
             android:text="Search Facilities">
 
         </Button>

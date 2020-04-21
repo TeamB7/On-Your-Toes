@@ -73,7 +73,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_map, container, false);
         searchFacilitiesBtn = view.findViewById(R.id.search_facilities);
-        searchPlaceBtn = view.findViewById(R.id.search_place);
+//        searchPlaceBtn = view.findViewById(R.id.search_place);
         edSearch = view.findViewById(R.id.ed_search);
         spFacilityType = view.findViewById(R.id.sp_facility_type);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MainActivity", MODE_PRIVATE);
@@ -98,17 +98,17 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        searchPlaceBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                geoLocate();
-            }
-        });
+//        searchPlaceBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                geoLocate();
+//            }
+//        });
 
         searchFacilitiesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                geoLocate();
                 String facilitiesType = spFacilityType.getSelectedItem().toString();
                 if (!facilitiesType.isEmpty()) {
                     facilities = facilitiesType;
@@ -313,7 +313,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                     if (searchString.equals("")) {
                         latitude = location.getLatitude();
                         longitude = location.getLongitude();
-                        Geocoder geocoder = new Geocoder(getContext());
+                        Geocoder geocoder = new Geocoder(view.getContext());
 
                         try {
                             List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
