@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="On Your Toes"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#ffffff"
+        android:textSize="50sp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="80dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Welcome Username"
+        android:textAlignment="center"
+        android:textColor="#000000 "
+        android:textSize="40sp"
+        android:gravity="center_horizontal" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/navbot"
+        android:layout_alignParentBottom="true"
+        android:layout_width="421dp"
+        android:layout_height="69dp"
+        android:background="#DFE3E0E0"
+        android:fitsSystemWindows="true"
+        android:hapticFeedbackEnabled="true"
+        app:fontFamily="@font/open_sans_light"
+        app:itemIconTint="@drawable/icon_selected"
+        app:itemTextColor="@drawable/icon_selected"
+        app:menu="@menu/menu_bot_nav">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+    <!--        <GridLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="horizontal">-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/btn_facility"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_row="0"-->
+    <!--            android:layout_column="0"-->
+    <!--            android:text="Facilities" />-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/btn_safety"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_row="0"-->
+    <!--            android:layout_column="1"-->
+    <!--            android:text="safety " />-->
+
+    <!--    </GridLayout>-->
+
+
+
+</RelativeLayout>

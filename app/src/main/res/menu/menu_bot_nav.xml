@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Security"
+
+        android:icon="@drawable/ic_security_black_24dp"
+        android:id="@+id/navsecurity"
+        />
+    <item
+        android:title="Location"
+        android:icon="@drawable/ic_place_black_24dp"
+        android:id="@+id/navloc"
+        />
+    <item
+        android:title="Profile"
+        android:icon="@drawable/ic_person_outline_black_24dp"
+        android:id="@+id/navuser"
+        />
+</menu>
