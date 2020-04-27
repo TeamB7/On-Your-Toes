@@ -4,16 +4,16 @@
         android:title="Security"
 
         android:icon="@drawable/ic_security_black_24dp"
-        android:id="@+id/navsecurity"
+        android:id="@+id/nav_security"
         />
     <item
         android:title="Location"
         android:icon="@drawable/ic_place_black_24dp"
-        android:id="@+id/navloc"
+        android:id="@+id/nav_loc"
         />
     <item
         android:title="Profile"
         android:icon="@drawable/ic_person_outline_black_24dp"
-        android:id="@+id/navuser"
+        android:id="@+id/nav_user"
         />
 </menu>
