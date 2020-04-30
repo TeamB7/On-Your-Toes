@@ -9,7 +9,8 @@ public class RestClient {
     //IPv4 Subnet Mask: 255.255.255.0
 
     //10.0.2.2
-    private static final String BASE_URL = "http://192.168.20.32:8080/";
+    //https://test-api-on-your-toes.herokuapp.com
+    private static final String BASE_URL = "https://test-api-on-your-toes.herokuapp.com/";
     // private static final String MAP_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
 
 
@@ -25,7 +26,7 @@ public class RestClient {
         String methodPath = "getSuburbByName/\"" + suburb + ",_____\"";
         String result = "";
         String connReturn = getData(methodPath);
-        if (!connReturn.equals((""))) {
+        if (!connReturn.equals(("[]"))) {
             result = connReturn.replaceAll("[^\\d.]", "").substring(0, 4);
         }
         return result;

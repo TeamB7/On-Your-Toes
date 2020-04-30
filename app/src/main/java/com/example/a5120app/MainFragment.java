@@ -63,7 +63,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!edSuburb.getText().toString().isEmpty()) {
-                    suburb = edSuburb.getText().toString().trim();
+                    suburb = edSuburb.getText().toString().replace(" ", "_").trim();
                 }
             }
         });
@@ -154,6 +154,10 @@ public class MainFragment extends Fragment {
             } else {
                 suburb = "";
                 suburbAndPostcode = "";
+                suburbTv.setText("Your Suburb: Invalid");
+                safetyInfoTv.setText("Risk Score: null");
+                btnCrimeLocation.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
             }
 
         }
