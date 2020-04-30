@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/white"></item>
@@ -8,4 +9,16 @@
     </item>
 
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/mainscreengradient"></item>
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/logovector"></bitmap>
+    </item>
+
+
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
 </layer-list>

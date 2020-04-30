@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -24,4 +25,32 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/test_bt"/>
 
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/test"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/test_input"
+        android:layout_marginTop="100dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginTop="160dp"
+        android:id="@+id/test_bt"
+        android:text="get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/test_bt"/>
+
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
 </RelativeLayout>

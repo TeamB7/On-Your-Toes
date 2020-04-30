@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 
     <shape xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,3 +13,19 @@
         android:left="25sp"></padding>
 
     </shape>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="rectangle">
+        <solid
+            android:color="#ebece8"
+            ></solid>
+        <corners
+            android:radius="50dp"
+            />
+    <padding
+        android:left="25sp"></padding>
+
+    </shape>
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16

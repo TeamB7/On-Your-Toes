@@ -63,7 +63,11 @@ public class MainFragment extends Fragment {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!edSuburb.getText().toString().isEmpty()) {
+<<<<<<< HEAD
                     suburb = edSuburb.getText().toString().replace(" ", "_").trim();
+=======
+                    suburb = edSuburb.getText().toString().trim();
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
                 }
             }
         });
@@ -76,10 +80,17 @@ public class MainFragment extends Fragment {
                 if (!suburb.equals("")) {
                     GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
                     getSuburbAsyncTask.execute();
+<<<<<<< HEAD
 //                    btnCrimeLocation.setVisibility(View.VISIBLE);
                 } else {
                     suburbTv.setText("Your Suburb: Invalid");
                     safetyInfoTv.setText("Risk Score: null");
+=======
+                    btnCrimeLocation.setVisibility(View.VISIBLE);
+                } else {
+                    suburbTv.setText("Your Suburb: Invalid");
+                    safetyInfoTv.setText("Safety Score: null");
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
                     btnCrimeLocation.setVisibility(View.GONE);
                     Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
                 }
@@ -111,12 +122,20 @@ public class MainFragment extends Fragment {
         protected String doInBackground(Void... voids) {
             String score = RestClient.getSuburbScore(suburbAndPostcode);
             String indicator = RestClient.getSuburbIndicator(suburbAndPostcode);
+<<<<<<< HEAD
             return score;
+=======
+            return score + "   " + indicator;
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
         }
 
         @Override
         protected void onPostExecute(String s) {
+<<<<<<< HEAD
             String newText = "Risk Score: " + s + " out of 10";
+=======
+            String newText = "Safety Score: " + s;
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
             safetyInfoTv.setText(newText);
         }
     }
@@ -154,10 +173,13 @@ public class MainFragment extends Fragment {
             } else {
                 suburb = "";
                 suburbAndPostcode = "";
+<<<<<<< HEAD
                 suburbTv.setText("Your Suburb: Invalid");
                 safetyInfoTv.setText("Risk Score: null");
                 btnCrimeLocation.setVisibility(View.GONE);
                 Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
+=======
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
             }
 
         }

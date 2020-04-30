@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class RestClient {
+<<<<<<< HEAD
     //IPv4 Address: 192.168.20.32
     //IPv4 Subnet Mask: 255.255.255.0
 
@@ -13,6 +14,11 @@ public class RestClient {
     private static final String BASE_URL = "https://test-api-on-your-toes.herokuapp.com/";
     // private static final String MAP_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
 
+=======
+    private static final String BASE_URL = "http://10.0.2.2:8080/";
+    // private static final String MAP_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
 
     public static String getSuburb() {
         // http://localhost:8080/getSuburb
@@ -26,7 +32,11 @@ public class RestClient {
         String methodPath = "getSuburbByName/\"" + suburb + ",_____\"";
         String result = "";
         String connReturn = getData(methodPath);
+<<<<<<< HEAD
         if (!connReturn.equals(("[]"))) {
+=======
+        if (!connReturn.equals((""))) {
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
             result = connReturn.replaceAll("[^\\d.]", "").substring(0, 4);
         }
         return result;
@@ -117,6 +127,7 @@ public class RestClient {
 //        URL url = null;
 //        String idStr = "";
 //        String idUrlStr = "";
+<<<<<<< HEAD
 //
 //        switch (type) {
 //            case "user":
@@ -138,6 +149,29 @@ public class RestClient {
 //
 //        HttpURLConnection conn = null;
 //
+=======
+//
+//        switch (type) {
+//            case "user":
+//                idUrlStr = "calorietracker.users/count/";
+//                break;
+//            case "cred":
+//                idUrlStr = "calorietracker.credential/count/";
+//                break;
+//            case "consumption":
+//                idUrlStr = "calorietracker.consumption/count/";
+//                break;
+//            case "food":
+//                idUrlStr = "calorietracker.food/count/";
+//                break;
+//            case "report":
+//                idUrlStr = "calorietracker.report/count/";
+//                break;
+//        }
+//
+//        HttpURLConnection conn = null;
+//
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
 //        String urlStr = BASE_URL + idUrlStr;
 //        try {
 //            url = new URL(urlStr);

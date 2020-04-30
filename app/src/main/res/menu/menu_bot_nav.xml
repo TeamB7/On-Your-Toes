@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
@@ -16,4 +17,24 @@
         android:icon="@drawable/ic_person_outline_black_24dp"
         android:id="@+id/nav_user"
         />
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Security"
+
+        android:icon="@drawable/ic_security_black_24dp"
+        android:id="@+id/nav_security"
+        />
+    <item
+        android:title="Location"
+        android:icon="@drawable/ic_place_black_24dp"
+        android:id="@+id/nav_loc"
+        />
+    <item
+        android:title="Profile"
+        android:icon="@drawable/ic_person_outline_black_24dp"
+        android:id="@+id/nav_user"
+        />
+>>>>>>> 6774dfa8ce789244192f56c4d32a1d9beb5c7b16
 </menu>
