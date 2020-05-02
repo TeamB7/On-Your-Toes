@@ -37,10 +37,10 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="311dp"
+        android:layout_height="93dp"
         android:layout_marginBottom="76dp"
-        android:text="Your Safety and Fitness app"
+        android:text="@string/info_line"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:typeface="sans"

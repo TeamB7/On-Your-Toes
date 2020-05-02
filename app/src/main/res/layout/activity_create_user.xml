@@ -27,6 +27,7 @@
         android:layout_marginTop="36dp"
         android:text="One step away from getting started !"
         android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>

@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_person_outline_black_24dp"
         android:id="@+id/nav_user"
         />
+    <item
+        android:id="@+id/nav_plan"
+        android:title="Plan"
+        android:icon="@drawable/ic_receipt_black_24dp"
+        ></item>
 </menu>

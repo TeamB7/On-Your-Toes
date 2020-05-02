@@ -10,12 +10,6 @@
     android:layout_height="match_parent">
 
 
-    <RelativeLayout
-        android:id="@+id/relLayout_main"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="78dp">
 
         <Button
             android:id="@+id/btn_security"
@@ -66,16 +60,6 @@
         <!--            android:text="test"/>-->
 
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="false"
-            android:layout_marginTop="0dp"
-            android:src="@drawable/logo250px" />
-
         <LinearLayout
             android:id="@+id/safety_info"
             android:layout_width="match_parent"
@@ -85,7 +69,7 @@
             android:background="@color/design_default_color_surface"
             android:orientation="vertical"
             android:padding="16dp"
-            tools:visibility="visible">
+            tools:visibility="invisible">
 
 
             <!-- Title, secondary and supporting text -->
@@ -141,7 +125,6 @@
                 android:textSize="16dp" />
         </LinearLayout>
 
-    </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
