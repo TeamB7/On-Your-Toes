@@ -9,13 +9,6 @@
     android:orientation="vertical"
     android:padding="4dp">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="87dp"
-        android:layout_height="79dp"
-        android:layout_marginLeft="170dp"
-        android:src="@drawable/logo250px" />
-
     <!--    <TextView-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="wrap_content"-->
@@ -26,47 +19,6 @@
     <!--        android:textColor="#f5555f"-->
     <!--        android:textSize="20sp"-->
     <!--        android:gravity="center_horizontal" />-->
-
-    <Button
-        android:id="@+id/btn_Security"
-        style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-        android:layout_width="140dp"
-        android:layout_height="68dp"
-        android:layout_below="@+id/map"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:textColor="@color/cardview_dark_background"
-        android:text="Security"
-        android:drawableLeft="@drawable/ic_security_black_24dp"
-        android:textSize="16dp" />
-
-
-    <Button
-        android:id="@+id/btn_location"
-        style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-        android:layout_width="140dp"
-        android:layout_height="68dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/map"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/cardview_dark_background"
-        android:text="Location"
-        android:drawableLeft="@drawable/ic_place_black_24dp"
-        android:textSize="16dp" />
-
-
-    <Button
-        android:id="@+id/btn_Profile"
-        style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-        android:layout_width="140dp"
-        android:layout_height="68dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/map"
-        android:layout_alignParentBottom="true"
-        android:textColor="@color/cardview_dark_background"
-        android:text="Profile"
-        android:drawableLeft="@drawable/ic_person_outline_black_24dp"
-        android:textSize="16dp" />
 
 
     <RadioGroup
@@ -173,6 +125,18 @@
 <!--        app:itemIconTint="@drawable/icon_selected"-->
 <!--        app:itemTextColor="@drawable/icon_selected"-->
 <!--        app:menu="@menu/menu_bot_nav" />-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/navbot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:fitsSystemWindows="true"
+        android:fontFamily="@font/open_sans"
+        app:itemIconTint="@drawable/icon_selected"
+        app:itemTextColor="@drawable/icon_selected"
+        app:menu="@menu/menu_bot_nav" />
 
 
 </RelativeLayout>

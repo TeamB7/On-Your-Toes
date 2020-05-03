@@ -6,7 +6,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="info_line">Senior Womans Travel Safety and Fitness App</string>
+    <string name="info_line">Victorian travel safety and fitness application for elderly women</string>
     <string name="travel_fitness_card_line">Add a Trip and Fitness Plan</string>
-
+    <string name="action_1">Start</string>
+    <string name="action_2">Delete</string>
+    <string name="cardtitle">Fitnes Plan</string>
 </resources>

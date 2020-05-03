@@ -6,128 +6,265 @@
     android:layout_height="match_parent"
     tools:context=".App_Home">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="240dp"
+        android:alpha="1"
         android:background="@drawable/bg_userinfo"
+        android:elevation="5dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="2dp">
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/bag"
+            android:layout_width="94dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="17dp"
+            android:src="@drawable/bag"></ImageView>
 
         <TextView
+            android:layout_width="284dp"
+            android:layout_height="54dp"
+            android:layout_below="@+id/tv_greeting"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="left"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginRight="31dp"
+            android:layout_marginBottom="53dp"
+            android:layout_toEndOf="@+id/bag"
+            android:layout_toRightOf="@+id/bag"
+            android:text="Upcoming Trip: Caulfield on 29/05/2020 "
+            android:textColor="@color/white"
+            android:textSize="20sp"></TextView>
+
+        <TextView
+            android:id="@+id/tv_greeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="146dp"
+            android:layout_marginLeft="146dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="149dp"
+            android:layout_marginRight="149dp"
             android:text="Hi Mary"
-            android:textSize="14sp"
-            android:layout_gravity="center"></TextView>
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:fontFamily="@font/open_sans"></TextView>
 
-        </LinearLayout>
+
+    </RelativeLayout>
+
     <GridLayout
-        android:layout_width="380dp"
-        android:layout_height="419dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="5dp"
+        android:layout_marginTop="0dp"
         android:alignmentMode="alignMargins"
-        android:columnCount="2"
+        android:columnCount="1"
         android:columnOrderPreserved="false"
         android:rowCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:background="@color/white">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="360dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/colorPrimaryDark"
+            android:cardbackground="@drawable/mainscreengradient"
+            app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="12dp"
             app:cardElevation="5dp">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <!--- <ImageView
+
+                <ImageView
+                    android:id="@+id/card_img2"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:background="#ffffff"
+                    android:src="@drawable/cardview1"
+                    app:srcCompat="@drawable/plan_travel_logo"></ImageView>
+                <!--- <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="12dp"
                     android:src="@drawable/mainscreengradient" />   -->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Travel Fitness Plan"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/tv_TravelPlan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="12dp"
+                    android:layout_toRightOf="@+id/card_img2"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Travel Fitness Plan"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/Font"
+                    android:textSize="22sp"
+                    android:typeface="sans"
+                    app:fontFamily="@font/open_sans" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_TravelPlan"
+                    android:layout_toRightOf="@+id/card_img2"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Create fitness plan for your travel"
+                    android:textColor="#8E8B91"
+                    android:textSize="16sp"
+                    app:fontFamily="@font/open_sans" />
+
+
+            </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
+
         <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="360dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/colorPrimaryDark"
             app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
+            app:cardElevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Nearby Facilitites"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                <ImageView
+                    android:id="@+id/card_img1"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity=""
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/cardview1"
+                    app:srcCompat="@drawable/location_icon"></ImageView>
+                <!--- <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/mainscreengradient" />   -->
+
+                <TextView
+                    android:id="@+id/tv_Amenities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="12dp"
+                    android:layout_toRightOf="@+id/card_img1"
+                    android:autoText="false"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Amenities"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/Font"
+                    android:textSize="22sp"
+                    android:typeface="sans"
+                    app:fontFamily="@font/open_sans" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_Amenities"
+                    android:layout_toRightOf="@+id/card_img1"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Search for nearby Recreational facilites"
+                    android:textColor="#8E8B91"
+                    android:textSize="16sp"
+                    app:fontFamily="@font/open_sans" />
+
+
+            </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/colorPrimaryDark"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Safety"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="360dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
+            app:cardElevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Profile"
-                android:textColor="@color/bg"
-                android:textSize="18sp" />
+                <ImageView
+                    android:id="@+id/card_img3"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/cardview1"
+                    app:srcCompat="@drawable/safety_logo"></ImageView>
+                <!--- <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="12dp"
+                        android:src="@drawable/mainscreengradient" />   -->
+
+                <TextView
+                    android:id="@+id/tv_SafetyInformation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_toRightOf="@+id/card_img3"
+                    android:fontFamily="sans-serif-black"
+                    android:includeFontPadding="true"
+                    android:text="Safety Information"
+                    android:textColor="@color/Font"
+                    android:textSize="22sp"
+                    android:typeface="sans"
+                    app:fontFamily="@font/open_sans" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_SafetyInformation"
+                    android:layout_marginLeft="12dp"
+                    android:layout_toRightOf="@+id/card_img3"
+                    android:fontFamily="sans-serif-black"
+                    android:includeFontPadding="false"
+                    android:text="Find suburb safety information"
+                    android:textColor="#8E8B91"
+                    android:textSize="16sp"
+                    app:fontFamily="@font/open_sans" />
+
+
+            </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 

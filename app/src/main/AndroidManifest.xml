@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".App_Home"></activity>
+        <activity android:name=".Fitness_plan"></activity>
+        <activity android:name=".App_Home" />
         <activity android:name=".StartActivity" />
 
         <meta-data

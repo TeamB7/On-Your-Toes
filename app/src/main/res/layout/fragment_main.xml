@@ -131,6 +131,7 @@
         android:id="@+id/navbot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="176dp"
         android:background="#DFE3E0E0"
         android:fitsSystemWindows="true"
         android:hapticFeedbackEnabled="true"
@@ -139,11 +140,11 @@
         app:itemTextColor="@drawable/icon_selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_bot_nav" >
+        app:menu="@menu/menu_bot_nav">
 
-</com.google.android.material.bottomnavigation.BottomNavigationView>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
     <!--        <GridLayout-->
