@@ -79,18 +79,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_map, container, false);
-        searchFacilitiesBtn = view.findViewById(R.id.search_facilities);
+//        searchFacilitiesBtn = view.findViewById(R.id.search_facilities);
 //        searchPlaceBtn = view.findViewById(R.id.search_place);
-        edSearch = view.findViewById(R.id.ed_search);
+//        edSearch = view.findViewById(R.id.ed_search);
         spFacilityType = view.findViewById(R.id.sp_facility_type);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MainActivity", MODE_PRIVATE);
         searchString = sharedPreferences.getString("address", "");
 
-        radioGroup = (RadioGroup) view.findViewById(R.id.relLayout2);
+       /* radioGroup = (RadioGroup) view.findViewById(R.id.relLayout2);
         rbParks = (RadioButton) view.findViewById(R.id.radio_parks);
         rbGym = (RadioButton) view.findViewById(R.id.radio_gyms);
 
-        btnLocation = (Button) view.findViewById(R.id.btn_Security);
+        btnLocation = (Button) view.findViewById(R.id.btn_Security);*/
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

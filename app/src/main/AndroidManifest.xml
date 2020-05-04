@@ -20,8 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Fitness_plan"></activity>
-        <activity android:name=".App_Home" />
+        <activity android:name=".Amenities_Selection"></activity>
+        <activity
+            android:name=".User_location"
+            android:parentActivityName=".App_Home" />
+        <activity android:name=".Fitness_plan" />
+        <activity android:name=".App_Home"></activity>
         <activity android:name=".StartActivity" />
 
         <meta-data
@@ -31,12 +35,12 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+            ></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

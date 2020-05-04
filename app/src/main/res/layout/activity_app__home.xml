@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f1eff1"
     tools:context=".App_Home">
 
     <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:alpha="1"
-        android:background="@drawable/bg_userinfo"
+        android:alpha="0.8"
+        android:background="#42497c"
         android:elevation="5dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +65,7 @@
             android:layout_marginTop="19dp"
             android:layout_marginEnd="149dp"
             android:layout_marginRight="149dp"
-            android:text="Hi Mary"
+            android:text="Hi Susan"
             android:textColor="@color/white"
             android:textSize="30sp"
             app:fontFamily="@font/open_sans"></TextView>
@@ -76,23 +77,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
         android:alignmentMode="alignMargins"
+        android:background="#f1eff1"
         android:columnCount="1"
         android:columnOrderPreserved="false"
         android:rowCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:background="@color/white">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <androidx.cardview.widget.CardView
             android:layout_width="360dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:cardbackground="@drawable/mainscreengradient"
+            android:background="@drawable/mainscreengradient"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="12dp"
             app:cardElevation="5dp">
@@ -183,7 +183,6 @@
 
                     android:layout_marginTop="12dp"
                     android:layout_toRightOf="@+id/card_img1"
-                    android:autoText="false"
                     android:fontFamily="sans-serif-black"
                     android:text="Amenities"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"

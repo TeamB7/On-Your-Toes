@@ -29,7 +29,7 @@ public class MainFragment extends Fragment {
         safetyInfoTv = (TextView) mainView.findViewById(R.id.score_tv);
         suburbTv = (TextView) mainView.findViewById(R.id.suburb_tv);
         crimeLocTv = (TextView) mainView.findViewById(R.id.tv_crime_loc);
-        btnLocation = (Button) mainView.findViewById(R.id.btn_location);
+//        <!--- btnLocation = (Button) mainView.findViewById(R.id.btn_location); ---->
         btnCrimeLocation = (Button) mainView.findViewById(R.id.btn_crime_loc);
         suburb = "";
         suburbAndPostcode = "";
