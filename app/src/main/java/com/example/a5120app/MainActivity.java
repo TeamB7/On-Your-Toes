@@ -3,23 +3,34 @@ package com.example.a5120app;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+//import android.support.design.widget.NavigationView;
+//import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentManager;
+//import android.support.v4.app.FragmentTransaction;
+//import android.support.v4.view.GravityCompat;
+//import android.support.v4.widget.DrawerLayout;
+//import android.support.v7.app.ActionBarDrawerToggle;
+//import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.widget.Toolbar;
 
 
 public class MainActivity extends AppCompatActivity
@@ -40,15 +51,28 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
+        SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
 
-        this.bundle = new Bundle();
-        this.bundle.putString("userId", userId + "");
-        this.bundle.putString("firstName", userName);
+        String firstName = sp.getString("FirstName", null);
+//        String lastName = sp.getString("LastName", null);
+        if (firstName == null || firstName == "" ) {
+
+            Intent intent = new Intent(MainActivity.this, CreateUserActivity.class );
+            startActivity(intent);
+            finish();
+        }else{
+            userName = firstName;
+        }
+
+//        Intent intent = getIntent();
+//
+//        this.bundle = new Bundle();
+//        this.bundle.putString("userId", userId + "");
+//        this.bundle.putString("firstName", userName);
 
         SharedPreferences sharedPreferences = getSharedPreferences("MainActivity", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("userId", userId);
+//        editor.putInt("userId", userId);
         editor.putString("userName", userName);
         editor.commit();
 
@@ -66,12 +90,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        getSupportActionBar().setTitle("APP Menu");
+        getSupportActionBar().setTitle("On Your Toes");
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.content_frame, new MainFragment());
+        fragmentTransaction.replace(R.id.content_frame, new App_Home());
         fragmentTransaction.commit();
+
     }
 
     @Override
@@ -81,11 +106,11 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
-            if(currentFragment instanceof MainFragment)
+            if (currentFragment instanceof App_Home)
                 super.onBackPressed();
             else {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.content_frame, new MainFragment());
+                ft.replace(R.id.content_frame, new App_Home());
                 ft.commit();
             }
         }
@@ -121,13 +146,10 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
         if (id == R.id.nav_map) {
             fragment = new MapsFragment();
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        }else if(id == R.id.nav_home){
+            fragment = new App_Home();
         }
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="Security"
-
-        android:icon="@drawable/ic_security_black_24dp"
-        android:id="@+id/navsecurity"
+        android:title="Fitness plan"
+        android:icon="@drawable/plan_travel_logo"
+        android:id="@+id/nav_fitness_plan"
         />
     <item
-        android:title="Location"
+        android:title="Amenities"
         android:icon="@drawable/ic_place_black_24dp"
-        android:id="@+id/navloc"
+        android:id="@+id/nav_amenities"
         />
     <item
-        android:title="Profile"
+        android:title="Home"
         android:icon="@drawable/ic_person_outline_black_24dp"
-        android:id="@+id/navuser"
+        android:id="@+id/nav_home"
         />
+    <item
+        android:title="Safety Info"
+        android:icon="@drawable/ic_security_black_24dp"
+        android:id="@+id/nav_saftey"
+        />
+    <item
+        android:id="@+id/nav_plan"
+        android:title="Workout"
+        android:icon="@drawable/workout_logo"
+        ></item>
 </menu>
