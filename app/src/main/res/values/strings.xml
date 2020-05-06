@@ -11,6 +11,14 @@
     <string name="action_1">Start</string>
     <string name="action_2">Delete</string>
     <string name="cardtitle">Fitnes Plan</string>
-    <string name="secondary_text">secondary_text</string>
-    <string name="supporting_text">supporting_text</string>
+    <string name="title_activity_user__location">user_Location</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="set_your_loc">Or manually select a location</string>
 </resources>

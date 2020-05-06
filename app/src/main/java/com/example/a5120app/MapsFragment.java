@@ -139,17 +139,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         });
 
 
-//        "Aerobics"
-//        "Athletics"
-//        "Boxing"
-//        "Calisthenics"
-//        "Cycling"
-//        "Dancing"
-//        "Fitness / Gymnasium Workouts"
-//        "Open Space"
-//        "Orienteering"
-//        "Swimming"
-
         List<String> types = new ArrayList<String>();
         types.add("Recreation types");
         types.add("Aerobics");

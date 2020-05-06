@@ -51,7 +51,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
+//        sp.edit().clear().commit();
 
         String firstName = sp.getString("FirstName", null);
 //        String lastName = sp.getString("LastName", null);

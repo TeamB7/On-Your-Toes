@@ -9,7 +9,11 @@
                 android:radius="200dp">
 
             </corners>
+
+            <solid android:color="@color/white"></solid>
         </shape>
+
+
 
 
     </item>

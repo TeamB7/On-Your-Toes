@@ -65,7 +65,7 @@
         android:padding="16dp"
         android:text="Get Started"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/Font"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

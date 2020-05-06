@@ -19,51 +19,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/bag"
-            android:layout_width="94dp"
-            android:layout_height="100dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="17dp"
-            android:src="@drawable/bag"></ImageView>
+<!--        <ImageView-->
+<!--            android:id="@+id/bag"-->
+<!--            android:layout_width="94dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:layout_marginBottom="17dp"-->
+<!--            android:src="@drawable/bag"></ImageView>-->
 
-        <TextView
-            android:layout_width="284dp"
-            android:layout_height="54dp"
-            android:layout_below="@+id/tv_greeting"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="left"
-            android:layout_marginStart="-3dp"
-            android:layout_marginLeft="-3dp"
-            android:layout_marginTop="102dp"
-            android:layout_marginEnd="37dp"
-            android:layout_marginRight="37dp"
-            android:layout_marginBottom="20dp"
-            android:layout_toEndOf="@+id/bag"
-            android:layout_toRightOf="@+id/bag"
-            android:text="Upcoming Trip: Caulfield on 29/05/2020 "
-            android:textColor="@color/white"
-            android:textSize="20sp"></TextView>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tv_greeting"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_gravity="left"-->
+<!--            android:layout_marginStart="-3dp"-->
+<!--            android:layout_marginLeft="-3dp"-->
+<!--            android:layout_marginTop="102dp"-->
+<!--            android:layout_marginEnd="37dp"-->
+<!--            android:layout_marginRight="37dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:layout_toEndOf="@+id/bag"-->
+<!--            android:layout_toRightOf="@+id/bag"-->
+<!--            android:text="Upcoming Trip: Caulfield on 29/05/2020 "-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp" />-->
 
         <TextView
             android:id="@+id/tv_greeting"
-            android:layout_width="203dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="102dp"
-            android:layout_marginRight="102dp"
-            android:text="Hi Mary"
+            android:layout_centerHorizontal="true"
+            android:text="Hi Susan"
+            android:layout_marginTop="60dp"
             android:textColor="@color/white"
             android:textSize="30sp"
-            app:fontFamily="@font/open_sans"></TextView>
+            app:fontFamily="@font/open_sans" />
 
 
     </RelativeLayout>
@@ -146,6 +141,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/amenities_card"
             android:layout_width="360dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
