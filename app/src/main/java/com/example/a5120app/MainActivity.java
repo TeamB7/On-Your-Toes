@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
 //        String lastName = sp.getString("LastName", null);
         if (firstName == null || firstName == "" ) {
 
-            Intent intent = new Intent(MainActivity.this, CreateUserActivity.class );
+            Intent intent = new Intent(MainActivity.this, StartActivity.class );
             startActivity(intent);
             finish();
         }else{
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -156,7 +156,6 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, fragment);
-//        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_layout);
         drawer.closeDrawer(GravityCompat.START);

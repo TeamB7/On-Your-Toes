@@ -48,19 +48,20 @@ public class CreateUserActivity extends Activity {
             }
         });
 
-        createBtn.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             SharedPreferences.Editor Ed = sp.edit();
-                                             Ed.putString("FirstName", firstName);
-                                             Ed.putString("LastName", lastName);
-                                             Ed.commit();
-                                             Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
+        createBtn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences.Editor Ed = sp.edit();
+                        Ed.putString("FirstName", firstName);
+                        Ed.putString("LastName", lastName);
+                        Ed.commit();
+                        Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
 //                                             intent.putExtra("user", (Parcelable) sp);
-                                             startActivity(intent);
-                                             finish();
-                                         }
-                                     }
+                        startActivity(intent);
+                        finish();
+                    }
+                }
         );
 
         sp = getSharedPreferences("Login", MODE_PRIVATE);
