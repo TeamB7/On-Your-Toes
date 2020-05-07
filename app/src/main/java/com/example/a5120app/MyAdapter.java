@@ -5,22 +5,23 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<String> mDataset;
+    private View.OnClickListener mOnItemClickListener;
 
+    public MyAdapter(ArrayList myDataset) {
+        mDataset = myDataset;
+    }
 
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -29,12 +30,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return vh;
     }
 
-    public MyAdapter(ArrayList myDataset) {
-        mDataset = myDataset;
-    }
-
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.textView.setText(mDataset.get(position));
     }
 
@@ -43,16 +40,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return mDataset.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(View.OnClickListener itemClickListener) {
+        mOnItemClickListener = itemClickListener;
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView textView;
+
         public MyViewHolder(View v) {
             super(v);
             textView = v.findViewById(R.id.amenity_name);
+            itemView.setTag(this);
+            itemView.setOnClickListener(mOnItemClickListener);
         }
 
     }
-
-
 
 }

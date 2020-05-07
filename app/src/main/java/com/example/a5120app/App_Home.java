@@ -41,7 +41,7 @@ public class App_Home extends Fragment {
             @Override
             public void onClick(View view) {
                 Fragment fragment = null;
-                fragment = new AmenitiesListFragment();
+                fragment = new LocationSelectionFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
