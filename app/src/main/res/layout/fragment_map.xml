@@ -4,8 +4,7 @@
     android:id="@+id/map_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="48dp"
-    android:background="#FFFFFF"
+    android:background="@drawable/ic_tf_bg"
     android:orientation="vertical"
     android:padding="4dp">
 
@@ -108,18 +107,19 @@
         android:id="@+id/map"
         android:layout_below="@+id/tv_map_title"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_marginTop="9dp" />
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/tv_map_title"
         android:layout_width="match_parent"
-        app:fontFamily="@font/open_sans"
-        android:textSize="20sp"
-        android:layout_margin="6dp"
-        android:layout_height="35dp"/>
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="test"
+        android:textSize="24sp"
+        app:fontFamily="@font/open_sans" />
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 
 <!--        android:id="@+id/navbot"-->
 <!--        android:layout_width="match_parent"-->

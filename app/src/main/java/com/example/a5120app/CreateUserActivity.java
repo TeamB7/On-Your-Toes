@@ -23,7 +23,7 @@ public class CreateUserActivity extends Activity {
         setContentView(R.layout.activity_create_user);
 
         edUserName = findViewById(R.id.ed_UserFirstName);
-        edLastName = findViewById(R.id.ed_UserLastName);
+//        edLastName = findViewById(R.id.ed_UserLastName);
         createBtn = findViewById(R.id.button);
 
         edUserName.setOnFocusChangeListener(new View.OnFocusChangeListener() {

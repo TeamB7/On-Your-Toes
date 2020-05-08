@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/ic_homescreen"
     android:layout_height="match_parent"
     tools:context=".App_Home">
 
@@ -11,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:alpha="1"
-        android:background="@drawable/bg_userinfo"
         android:elevation="5dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
             android:layout_centerHorizontal="true"
             android:text="Hi Susan"
             android:layout_marginTop="60dp"
-            android:textColor="@color/white"
+            android:textColor="@color/Font"
             android:textSize="30sp"
             app:fontFamily="@font/open_sans" />
 
@@ -64,7 +64,7 @@
     </RelativeLayout>
 
     <GridLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="0dp"
@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:background="@color/white">
+        android:background="@android:color/transparent">
 
         <androidx.cardview.widget.CardView
             android:layout_width="360dp"
@@ -101,7 +101,7 @@
                     android:layout_marginTop="12dp"
                     android:background="#ffffff"
                     android:src="@drawable/cardview1"
-                    app:srcCompat="@drawable/plan_travel_logo"></ImageView>
+                    app:srcCompat="@drawable/plan_travel_logo"/>
                 <!--- <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -151,7 +151,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_row="0">
 
 
                 <ImageView
@@ -161,12 +162,12 @@
                     android:layout_gravity=""
                     android:layout_marginTop="12dp"
                     android:src="@drawable/cardview1"
-                    app:srcCompat="@drawable/location_icon"></ImageView>
+                    app:srcCompat="@drawable/location_icon" />
                 <!--- <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:src="@drawable/mainscreengradient" />   -->
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="12dp"
+                            android:src="@drawable/mainscreengradient" />   -->
 
                 <TextView
                     android:id="@+id/tv_Amenities"
@@ -259,6 +260,8 @@
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
+
+
 
 
     </GridLayout>
