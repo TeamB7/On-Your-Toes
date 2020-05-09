@@ -1,211 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentTop="true"
-    android:layout_marginStart="0dp"
-    android:layout_marginLeft="0dp"
-    android:layout_marginTop="0dp"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:background="@drawable/mainscreengradient">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp">
+        android:alpha="0.1"
+        android:src="@drawable/logovector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    </ImageView>
 
-            <TextView
-                android:id="@+id/tv_UserName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="User Name"
-                android:textAllCaps="false"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-        </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="8dp"
+        android:autoText="true"
+        android:includeFontPadding="false"
+        android:text="Just one step away!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/button"
+        android:layout_width="134dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="68dp"
+        android:layout_weight="5"
+        android:background="@drawable/buttonbackground"
+        android:elevation="5dp"
+        android:fontFamily="@font/open_sans"
+        android:includeFontPadding="false"
+        android:padding="8dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="4dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="4dp"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.492"/>
 
-            <EditText
-                android:id="@+id/ed_UserName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </LinearLayout>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="212dp"
+        android:text="First Name*"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_Password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+    </TextView>
 
-        <EditText
-            android:id="@+id/ed_Password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/ed_UserFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:alpha="0.8"
+        android:textSize="22sp"
+        android:paddingLeft="16dp"
+        android:background="@drawable/buttonbackground"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:password="false"
+        android:phoneNumber="false"
+        android:textColor="@color/Font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <TextView
-            android:id="@+id/tv_CPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Confirm Password"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="88dp"-->
+<!--        android:text="Last Name"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="22sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/ed_UserFirstName"/>-->
 
-        <EditText
-            android:id="@+id/ed_CPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword" />
+<!--    <EditText-->
+<!--        android:id="@+id/ed_UserLastName"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:alpha="0.8"-->
+<!--        android:paddingLeft="16dp"-->
+<!--        android:textSize="22sp"-->
+<!--        android:background="@drawable/buttonbackground"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:textColor="@color/Font"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="* Mandatory Fields"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_UserFirstName" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/tv_Height"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Height (m)"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv_Weight"
-                android:layout_width="3dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Weight (kg)"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/ed_Height"
-                android:layout_width="0dp"
-                android:inputType="numberDecimal"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <EditText
-                android:id="@+id/ed_Weight"
-                android:layout_width="5dp"
-                android:inputType="numberDecimal"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/tv_Address"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Address"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv_Postcode"
-                android:layout_width="3dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Post Code"
-                android:inputType="numberDecimal"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/ed_Address"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <EditText
-                android:id="@+id/ed_Postcode"
-                android:layout_width="5dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_Dob"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                android:text="Date of Birth: "
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btn_Dob"
-                android:layout_width="410dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_weight="1"
-                android:text="Select Date" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_Signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="32dp"
-            android:text="Sign Up" />
-    </LinearLayout>
-
-</ScrollView>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
