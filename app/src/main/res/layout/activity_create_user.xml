@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:theme="@android:style/Theme.Holo.Light.NoActionBar"
     android:layout_height="match_parent"
     android:background="@drawable/mainscreengradient">
 
@@ -72,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="212dp"
-        android:text="First Name*"
+        android:text="User Name*"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -95,9 +96,7 @@
         android:background="@drawable/buttonbackground"
         android:ems="10"
         android:inputType="textPersonName"
-        android:password="false"
-        android:phoneNumber="false"
-        android:textColor="@color/Font"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />

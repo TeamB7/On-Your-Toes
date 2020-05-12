@@ -18,17 +18,20 @@ public class LocationSelectionFragment extends Fragment {
     private Button myLocBtn, submitLocBtn;
     private AutoCompleteTextView suburbACText;
     private EditText suburbEd;
-    private String address = "";
+    private String address = "", page;
     private View view;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_user_location, container, false);
-
         myLocBtn = view.findViewById(R.id.use_my_loc_btn);
         submitLocBtn = view.findViewById(R.id.submit_loc_btn);
         suburbEd = view.findViewById(R.id.ed_suburb);
 
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            page = bundle.getString("page", null);
+        }
 
         suburbEd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -45,13 +48,23 @@ public class LocationSelectionFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Fragment fragment = null;
-                        fragment = new AmenitiesListFragment();
-                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.content_frame, fragment);
-                        fragmentTransaction.commit();
-                        DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+                        if (page.equals("amenity")) {
+                            Fragment fragment = null;
+                            fragment = new AmenitiesListFragment();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
+                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+                        } else if (page.equals("safety")) {
+                            Fragment fragment = null;
+                            fragment = new SafetyFragment();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
+                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+                        }
                     }
                 }
         );
@@ -62,7 +75,7 @@ public class LocationSelectionFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         address = suburbEd.getText().toString();
-                        if (address != "") {
+                        if (!address.equals("") && page.equals("amenity")) {
                             Fragment fragment = null;
                             fragment = new AmenitiesListFragment();
                             Bundle args = new Bundle();
@@ -74,7 +87,15 @@ public class LocationSelectionFragment extends Fragment {
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
                             DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
-                        }else{
+                        } else if (!address.equals("") && page.equals("safety")) {
+                            Fragment fragment = null;
+                            fragment = new SafetyFragment();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.content_frame, fragment);
+                            fragmentTransaction.commit();
+                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+                        } else {
                             Toast.makeText(getContext(), "Address cannot be empty", Toast.LENGTH_SHORT).show();
                         }
                     }

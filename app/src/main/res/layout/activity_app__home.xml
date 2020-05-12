@@ -79,6 +79,7 @@
         android:background="@android:color/transparent">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/exercise_card"
             android:layout_width="360dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
@@ -203,6 +204,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/safety_card"
             android:layout_width="360dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"

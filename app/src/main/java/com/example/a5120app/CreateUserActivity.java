@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -37,29 +38,34 @@ public class CreateUserActivity extends Activity {
             }
         });
 
-        edLastName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    if (!isEmpty(edLastName.getText().toString())) {
-                        lastName = edLastName.getText().toString();
-                    }
-                }
-            }
-        });
+//        edLastName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (!hasFocus) {
+//                    if (!isEmpty(edLastName.getText().toString())) {
+//                        lastName = edLastName.getText().toString();
+//                    }
+//                }
+//            }
+//        });
 
         createBtn.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        SharedPreferences.Editor Ed = sp.edit();
-                        Ed.putString("FirstName", firstName);
-                        Ed.putString("LastName", lastName);
-                        Ed.commit();
-                        Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
+                        if (!isEmpty(edUserName.getText().toString())) {
+                            SharedPreferences.Editor Ed = sp.edit();
+
+                            firstName = edUserName.getText().toString();
+                            Ed.putString("FirstName", firstName);
+                            Ed.putString("LastName", lastName);
+                            Ed.commit();
+                            Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
 //                                             intent.putExtra("user", (Parcelable) sp);
-                        startActivity(intent);
-                        finish();
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{    Toast.makeText(getApplicationContext(),"Name cannot be empty",Toast.LENGTH_SHORT).show();  }
                     }
                 }
         );
@@ -68,4 +74,13 @@ public class CreateUserActivity extends Activity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CreateUserActivity.this, DisclaimerFragment.class);
+        startActivity(intent);
+        finish();
+    }
 }
+
+
+
