@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -52,7 +53,10 @@ public class CreateUserActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (!isEmpty(edUserName.getText().toString())) {
                         SharedPreferences.Editor Ed = sp.edit();
+
+                            firstName = edUserName.getText().toString();
                         Ed.putString("FirstName", firstName);
 //                        Ed.putString("LastName", lastName);
                         Ed.commit();
@@ -61,6 +65,8 @@ public class CreateUserActivity extends Activity {
                         startActivity(intent);
                         finish();
                     }
+                        else{    Toast.makeText(getApplicationContext(),"Name cannot be empty",Toast.LENGTH_SHORT).show();  }
+                }
                 }
         );
 
@@ -68,4 +74,13 @@ public class CreateUserActivity extends Activity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CreateUserActivity.this, DisclaimerFragment.class);
+        startActivity(intent);
+        finish();
+    }
 }
+
+
+

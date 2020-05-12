@@ -2,6 +2,7 @@ package com.example.a5120app;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -170,7 +171,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         return view;
     }
-
 
     private void geoLocate() {
 //        String search = edSearch.getText().toString();
@@ -452,9 +452,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 String vicinity = googlePlace.get("vicinity");
                 String open = googlePlace.get("open");
                 if (open.equals("CLOSED_TEMPORARILY")) {
-                    open = "closed";
+                    open = "Closed";
                 } else {
-                    open = "Operational";
+                    open = "Open Now";
                 }
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
@@ -110,7 +111,19 @@ public class MainActivity extends AppCompatActivity
             Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
             if (currentFragment instanceof App_Home)
                 super.onBackPressed();
-            else {
+            else if (currentFragment instanceof LocationSelectionFragment) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, new App_Home());
+                ft.commit();
+            }else if (currentFragment instanceof AmenitiesListFragment){
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, new LocationSelectionFragment());
+                ft.commit();
+            }else if (currentFragment instanceof MapsFragment){
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, new AmenitiesListFragment());
+                ft.commit();
+            }else{
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, new App_Home());
                 ft.commit();

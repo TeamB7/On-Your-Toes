@@ -30,4 +30,11 @@ public class DisclaimerFragment extends Activity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(DisclaimerFragment.this, StartActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
