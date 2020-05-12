@@ -37,16 +37,16 @@ public class CreateUserActivity extends Activity {
             }
         });
 
-        edLastName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    if (!isEmpty(edLastName.getText().toString())) {
-                        lastName = edLastName.getText().toString();
-                    }
-                }
-            }
-        });
+//        edLastName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (!hasFocus) {
+//                    if (!isEmpty(edLastName.getText().toString())) {
+//                        lastName = edLastName.getText().toString();
+//                    }
+//                }
+//            }
+//        });
 
         createBtn.setOnClickListener(
                 new View.OnClickListener() {
@@ -54,7 +54,7 @@ public class CreateUserActivity extends Activity {
                     public void onClick(View v) {
                         SharedPreferences.Editor Ed = sp.edit();
                         Ed.putString("FirstName", firstName);
-                        Ed.putString("LastName", lastName);
+//                        Ed.putString("LastName", lastName);
                         Ed.commit();
                         Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
 //                                             intent.putExtra("user", (Parcelable) sp);

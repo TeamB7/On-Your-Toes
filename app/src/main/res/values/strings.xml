@@ -6,7 +6,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="info_line">Victorian travel safety and fitness application for elderly women</string>
+    <string name="info_line">Victorian Travel Safety and Fitness App for Elder Women</string>
+    <string name="disclaimer">The information on this app comes from a variety of third-party sources and are not intended to be a substitute for professional or medical advice. Consult your physician or healthcare professional before following any training instructions you receive through the app. On Your Toes is not liable for any health problems you may suffer by performing activities provided in the app. The Safety information provided in the app is based on Crime statistics made available by the Victorian Government for previous years and real-time safety may not be in accordance to historic data. You are acknowledging that your health and safety is your sole responsibility and  you would not hold On Your Toes accountable for loss, liability, claim, damage, and expenses arising from or in connection with your use of the information on this app.</string>
     <string name="travel_fitness_card_line">Add a Trip and Fitness Plan</string>
     <string name="action_1">Start</string>
     <string name="action_2">Delete</string>

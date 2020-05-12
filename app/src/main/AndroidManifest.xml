@@ -29,6 +29,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCgxM0S_8C0WPxEFYrAtzV6ZBD3avJA358" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".SplashScreen"
