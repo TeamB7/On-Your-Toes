@@ -44,12 +44,9 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="68dp"
-        android:layout_marginBottom="36dp"
         android:layout_weight="5"
-        android:background="@drawable/buttonbackground
-"       android:elevation="5dp"
+        android:background="@drawable/buttonbackground"
+        android:elevation="5dp"
         android:fontFamily="@font/open_sans"
         android:includeFontPadding="true"
         android:paddingLeft="40dp"
@@ -66,7 +63,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"></Button>
+
 
 
     <TextView
@@ -94,6 +92,7 @@
         android:alpha="0.8"
         android:background="@drawable/buttonbackground"
         android:ems="10"
+        android:hint="eg: Anne"
         android:inputType="textPersonName"
         android:paddingLeft="16dp"
         android:password="false"
@@ -135,6 +134,7 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
