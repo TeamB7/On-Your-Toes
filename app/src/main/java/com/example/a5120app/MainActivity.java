@@ -3,13 +3,11 @@ package com.example.a5120app;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
@@ -58,12 +56,12 @@ public class MainActivity extends AppCompatActivity
 
         String firstName = sp.getString("FirstName", null);
 //        String lastName = sp.getString("LastName", null);
-        if (firstName == null || firstName == "" ) {
+        if (firstName == null || firstName == "") {
 
-            Intent intent = new Intent(MainActivity.this, StartActivity.class );
+            Intent intent = new Intent(MainActivity.this, StartActivity.class);
             startActivity(intent);
             finish();
-        }else{
+        } else {
             userName = firstName;
         }
 
@@ -115,15 +113,29 @@ public class MainActivity extends AppCompatActivity
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, new App_Home());
                 ft.commit();
-            }else if (currentFragment instanceof AmenitiesListFragment){
+            } else if (currentFragment instanceof AmenitiesListFragment) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, new LocationSelectionFragment());
                 ft.commit();
-            }else if (currentFragment instanceof MapsFragment){
+            } else if (currentFragment instanceof SafetyFragment) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                Fragment newFragment = new LocationSelectionFragment();
+                Bundle args = new Bundle();
+                args.putString("page", "safety");
+                newFragment.setArguments(args);
+                ft.replace(R.id.content_frame, newFragment);
+                ft.commit();
+            } else if (currentFragment instanceof MapsFragment) {
+                Bundle args = currentFragment.getArguments();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, new AmenitiesListFragment());
+                getSupportFragmentManager().findFragmentById(R.id.content_frame).setArguments(args);
                 ft.commit();
-            }else{
+            } else if (currentFragment instanceof ExerciseFragment) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_frame, new SuggestActivityFragment());
+                ft.commit();
+            } else {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, new App_Home());
                 ft.commit();
@@ -161,7 +173,7 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
         if (id == R.id.nav_map) {
             fragment = new MapsFragment();
-        }else if(id == R.id.nav_home){
+        } else if (id == R.id.nav_home) {
             fragment = new App_Home();
         }
 

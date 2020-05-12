@@ -54,19 +54,20 @@ public class CreateUserActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         if (!isEmpty(edUserName.getText().toString())) {
-                        SharedPreferences.Editor Ed = sp.edit();
+                            SharedPreferences.Editor Ed = sp.edit();
 
                             firstName = edUserName.getText().toString();
-                        Ed.putString("FirstName", firstName);
+                            Ed.putString("FirstName", firstName);
 //                        Ed.putString("LastName", lastName);
-                        Ed.commit();
-                        Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
+                            Ed.commit();
+                            Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
 //                                             intent.putExtra("user", (Parcelable) sp);
-                        startActivity(intent);
-                        finish();
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Name cannot be empty", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                        else{    Toast.makeText(getApplicationContext(),"Name cannot be empty",Toast.LENGTH_SHORT).show();  }
-                }
                 }
         );
 

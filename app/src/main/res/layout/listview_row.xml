@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/label"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/rounded_button"
+    android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+    app:fontFamily="sans-serif"
+    android:padding="12dp"
+    android:paddingStart="20dp"
+    android:paddingLeft="20dp"
+    android:text="test_item"
+    android:textColor="@color/design_default_color_on_secondary"
+    android:textSize="22sp"
+    android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+    tools:ignore="RtlSymmetry">
+</TextView>

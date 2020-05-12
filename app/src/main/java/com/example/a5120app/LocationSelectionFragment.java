@@ -18,7 +18,7 @@ public class LocationSelectionFragment extends Fragment {
     private Button myLocBtn, submitLocBtn;
     private AutoCompleteTextView suburbACText;
     private EditText suburbEd;
-    private String address = "", page;
+    private String address = "", page = "";
     private View view;
 
 
@@ -48,7 +48,7 @@ public class LocationSelectionFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (page.equals("amenity")) {
+                        if (page.equals("amenity") || page.equals("")) {
                             Fragment fragment = null;
                             fragment = new AmenitiesListFragment();
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -75,7 +75,7 @@ public class LocationSelectionFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         address = suburbEd.getText().toString();
-                        if (!address.equals("") && page.equals("amenity")) {
+                        if (!address.equals("") && (page.equals("amenity") || page.equals(""))) {
                             Fragment fragment = null;
                             fragment = new AmenitiesListFragment();
                             Bundle args = new Bundle();
