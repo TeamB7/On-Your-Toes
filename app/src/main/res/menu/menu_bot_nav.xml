@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="Fitness plan"
-        android:icon="@drawable/plan_travel_logo"
+        android:title="Indoor Exercises"
+        android:icon="@drawable/ic_receipt_black_24dp"
         android:id="@+id/nav_fitness_plan"
         />
     <item
-        android:title="Amenities"
+        android:title="Outdoor Exercises"
         android:icon="@drawable/ic_place_black_24dp"
         android:id="@+id/nav_amenities"
         />
@@ -20,9 +20,4 @@
         android:icon="@drawable/ic_security_black_24dp"
         android:id="@+id/nav_saftey"
         />
-    <item
-        android:id="@+id/nav_plan"
-        android:title="Workout"
-        android:icon="@drawable/workout_logo"
-        ></item>
 </menu>
