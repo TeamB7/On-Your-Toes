@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -24,11 +25,15 @@ public class App_Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         homeView = inflater.inflate(R.layout.activity_app__home, container, false);
         greetingTv = homeView.findViewById(R.id.tv_greeting);
         amenitiesCard = homeView.findViewById(R.id.amenities_card);
         safetyCard = homeView.findViewById(R.id.safety_card);
         exerciseCard = homeView.findViewById(R.id.exercise_card);
+        WebView myWebView = homeView.findViewById(R.id.webview);
+        myWebView.loadUrl("https://dl.airtable.com/Y0JUbM2YTfe8uRz0jb5w_200.gif");
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MainActivity", MODE_PRIVATE);
         String name = sharedPreferences.getString("userName", null);

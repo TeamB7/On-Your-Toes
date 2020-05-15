@@ -84,7 +84,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         }
 
         if (!searchString.equals("")) {
-            String title = searchString + ", " + recreationType;
+            String title =  "Location: "+searchString + "\n" + "Activity: "+ recreationType;
             mapTitle.setText(title);
         } else {
             String title = "Device Location, " + recreationType;
