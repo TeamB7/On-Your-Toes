@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -26,20 +28,62 @@ public class App_Home extends Fragment {
         super.onCreate(savedInstanceState);
 
 
-
         homeView = inflater.inflate(R.layout.activity_app__home, container, false);
         greetingTv = homeView.findViewById(R.id.tv_greeting);
         amenitiesCard = homeView.findViewById(R.id.amenities_card);
         safetyCard = homeView.findViewById(R.id.safety_card);
         exerciseCard = homeView.findViewById(R.id.exercise_card);
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MainActivity", MODE_PRIVATE);
-        String name = sharedPreferences.getString("userName", null);
+        SharedPreferences sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
+        String firstName = sp.getString("FirstName", null);
+//        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MainActivity", MODE_PRIVATE);
+//        String name = sharedPreferences.getString("userName", null);
         String greeting = "";
-        if (name != null) {
-            greeting = "Hi " + name;
+        if (firstName != null) {
+            greeting = "Hi " + firstName;
         }
         greetingTv.setText(greeting);
+
+        TextView dateTV1 = homeView.findViewById(R.id.date_tv_1);
+        TextView dateTV2 = homeView.findViewById(R.id.date_tv_2);
+        TextView dateTV3 = homeView.findViewById(R.id.date_tv_3);
+        TextView nameTV1 = homeView.findViewById(R.id.name_tv_1);
+        TextView nameTV2 = homeView.findViewById(R.id.name_tv_2);
+        TextView nameTV3 = homeView.findViewById(R.id.name_tv_3);
+
+        SharedPreferences exerciseSP = getContext().getSharedPreferences("Exercise", MODE_PRIVATE);
+//        exerciseSP.edit().clear().commit();
+
+        int index = exerciseSP.getInt("Index", 0);
+
+        if (index >= 1) {
+            try {
+                JSONArray exerciseJson = new JSONArray(exerciseSP.getString(String.valueOf(0), ""));
+                nameTV1.setText(exerciseJson.getString(0));
+                dateTV1.setText(exerciseJson.getString(3));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        if (index >= 2) {
+            try {
+                JSONArray exerciseJson = new JSONArray(exerciseSP.getString(String.valueOf(1), ""));
+                nameTV1.setText(exerciseJson.getString(0));
+                dateTV1.setText(exerciseJson.getString(3));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        if (index == 3) {
+            try {
+                JSONArray exerciseJson = new JSONArray(exerciseSP.getString(String.valueOf(2), ""));
+                nameTV1.setText(exerciseJson.getString(0));
+                dateTV1.setText(exerciseJson.getString(3));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
         amenitiesCard.setOnClickListener(new View.OnClickListener() {
             @Override

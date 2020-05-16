@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
 
 import androidx.fragment.app.Fragment;
@@ -51,9 +51,16 @@ public class AmenitiesListFragment extends Fragment {
         recyclerView = amenitiesView.findViewById(R.id.lv_amenities);
 
         Bundle args = this.getArguments();
-        if (args != null){
+        if (args != null) {
             address = args.getString("Address");
         }
+
+        TextView locTv = amenitiesView.findViewById(R.id.textViewloc);
+        String str = "Location: " + address;
+        if (address.equals("")) {
+            str = "Location: Current Location";
+        }
+        locTv.setText(str);
 
         addData();
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6F7F9"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
@@ -33,25 +34,13 @@
     <ListView
         android:id="@+id/exercise_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="635dp"
+        android:layout_marginTop="40dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="105dp" >
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:paddingStart="15dp"
-            android:paddingLeft="15dp"
-            android:paddingEnd="15dp"
-            android:text="Indoor Activity"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            app:fontFamily="@font/open_sans" />
-    </ListView>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

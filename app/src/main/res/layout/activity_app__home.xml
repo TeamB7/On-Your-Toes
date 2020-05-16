@@ -192,6 +192,7 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="16dp"
                         android:background="@android:color/transparent"
+                      
                         android:tint="#F59C9D"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -264,6 +265,7 @@
                         android:layout_height="40dp"
                         android:layout_marginLeft="16dp"
                         android:background="@android:color/transparent"
+                       
                         android:tint="#F59C9D"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -311,9 +313,8 @@
 
     <TextView
         android:id="@+id/tv_recent_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Here's your recent activity"
+       
+       
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -328,30 +329,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
+      
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_recent_activity">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/date_tv_1"
+            "
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="end"
             android:layout_marginRight="8dp"
-            android:text="05 May"
             android:textSize="18sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:tint="@color/colorPrimary"
-            app:srcCompat="@drawable/ic_repeat_grid_8"></ImageView>
+  
+
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/name_tv_1"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Planks"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="65dp"
             tools:layout_editor_absoluteY="208dp" />
@@ -362,16 +364,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
+   
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ly_ac_1">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/date_tv_2"
+  
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="end"
             android:layout_marginRight="8dp"
-            android:text="05 May"
             android:textSize="18sp" />
 
         <ImageView
@@ -382,10 +385,9 @@
             app:srcCompat="@drawable/ic_repeat_grid_8"></ImageView>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/name_tv_2"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Planks"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="65dp"
             tools:layout_editor_absoluteY="208dp" />
@@ -403,11 +405,12 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/date_tv_3"
+            android:layout_width="120dp"
+            android:gravity="end"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="8dp"
-            android:text="05 May"
             android:textSize="18sp" />
 
         <ImageView
@@ -418,10 +421,9 @@
             app:srcCompat="@drawable/ic_repeat_grid_8"></ImageView>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/name_tv_3"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Planks"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="65dp"
             tools:layout_editor_absoluteY="208dp" />

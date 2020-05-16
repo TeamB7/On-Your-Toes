@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,6 +32,12 @@ public class LocationSelectionFragment extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             page = bundle.getString("page", null);
+        }
+
+        if (page.equals("safety")){
+            TextView textView = view.findViewById(R.id.textView10);
+            String str = "Help us provide you with safety information by proving your suburb location";
+            textView.setText(str);
         }
 
         suburbEd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -90,6 +97,9 @@ public class LocationSelectionFragment extends Fragment {
                         } else if (!address.equals("") && page.equals("safety")) {
                             Fragment fragment = null;
                             fragment = new SafetyFragment();
+                            Bundle args = new Bundle();
+                            args.putString("Address", address);
+                            fragment.setArguments(args);
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, fragment);

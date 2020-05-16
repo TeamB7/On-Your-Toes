@@ -27,6 +27,17 @@ public class RestClient {
         return result;
     }
 
+    public static String getExerciseByName(String name) {
+        // http://localhost:8080/getSuburb
+        String methodPath = "getExerciseByName/\"" + name + "\"";
+        String result = "";
+        String connReturn = getData(methodPath);
+        if (!connReturn.equals((""))) {
+            result = connReturn;
+        }
+        return result;
+    }
+
     public static String getSuburbScore(String suburbAndPostcode) {
         // http://localhost:8080/getSuburbScore/"Aubrey, 3393"
         String methodPath = "getSuburbScore/\"" + suburbAndPostcode + "\"";
