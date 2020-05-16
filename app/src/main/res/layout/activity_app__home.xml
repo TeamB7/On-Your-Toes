@@ -7,265 +7,441 @@
     android:layout_height="match_parent"
     tools:context=".App_Home">
 
+
     <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:alpha="1"
         android:elevation="5dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/bag"-->
-<!--            android:layout_width="94dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_alignParentLeft="true"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_marginLeft="5dp"-->
-<!--            android:layout_marginBottom="17dp"-->
-<!--            android:src="@drawable/bag"></ImageView>-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/bag"-->
+        <!--            android:layout_width="94dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_alignParentLeft="true"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_marginLeft="5dp"-->
+        <!--            android:layout_marginBottom="17dp"-->
+        <!--            android:src="@drawable/bag"></ImageView>-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@+id/tv_greeting"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_gravity="left"-->
-<!--            android:layout_marginStart="-3dp"-->
-<!--            android:layout_marginLeft="-3dp"-->
-<!--            android:layout_marginTop="102dp"-->
-<!--            android:layout_marginEnd="37dp"-->
-<!--            android:layout_marginRight="37dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:layout_toEndOf="@+id/bag"-->
-<!--            android:layout_toRightOf="@+id/bag"-->
-<!--            android:text="Upcoming Trip: Caulfield on 29/05/2020 "-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="20sp" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@+id/tv_greeting"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:layout_alignParentRight="true"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_gravity="left"-->
+        <!--            android:layout_marginStart="-3dp"-->
+        <!--            android:layout_marginLeft="-3dp"-->
+        <!--            android:layout_marginTop="102dp"-->
+        <!--            android:layout_marginEnd="37dp"-->
+        <!--            android:layout_marginRight="37dp"-->
+        <!--            android:layout_marginBottom="20dp"-->
+        <!--            android:layout_toEndOf="@+id/bag"-->
+        <!--            android:layout_toRightOf="@+id/bag"-->
+        <!--            android:text="Upcoming Trip: Caulfield on 29/05/2020 "-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="20sp" />-->
 
         <TextView
             android:id="@+id/tv_greeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginEnd="285dp"
+            android:layout_marginRight="285dp"
             android:text="Hi Susan"
-            android:layout_marginTop="60dp"
-            android:textColor="@color/Font"
-            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:textSize="22sp"
             app:fontFamily="@font/open_sans" />
 
 
     </RelativeLayout>
 
     <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/gridLayout"
+        android:layout_width="320dp"
+        android:layout_height="240dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
         android:alignmentMode="alignMargins"
+        android:background="@android:color/transparent"
         android:columnCount="1"
         android:columnOrderPreserved="false"
         android:rowCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:background="@android:color/transparent">
+        app:layout_constraintVertical_bias="0.905">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/exercise_card"
-            android:layout_width="360dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:background="@drawable/mainscreengradient"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="5dp">
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/display_card"
+            android:elevation="10dp">
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/exercise_card"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp">
 
-
-                <ImageView
-                    android:id="@+id/card_img2"
-                    android:layout_width="100dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="12dp"
-                    android:background="#ffffff"
-                    android:src="@drawable/cardview1"
-                    app:srcCompat="@drawable/plan_travel_logo"/>
-                <!--- <ImageView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="12dp"
-                    android:src="@drawable/mainscreengradient" />   -->
-
-                <TextView
-                    android:id="@+id/tv_TravelPlan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="12dp"
-                    android:layout_toRightOf="@+id/card_img2"
-                    android:fontFamily="sans-serif-black"
-                    android:text="Travel Fitness Plan"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/Font"
-                    android:textSize="22sp"
-                    android:typeface="sans"
-                    app:fontFamily="@font/open_sans" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_TravelPlan"
-                    android:layout_toRightOf="@+id/card_img2"
-                    android:fontFamily="sans-serif-black"
-                    android:text="Create fitness plan for your travel"
-                    android:textColor="#8E8B91"
-                    android:textSize="16sp"
-                    app:fontFamily="@font/open_sans" />
-
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/amenities_card"
-            android:layout_width="360dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="5dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_row="0">
-
-
-                <ImageView
-                    android:id="@+id/card_img1"
-                    android:layout_width="100dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity=""
-                    android:layout_marginTop="12dp"
-                    android:src="@drawable/cardview1"
-                    app:srcCompat="@drawable/location_icon" />
-                <!--- <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="12dp"
-                            android:src="@drawable/mainscreengradient" />   -->
-
-                <TextView
-                    android:id="@+id/tv_Amenities"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginTop="12dp"
-                    android:layout_toRightOf="@+id/card_img1"
-                    android:autoText="false"
-                    android:fontFamily="sans-serif-black"
-                    android:text="Amenities"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/Font"
-                    android:textSize="22sp"
-                    android:typeface="sans"
-                    app:fontFamily="@font/open_sans" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_Amenities"
-                    android:layout_toRightOf="@+id/card_img1"
-                    android:fontFamily="sans-serif-black"
-                    android:text="Search for nearby Recreational facilites"
-                    android:textColor="#8E8B91"
-                    android:textSize="16sp"
-                    app:fontFamily="@font/open_sans" />
-
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/safety_card"
-            android:layout_width="360dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="5dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <ImageView
-                    android:id="@+id/card_img3"
-                    android:layout_width="80dp"
                     android:layout_height="60dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/cardview1"
-                    app:srcCompat="@drawable/safety_logo"></ImageView>
-                <!--- <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:src="@drawable/mainscreengradient" />   -->
-
-                <TextView
-                    android:id="@+id/tv_SafetyInformation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_toRightOf="@+id/card_img3"
-                    android:fontFamily="sans-serif-black"
-                    android:includeFontPadding="true"
-                    android:text="Safety Information"
-                    android:textColor="@color/Font"
-                    android:textSize="22sp"
-                    android:typeface="sans"
-                    app:fontFamily="@font/open_sans" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_SafetyInformation"
-                    android:layout_marginLeft="12dp"
-                    android:layout_toRightOf="@+id/card_img3"
-                    android:fontFamily="sans-serif-black"
-                    android:includeFontPadding="false"
-                    android:text="Find suburb safety information"
-                    android:textColor="#8E8B91"
-                    android:textSize="16sp"
-                    app:fontFamily="@font/open_sans" />
+                    android:background="@android:color/transparent">
 
 
-            </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/card_img2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="@android:color/transparent"
+                        android:tint="#E53935"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_fitness_center_black_24dp"
+                        tools:srcCompat="@drawable/ic_fitness_center_black_24dp" />
 
-        </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_TravelPlan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Indoor Excercises"
+                        android:textColor="@color/Font"
+                        android:textSize="18sp"
+                        app:fontFamily="@font/open_sans"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.23"
+                        app:layout_constraintStart_toEndOf="@+id/card_img2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.37" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
+                    <!--                        android:layout_marginRight="8dp"-->
+                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
+                    <!--                        android:ems="8"-->
+                    <!--                        android:fontFamily="sans-serif-black"-->
+                    <!--                        android:text="Easy to do anywhere exercises"-->
+                    <!--                        android:textColor="#8E8B91"-->
+                    <!--                        android:textSize="16sp"-->
+                    <!--                        app:fontFamily="@font/open_sans" />-->
 
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/display_card"
+            android:elevation="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/amenities_card"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent">
+
+
+                    <ImageView
+                        android:id="@+id/card_img1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="@android:color/transparent"
+                        android:tint="#E53935"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_nature_people_black_24dp"
+                        tools:srcCompat="@drawable/ic_nature_people_black_24dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_Amenities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Outdoor Excercises"
+                        android:textColor="@color/Font"
+                        android:textSize="18sp"
+                        app:fontFamily="@font/open_sans"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.23"
+                        app:layout_constraintStart_toEndOf="@+id/card_img1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.37" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
+                    <!--                        android:layout_marginRight="8dp"-->
+                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
+                    <!--                        android:ems="8"-->
+                    <!--                        android:fontFamily="sans-serif-black"-->
+                    <!--                        android:text="Easy to do anywhere exercises"-->
+                    <!--                        android:textColor="#8E8B91"-->
+                    <!--                        android:textSize="16sp"-->
+                    <!--                        app:fontFamily="@font/open_sans" />-->
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/display_card"
+            android:elevation="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/safety_card"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent">
+
+
+                    <ImageView
+                        android:id="@+id/card_img3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="@android:color/transparent"
+                        android:tint="#E53935"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_security_black_24dp"
+                        tools:srcCompat="@drawable/ic_security_black_24dp" />
+
+
+                    <TextView
+
+                        android:id="@+id/tv_SafetyInformation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Suburb Safety "
+                        android:textColor="@color/Font"
+                        android:textSize="18sp"
+                        app:fontFamily="@font/open_sans"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.23"
+                        app:layout_constraintStart_toEndOf="@+id/card_img3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.37" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
+                    <!--                        android:layout_marginRight="8dp"-->
+                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
+                    <!--                        android:ems="8"-->
+                    <!--                        android:fontFamily="sans-serif-black"-->
+                    <!--                        android:text="Easy to do anywhere exercises"-->
+                    <!--                        android:textColor="#8E8B91"-->
+                    <!--                        android:textSize="16sp"-->
+                    <!--                        app:fontFamily="@font/open_sans" />-->
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
     </GridLayout>
+
+    <TextView
+        android:id="@+id/tv_recent_activity"
+        android:layout_width="260dp"
+        android:layout_height="30dp"
+        android:text="Here's Your Recent Activity"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.457" />
+
+    <LinearLayout
+        android:id="@+id/ly_ac_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_recent_activity">
+
+        <TextView
+            android:id="@+id/date_tv_1"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="end"
+            android:layout_marginRight="8dp"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:tint="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/ic_repeat_grid_8" />
+
+        <TextView
+            android:id="@+id/name_tv_1"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="208dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_ac_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ly_ac_1">
+
+        <TextView
+            android:id="@+id/date_tv_2"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="end"
+            android:layout_marginRight="8dp"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:tint="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/ic_repeat_grid_8"></ImageView>
+
+        <TextView
+            android:id="@+id/name_tv_2"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="208dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_ac_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ly_ac_2"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/date_tv_3"
+            android:layout_width="120dp"
+            android:gravity="end"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:tint="@color/colorPrimaryDark"
+            app:srcCompat="@drawable/ic_repeat_grid_8"></ImageView>
+
+        <TextView
+            android:id="@+id/name_tv_3"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="208dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back !"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_recent_activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.148" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

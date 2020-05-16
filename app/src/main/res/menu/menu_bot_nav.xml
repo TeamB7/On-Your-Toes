@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="Indoor Exercises"
-        android:icon="@drawable/ic_receipt_black_24dp"
+        android:title="Home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:id="@+id/nav_home"
+        />
+
+    <item
+        android:title="Indoor"
+        android:icon="@drawable/ic_fitness_center_black_24dp"
         android:id="@+id/nav_fitness_plan"
         />
     <item
-        android:title="Outdoor Exercises"
-        android:icon="@drawable/ic_place_black_24dp"
+        android:title="Outdoor"
+        android:icon="@drawable/iconout"
         android:id="@+id/nav_amenities"
         />
+
     <item
-        android:title="Home"
-        android:icon="@drawable/ic_person_outline_black_24dp"
-        android:id="@+id/nav_home"
-        />
-    <item
-        android:title="Safety Info"
+        android:title="Safety"
         android:icon="@drawable/ic_security_black_24dp"
         android:id="@+id/nav_saftey"
         />

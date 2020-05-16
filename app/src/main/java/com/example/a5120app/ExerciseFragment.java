@@ -74,7 +74,7 @@ public class ExerciseFragment extends Fragment {
 
                 Date c = Calendar.getInstance().getTime();
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-                final String formattedDate = "Date: " + df.format(c);
+                final String formattedDate = df.format(c);
 
                 dateTv.setText(formattedDate);
 
@@ -110,7 +110,6 @@ public class ExerciseFragment extends Fragment {
                 });
             }
         });
-
 
         return view;
     }
