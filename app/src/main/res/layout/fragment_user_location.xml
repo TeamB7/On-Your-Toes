@@ -100,21 +100,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ed_suburb"
         app:layout_constraintVertical_bias="1.0" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/colorSecond"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_bot_nav">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"

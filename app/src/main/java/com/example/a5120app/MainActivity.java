@@ -8,10 +8,12 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -50,7 +52,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new App_Home()).commit();
         SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
 //        sp.edit().clear().commit();
 
@@ -89,9 +93,9 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        getSupportActionBar().setTitle("On Your Toes");
+        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+      //  navigationView.setNavigationItemSelectedListener(this);
+        //getSupportActionBar().setTitle("On Your Toes");
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -186,4 +190,35 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private  BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+
+                    switch (item.getItemId()){
+                        case R.id.nav_home:
+                            selectedFragment = new App_Home();
+                            break;
+
+                        case R.id.nav_indoor:
+                            selectedFragment = new SuggestActivityFragment();
+                            break;
+
+                        case R.id.nav_outdoor:
+                            selectedFragment = new LocationSelectionFragment();
+                            break;
+
+                        case R.id.nav_security:
+                            selectedFragment = new LocationSelectionFragment();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+
+                    return true;
+                }
+            };
 }
