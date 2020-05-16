@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="410dp"
     android:layout_height="300dp"
-    android:background="@drawable/display_card">
+    android:background="@drawable/display_card"
+    android:elevation="5dp">
 
     <TextView
         android:id="@+id/pou_up_tv"
@@ -73,22 +74,30 @@
 
     <Button
         android:id="@+id/like_btn"
-        android:text="like"
-        android:layout_marginTop="220dp"
-        android:layout_marginLeft="40dp"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_marginStart="40dp" />
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/buttonselect"
+        android:text="Like"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/finish_btn"
-        android:layout_toRightOf="@+id/like_btn"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="220dp"
-        android:text="finish"
         android:layout_width="120dp"
         android:layout_height="50dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="220dp"
         android:layout_toEndOf="@+id/like_btn"
-        android:layout_marginStart="100dp" />
+        android:layout_toRightOf="@+id/like_btn"
+        android:background="@drawable/buttonselect"
+        android:text="Save"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
 </RelativeLayout>
