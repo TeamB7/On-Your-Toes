@@ -69,7 +69,7 @@ public class ExerciseFragment extends Fragment {
                 likeBtn = popupView.findViewById(R.id.like_btn);
                 finishBtn = popupView.findViewById(R.id.finish_btn);
                 dateTv = popupView.findViewById(R.id.date_tv);
-                setsEd =popupView.findViewById(R.id.sets_ed);
+                setsEd = popupView.findViewById(R.id.sets_ed);
                 repsEd = popupView.findViewById(R.id.reps_ed);
 
                 Date c = Calendar.getInstance().getTime();
@@ -78,19 +78,18 @@ public class ExerciseFragment extends Fragment {
 
                 dateTv.setText(formattedDate);
 
+                likeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                    }
+                });
+
                 finishBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         SharedPreferences sp = getActivity().getSharedPreferences("Exercise", MODE_PRIVATE);
                         SharedPreferences.Editor ed = sp.edit();
-                        int index = sp.getInt("Index", 0);
-                        int newIndex = index + 1;
-                        if (index == 3) {
-                            ed.putString("0", sp.getString("1", null));
-                            ed.putString("1", sp.getString("2", null));
-                        } else {
-                            ed.putInt("Index", newIndex);
-                        }
 
                         String sets = setsEd.getText().toString().trim();
                         String reps = repsEd.getText().toString().trim();
@@ -101,7 +100,22 @@ public class ExerciseFragment extends Fragment {
                         jsonArray.put(reps);
                         jsonArray.put(formattedDate);
 
-                        ed.putString(String.valueOf(index), jsonArray.toString());
+                        int index = sp.getInt("Index", 0);
+                        int newIndex = index + 1;
+
+                        if (index == 3) {
+                            String str = sp.getString("1", null);
+                            ed.putString("0", sp.getString("1", null));
+                            ed.putString("1", sp.getString("2", null));
+                            ed.putString("2", jsonArray.toString());
+
+                            str = sp.getString("1", null);
+                        } else {
+                            ed.putInt("Index", newIndex);
+                            ed.putString(String.valueOf(index), jsonArray.toString());
+                        }
+
+                        String str = sp.getString("2", null);
 
                         ed.commit();
                         popupWindow.dismiss();

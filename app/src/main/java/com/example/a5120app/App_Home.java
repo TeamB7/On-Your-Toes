@@ -69,8 +69,8 @@ public class App_Home extends Fragment {
         if (index >= 2) {
             try {
                 JSONArray exerciseJson = new JSONArray(exerciseSP.getString(String.valueOf(1), ""));
-                nameTV1.setText(exerciseJson.getString(0));
-                dateTV1.setText(exerciseJson.getString(3));
+                nameTV2.setText(exerciseJson.getString(0));
+                dateTV2.setText(exerciseJson.getString(3));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -78,8 +78,8 @@ public class App_Home extends Fragment {
         if (index == 3) {
             try {
                 JSONArray exerciseJson = new JSONArray(exerciseSP.getString(String.valueOf(2), ""));
-                nameTV1.setText(exerciseJson.getString(0));
-                dateTV1.setText(exerciseJson.getString(3));
+                nameTV3.setText(exerciseJson.getString(0));
+                dateTV3.setText(exerciseJson.getString(3));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
