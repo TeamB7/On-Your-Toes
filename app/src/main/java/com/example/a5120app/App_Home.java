@@ -32,8 +32,6 @@ public class App_Home extends Fragment {
         amenitiesCard = homeView.findViewById(R.id.amenities_card);
         safetyCard = homeView.findViewById(R.id.safety_card);
         exerciseCard = homeView.findViewById(R.id.exercise_card);
-        WebView myWebView = homeView.findViewById(R.id.webview);
-        myWebView.loadUrl("https://dl.airtable.com/Y0JUbM2YTfe8uRz0jb5w_200.gif");
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MainActivity", MODE_PRIVATE);
         String name = sharedPreferences.getString("userName", null);

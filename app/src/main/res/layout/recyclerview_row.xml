@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:padding="10dp"
+    android:elevation="8dp"
+    android:background="@drawable/rounded_list_item">
 
     <TextView
         android:id="@+id/amenity_name"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/rounded_button"
-        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+        android:layout_width="287dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+
+        android:drawablePadding="40dp"
         android:fontFamily="sans-serif"
         android:paddingStart="20dp"
         android:paddingLeft="20dp"
         android:text="test_item"
         android:textColor="@color/design_default_color_on_secondary"
-        android:textSize="22sp" />
+        android:textSize="18sp"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintStart_toEndOf="@+id/amenity_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.363"
+        app:srcCompat="@drawable/ic_icon_ionic_ios_arrow_forward"></ImageView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
