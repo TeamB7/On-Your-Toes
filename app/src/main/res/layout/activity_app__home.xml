@@ -313,8 +313,9 @@
 
     <TextView
         android:id="@+id/tv_recent_activity"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Here's your Recent Activity"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -335,12 +336,12 @@
 
         <TextView
             android:id="@+id/date_tv_1"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="8dp"
             android:gravity="end"
-            android:text="May05"
+            android:text="September30"
             android:textSize="18sp" />
 
         <ImageView
@@ -375,7 +376,7 @@
         <TextView
             android:id="@+id/date_tv_2"
 
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="8dp"
@@ -407,14 +408,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ly_ac_2"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/date_tv_3"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="8dp"
