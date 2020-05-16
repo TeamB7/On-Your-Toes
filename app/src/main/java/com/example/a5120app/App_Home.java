@@ -30,13 +30,25 @@ public class App_Home extends Fragment {
         safetyCard = homeView.findViewById(R.id.safety_card);
         exerciseCard = homeView.findViewById(R.id.exercise_card);
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MainActivity", MODE_PRIVATE);
-        String name = sharedPreferences.getString("userName", null);
+        SharedPreferences sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
+        String firstName = sp.getString("FirstName", null);
+//        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MainActivity", MODE_PRIVATE);
+//        String name = sharedPreferences.getString("userName", null);
         String greeting = "";
-        if (name != null) {
-            greeting = "Hi " + name;
+        if (firstName != null) {
+            greeting = "Hi " + firstName;
         }
         greetingTv.setText(greeting);
+
+        SharedPreferences exerciseSP = getContext().getSharedPreferences("Exercise", MODE_PRIVATE);
+        int index = exerciseSP.getInt("Index", 0);
+        if (index > 0){
+            StringBuilder str = new StringBuilder();
+            for (int i = 0; i < index; i++){
+                str.append(exerciseSP.getString(String.valueOf(i), "")).append(". \n");
+            }
+            greetingTv.setText(str);
+        }
 
         amenitiesCard.setOnClickListener(new View.OnClickListener() {
             @Override

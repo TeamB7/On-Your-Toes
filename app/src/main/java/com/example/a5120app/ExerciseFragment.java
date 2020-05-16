@@ -1,33 +1,38 @@
 package com.example.a5120app;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import androidx.fragment.app.Fragment;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import static android.content.Context.MODE_PRIVATE;
 
 public class ExerciseFragment extends Fragment {
     private View view;
-    private Button logBtn;
+    private Button logBtn, finishBtn, likeBtn;
     private WebView exerciseImg;
-    private TextView exerciseTv;
+    private TextView exerciseTv, dateTv;
+    private EditText setsEd, repsEd;
     private String exerciseName = "";
     private PopupWindow popupWindow;
     private HashMap<String, String> exerciseHashMap;
@@ -40,6 +45,7 @@ public class ExerciseFragment extends Fragment {
             String exercise = bundle.getString("exercise", null);
             exerciseName = exercise;
         }
+
         exerciseImg = view.findViewById(R.id.exercise_image);
         exerciseTv = view.findViewById(R.id.exercise_tv);
         logBtn = view.findViewById(R.id.log_exercise_btn);
@@ -60,13 +66,47 @@ public class ExerciseFragment extends Fragment {
 
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-                popupView.setOnTouchListener(new View.OnTouchListener() {
+                likeBtn = popupView.findViewById(R.id.like_btn);
+                finishBtn = popupView.findViewById(R.id.finish_btn);
+                dateTv = popupView.findViewById(R.id.date_tv);
+                setsEd =popupView.findViewById(R.id.sets_ed);
+                repsEd = popupView.findViewById(R.id.reps_ed);
+
+                Date c = Calendar.getInstance().getTime();
+                SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                final String formattedDate = "Date: " + df.format(c);
+
+                dateTv.setText(formattedDate);
+
+                finishBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        //Close the window when clicked
+                    public void onClick(View v) {
+                        SharedPreferences sp = getActivity().getSharedPreferences("Exercise", MODE_PRIVATE);
+                        SharedPreferences.Editor ed = sp.edit();
+                        int index = sp.getInt("Index", 0);
+                        int newIndex = index + 1;
+                        if (index == 3) {
+                            ed.putString("0", sp.getString("1", null));
+                            ed.putString("1", sp.getString("2", null));
+                        } else {
+                            ed.putInt("Index", newIndex);
+                        }
+
+                        String sets = setsEd.getText().toString().trim();
+                        String reps = repsEd.getText().toString().trim();
+
+                        JSONArray jsonArray = new JSONArray();
+                        jsonArray.put(exerciseName);
+                        jsonArray.put(sets);
+                        jsonArray.put(reps);
+                        jsonArray.put(formattedDate);
+
+                        ed.putString(String.valueOf(index), jsonArray.toString());
+
+                        ed.commit();
                         popupWindow.dismiss();
-                        return true;
                     }
+
                 });
             }
         });
@@ -75,14 +115,11 @@ public class ExerciseFragment extends Fragment {
         return view;
     }
 
-    //[{"Exercise":"Arnold Press",
-// "Equipment":"Dumbbells",
-// "ExerciseType":"Weight",
-// "MuscleGroup":"Arms - Bicep,Shoulders",
-// "Notes":"","Modifications":"",
-// "AlternateEquipments":"Filled water bottle 1L = 1Kg, band",
-// "Sets":"2-3","Reps":"10-12",
-// "Example":"giphy-2.gif (https://dl.airtable.com/FvaObZ1SyqwBU12Wx4K7_giphy-2.gif)"}]
+    //    [{"Exercise":"Burpee","ExerciseType":"Plyo",
+//    "MuscleGroup":"Full Body",
+//    "Modifications":"Easier: Don't Jump after, and break down motion squat, step legs back and no pushup\nHarder: Speed",
+//    "Sets":"1-2","Reps":"10-12","Example":"https://dl.airtable.com/xDZ3bhDQqG3erLNNwgyF_Burpee.gif","e_id":3,"Likes":null,
+//    "Image":{"type":"Buffer","data":[]}}]
     private void getData(String exerciseString) throws JSONException {
         JSONArray exerciseJson = new JSONArray(exerciseString);
         exerciseHashMap = new HashMap<String, String>();
@@ -92,8 +129,7 @@ public class ExerciseFragment extends Fragment {
         String modifications = exerciseJson.getJSONObject(0).getString("Modifications");
         String sets = exerciseJson.getJSONObject(0).getString("Sets");
         String reps = exerciseJson.getJSONObject(0).getString("Reps");
-        String gif = exerciseJson.getJSONObject(0).getString("Example");
-        String gifUrl = gif.substring(gif.indexOf("(") + 1, gif.indexOf(")"));
+        String gifUrl = exerciseJson.getJSONObject(0).getString("Example");
 
         exerciseHashMap.put("name", exerciseName);
         exerciseHashMap.put("type", type);
@@ -113,6 +149,7 @@ public class ExerciseFragment extends Fragment {
                 exerciseImg.loadUrl(exerciseHashMap.get("gifUrl"));
                 exerciseImg.getSettings().setLoadWithOverviewMode(true);
                 exerciseImg.getSettings().setUseWideViewPort(true);
+                logBtn.setVisibility(View.VISIBLE);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

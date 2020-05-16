@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity
 //        this.bundle = new Bundle();
 //        this.bundle.putString("userId", userId + "");
 //        this.bundle.putString("firstName", userName);
-
-        SharedPreferences sharedPreferences = getSharedPreferences("MainActivity", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+//
+//        SharedPreferences sharedPreferences = getSharedPreferences("MainActivity", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
 //        editor.putInt("userId", userId);
-        editor.putString("userName", userName);
-        editor.commit();
+//        editor.putString("userName", userName);
+//        editor.commit();
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());

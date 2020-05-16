@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="Log"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <WebView

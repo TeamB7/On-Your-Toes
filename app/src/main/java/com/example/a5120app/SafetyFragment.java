@@ -1,11 +1,15 @@
 package com.example.a5120app;
 
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,6 +25,8 @@ import com.google.maps.android.data.geojson.GeoJsonPolygonStyle;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.fragment.app.Fragment;
 
@@ -29,11 +35,17 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
     private MapView mapView;
     private GoogleMap mMap;
     private UiSettings mUiSettings;
+    private String address = "", suburbAndPostcode = "", score = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_safety, container, false);
         mapView = (MapView) view.findViewById(R.id.safety_map);
+
+        Bundle args = this.getArguments();
+        if (args != null) {
+            address = args.getString("Address");
+        }
 
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
@@ -51,9 +63,17 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
         mUiSettings.setZoomControlsEnabled(true);
         mUiSettings.setRotateGesturesEnabled(true);
         mUiSettings.setMyLocationButtonEnabled(true);
+
+        // Add a marker in Sydney and move the camera
+        if (address.equals("")) {
+            address = "Melbourne";
+        }
+        GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
+        getSuburbAsyncTask.execute();
+
         GeoJsonLayer layer = null;
         try {
-            layer = new GeoJsonLayer(mMap,R.raw.boundaries, getContext());
+            layer = new GeoJsonLayer(mMap, R.raw.boundaries, getContext());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -79,7 +99,7 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
                     polygonStyleYellow.setFillColor(Color.parseColor("#80EBC427"));
                     polygonStyleYellow.setStrokeWidth(3);
                     feature.setPolygonStyle(polygonStyleYellow);
-                } else if (rating==1){
+                } else if (rating == 1) {
                     GeoJsonPolygonStyle polygonStyleGreen = new GeoJsonPolygonStyle();
                     polygonStyleGreen.setFillColor(Color.parseColor("#993f960d"));
                     polygonStyleGreen.setStrokeWidth(3);
@@ -93,15 +113,75 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
                 }
             }
         }
-//        ------------------------------------------------------------------------------------------
+
+    }
+
+    private void geoLocate() {
+//        String search = edSearch.getText().toString();
+
+        List<Address> addressList = new ArrayList<>();
+        Geocoder geocoder = new Geocoder(getContext());
+        String searchString = address + ", Victoria, Australia";
+        String str = address + ", safety score: ";
+
+        try {
+            addressList = geocoder.getFromLocationName(searchString, 1);
+        } catch (IOException e) {
+            Log.e("GeoLocate", "Exception" + e.getMessage());
+            return;
+        }
 
 
-//        Set Style
+        if (addressList.size() > 0) {
+//            MarkerOptions markerOptions = new MarkerOptions();
+            Address address = addressList.get(0);
+            double latitude = address.getLatitude();
+            double longitude = address.getLongitude();
+            LatLng latLng = new LatLng(latitude, longitude);
 
-        // Add a marker in Sydney and move the camera
-        LatLng melbourne = new LatLng(-37.8136, 141.9631);
-        mMap.addMarker(new MarkerOptions().position(melbourne));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(melbourne));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+            str += score;
+            mMap.addMarker(new MarkerOptions().position(latLng).title(str));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+        }
+
+    }
+
+    private class GetScoreAsyncTask extends AsyncTask<Void, Void, String> {
+        @Override
+        protected String doInBackground(Void... voids) {
+            String score = RestClient.getSuburbScore(suburbAndPostcode);
+            String indicator = RestClient.getSuburbIndicator(suburbAndPostcode);
+            return score;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            score = s;
+            geoLocate();
+        }
+    }
+
+
+    private class GetSuburbAsyncTask extends AsyncTask<Void, Void, String> {
+        @Override
+        protected String doInBackground(Void... voids) {
+            return RestClient.getSuburbByAddress(address);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            if (!s.equals("")) {
+                suburbAndPostcode = address + ", " + s;
+                SafetyFragment.GetScoreAsyncTask getScoreAsyncTask = new SafetyFragment.GetScoreAsyncTask();
+                getScoreAsyncTask.execute();
+
+            } else {
+                address = "";
+                suburbAndPostcode = "";
+                Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 }
