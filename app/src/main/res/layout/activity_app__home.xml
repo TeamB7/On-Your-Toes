@@ -313,8 +313,8 @@
 
     <TextView
         android:id="@+id/tv_recent_activity"
-       
-       
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -327,33 +327,36 @@
         android:id="@+id/ly_ac_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-      
+
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_recent_activity">
 
         <TextView
             android:id="@+id/date_tv_1"
-            "
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="end"
             android:layout_marginRight="8dp"
+            android:gravity="end"
+            android:text="May05"
             android:textSize="18sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-  
+            android:tint="@color/colorPrimary"
+            app:srcCompat="@drawable/ic_repeat_grid_8" />
 
 
         <TextView
             android:id="@+id/name_tv_1"
-            android:layout_width="180dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="Planks"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="65dp"
             tools:layout_editor_absoluteY="208dp" />
@@ -364,17 +367,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-   
+
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ly_ac_1">
 
         <TextView
             android:id="@+id/date_tv_2"
-  
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="end"
             android:layout_marginRight="8dp"
+            android:gravity="end"
+            android:text="May05"
             android:textSize="18sp" />
 
         <ImageView
@@ -386,8 +392,10 @@
 
         <TextView
             android:id="@+id/name_tv_2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="Planks"
             android:textSize="18sp"
             tools:layout_editor_absoluteX="65dp"
             tools:layout_editor_absoluteY="208dp" />
@@ -399,18 +407,19 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ly_ac_2"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/date_tv_3"
-            android:layout_width="120dp"
-            android:gravity="end"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="8dp"
+            android:gravity="end"
+            android:text="May 05"
             android:textSize="18sp" />
 
         <ImageView
@@ -422,11 +431,12 @@
 
         <TextView
             android:id="@+id/name_tv_3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="208dp" />
+            android:text="Planks"
+            android:textSize="18sp" />
+
     </LinearLayout>
 
     <TextView
