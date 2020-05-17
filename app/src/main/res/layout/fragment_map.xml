@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:paddingLeft="10dp"
-            android:text="test"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -169,20 +168,21 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginBottom="26dp" />
+        android:layout_marginBottom="26dp"
+        android:layout_alignParentLeft="true" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
 
-        android:id="@+id/navbot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#ffffff"
-        android:fitsSystemWindows="true"
-        android:fontFamily="@font/open_sans"
-        app:itemIconTint="@drawable/icon_selected"
-        app:itemTextColor="@drawable/icon_selected"
-        app:menu="@menu/menu_bot_nav" />
+<!--        android:id="@+id/navbot"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="#ffffff"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        android:fontFamily="@font/open_sans"-->
+<!--        app:itemIconTint="@drawable/icon_selected"-->
+<!--        app:itemTextColor="@drawable/icon_selected"-->
+<!--        app:menu="@menu/menu_bot_nav" />-->
 
 
 </RelativeLayout>

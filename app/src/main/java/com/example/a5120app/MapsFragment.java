@@ -86,9 +86,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         if (!searchString.equals("")) {
             String title =  "Location: "+searchString + "\n" + "Activity: "+ recreationType;
             mapTitle.setText(title);
-        } else {
-            String title = "Device Location, " + recreationType;
-            mapTitle.setText(title);
         }
 
 //        radioGroup = (RadioGroup) view.findViewById(R.id.relLayout2);
@@ -205,7 +202,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 //
 //            markerOptions.position(latLng);
 //            markerOptions.title(placeName + " : " + vicinity);
-
+            String title = "Location: "+ addressList.get(0).getLocality() + "\n" + "Activity: " + recreationType;
+            mapTitle.setText(title);
             String str = addressList.get(0).getLocality() + ", ";
             str += addressList.get(0).getThoroughfare();
             gMap.clear();
@@ -335,6 +333,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         gMap.getUiSettings().setMyLocationButtonEnabled(true);
         mUiSettings = gMap.getUiSettings();
         mUiSettings.setZoomControlsEnabled(true);
+        mUiSettings.setMapToolbarEnabled(true);
 
         gMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 

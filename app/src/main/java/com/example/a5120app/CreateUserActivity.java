@@ -31,8 +31,8 @@ public class CreateUserActivity extends Activity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    if (!isEmpty(edUserName.getText().toString())) {
-                        firstName = edUserName.getText().toString();
+                    if (!isEmpty(edUserName.getText().toString().trim())) {
+                        firstName = edUserName.getText().toString().trim();
                     }
                 }
             }

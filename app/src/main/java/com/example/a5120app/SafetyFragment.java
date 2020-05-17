@@ -122,7 +122,7 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
         List<Address> addressList = new ArrayList<>();
         Geocoder geocoder = new Geocoder(getContext());
         String searchString = address + ", Victoria, Australia";
-        String str = address + ", safety score: ";
+        String str = address;
 
         try {
             addressList = geocoder.getFromLocationName(searchString, 1);
@@ -139,10 +139,9 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
             double longitude = address.getLongitude();
             LatLng latLng = new LatLng(latitude, longitude);
 
-            str += score;
             mMap.addMarker(new MarkerOptions().position(latLng).title(str));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
         }
 
     }

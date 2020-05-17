@@ -1,5 +1,6 @@
 package com.example.a5120app;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,9 +35,9 @@ public class LocationSelectionFragment extends Fragment {
             page = bundle.getString("page", null);
         }
 
-        if (page.equals("safety")){
+        if (page.equals("safety")) {
             TextView textView = view.findViewById(R.id.textView10);
-            String str = "Help us provide you with safety information by proving your suburb location";
+            String str = "Help us provide you with safety information";
             textView.setText(str);
         }
 
@@ -95,23 +96,41 @@ public class LocationSelectionFragment extends Fragment {
                             fragmentTransaction.commit();
                             DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
                         } else if (!address.equals("") && page.equals("safety")) {
-                            Fragment fragment = null;
-                            fragment = new SafetyFragment();
-                            Bundle args = new Bundle();
-                            args.putString("Address", address);
-                            fragment.setArguments(args);
-                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.content_frame, fragment);
-                            fragmentTransaction.commit();
-                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+                            GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
+                            getSuburbAsyncTask.execute();
                         } else {
                             Toast.makeText(getContext(), "Address cannot be empty", Toast.LENGTH_SHORT).show();
+                            suburbEd.setText("");
                         }
                     }
                 }
         );
 
         return view;
+    }
+
+    private class GetSuburbAsyncTask extends AsyncTask<Void, Void, String> {
+        @Override
+        protected String doInBackground(Void... voids) {
+            return RestClient.getSuburbByAddress(address);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            if (!s.equals("")) {
+                Fragment fragment = null;
+                fragment = new SafetyFragment();
+                Bundle args = new Bundle();
+                args.putString("Address", address);
+                fragment.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.content_frame, fragment);
+                fragmentTransaction.commit();
+                DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+            } else {
+                Toast.makeText(getContext(), "Suburb is invalid", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

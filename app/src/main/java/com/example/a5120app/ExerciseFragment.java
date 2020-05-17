@@ -2,15 +2,20 @@ package com.example.a5120app;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -31,11 +36,16 @@ public class ExerciseFragment extends Fragment {
     private View view;
     private Button logBtn, finishBtn, likeBtn;
     private WebView exerciseImg;
-    private TextView exerciseTv, dateTv;
+    private TextView cardTv, metaTv, streTv, nameTv, typeTv, setsTv, repsTv, muscleTv, dateTv;
     private EditText setsEd, repsEd;
     private String exerciseName = "";
     private PopupWindow popupWindow;
     private HashMap<String, String> exerciseHashMap;
+    private ImageView check1, check2, check3;
+    private ImageButton moreBtn;
+
+    public ExerciseFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,8 +57,21 @@ public class ExerciseFragment extends Fragment {
         }
 
         exerciseImg = view.findViewById(R.id.exercise_image);
-        exerciseTv = view.findViewById(R.id.exercise_tv);
+        nameTv = view.findViewById(R.id.tb_exercise);
         logBtn = view.findViewById(R.id.log_exercise_btn);
+        typeTv = view.findViewById(R.id.type_tv);
+        setsTv = view.findViewById(R.id.sets_tv);
+        repsTv = view.findViewById(R.id.reps_tv);
+        cardTv = view.findViewById(R.id.great_tv1);
+        metaTv = view.findViewById(R.id.great_tv2);
+        streTv = view.findViewById(R.id.great_tv3);
+        check1 = view.findViewById(R.id.great_img1);
+        check2 = view.findViewById(R.id.great_img2);
+        check3 = view.findViewById(R.id.great_img3);
+        muscleTv = view.findViewById(R.id.muscle_tv);
+        moreBtn = view.findViewById(R.id.imageButton);
+
+        view.setVisibility(View.INVISIBLE);
 
         GetExerciseAsyncTask getExerciseAsyncTask = new GetExerciseAsyncTask();
         getExerciseAsyncTask.execute();
@@ -60,11 +83,12 @@ public class ExerciseFragment extends Fragment {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = inflater.inflate(R.layout.pop_up_window, null);
 
-                popupWindow = new PopupWindow(popupView,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                popupWindow = new PopupWindow(popupView, 950, 750);
 
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                popupWindow.setFocusable(true);
+                popupWindow.update();
 
                 likeBtn = popupView.findViewById(R.id.like_btn);
                 finishBtn = popupView.findViewById(R.id.finish_btn);
@@ -76,7 +100,8 @@ public class ExerciseFragment extends Fragment {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 final String formattedDate = df.format(c);
 
-                dateTv.setText(formattedDate);
+                String dateStr = "Date: " + formattedDate;
+                dateTv.setText(dateStr);
 
                 likeBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -94,36 +119,73 @@ public class ExerciseFragment extends Fragment {
                         String sets = setsEd.getText().toString().trim();
                         String reps = repsEd.getText().toString().trim();
 
-                        JSONArray jsonArray = new JSONArray();
-                        jsonArray.put(exerciseName);
-                        jsonArray.put(sets);
-                        jsonArray.put(reps);
-                        jsonArray.put(formattedDate);
+                        if (sets.matches("^[0-9]*[1-9][0-9]*$") && reps.matches("^[0-9]*[1-9][0-9]*$")) {
+                            JSONArray jsonArray = new JSONArray();
+                            jsonArray.put(exerciseName);
+                            jsonArray.put(sets);
+                            jsonArray.put(reps);
+                            jsonArray.put(formattedDate);
 
-                        int index = sp.getInt("Index", 0);
-                        int newIndex = index + 1;
+                            int index = sp.getInt("Index", 0);
+                            int newIndex = index + 1;
 
-                        if (index == 3) {
-                            String str = sp.getString("1", null);
-                            ed.putString("0", sp.getString("1", null));
-                            ed.putString("1", sp.getString("2", null));
-                            ed.putString("2", jsonArray.toString());
+                            if (index == 3) {
+                                String str = sp.getString("1", null);
+                                ed.putString("0", sp.getString("1", null));
+                                ed.putString("1", sp.getString("2", null));
+                                ed.putString("2", jsonArray.toString());
 
-                            str = sp.getString("1", null);
-                        } else {
-                            ed.putInt("Index", newIndex);
-                            ed.putString(String.valueOf(index), jsonArray.toString());
+                                str = sp.getString("1", null);
+                            } else {
+                                ed.putInt("Index", newIndex);
+                                ed.putString(String.valueOf(index), jsonArray.toString());
+                            }
+
+                            String str = sp.getString("2", null);
+
+                            ed.commit();
+                            popupWindow.dismiss();
+                        }else {
+                            if(!sets.matches("^[0-9]*[1-9][0-9]*$")){
+                                setsEd.setHint("Invalid");
+                                setsEd.setHintTextColor(Color.parseColor("#80FF6680"));
+                            }
+                            if(!reps.matches("^[0-9]*[1-9][0-9]*$")){
+                                repsEd.setHint("Invalid");
+                                repsEd.setHintTextColor(Color.parseColor("#80FF6680"));
+                            }
                         }
-
-                        String str = sp.getString("2", null);
-
-                        ed.commit();
-                        popupWindow.dismiss();
                     }
 
                 });
             }
         });
+
+
+        moreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.pop_up_window_exercise_more, null);
+
+                popupWindow = new PopupWindow(popupView, 950,750);
+
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                Button closeBtn = popupView.findViewById(R.id.close_popup);
+                TextView notesTv = popupView.findViewById(R.id.notes_tv);
+                String notes = exerciseHashMap.get("modifications");
+                notesTv.setText(notes);
+
+                closeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                    }
+                });
+            }
+        });
+
 
         return view;
     }
@@ -143,7 +205,25 @@ public class ExerciseFragment extends Fragment {
         String sets = exerciseJson.getJSONObject(0).getString("Sets");
         String reps = exerciseJson.getJSONObject(0).getString("Reps");
         String gifUrl = exerciseJson.getJSONObject(0).getString("Example");
+        int card = exerciseJson.getJSONObject(0).getInt("CardiovascularHealth");
+        int meta = exerciseJson.getJSONObject(0).getInt("Metabolism");
+        int stre = exerciseJson.getJSONObject(0).getInt("Strength");
 
+//        4893AF ACA9A9
+        if (card == 0) {
+            check1.setColorFilter(Color.parseColor("#ACA9A9"));
+            cardTv.setTextColor(Color.parseColor("#ACA9A9"));
+        }
+
+        if (meta == 0) {
+            check2.setColorFilter(Color.parseColor("#ACA9A9"));
+            metaTv.setTextColor(Color.parseColor("#ACA9A9"));
+        }
+
+        if (stre == 0) {
+            check3.setColorFilter(Color.parseColor("#ACA9A9"));
+            streTv.setTextColor(Color.parseColor("#ACA9A9"));
+        }
         exerciseHashMap.put("name", exerciseName);
         exerciseHashMap.put("type", type);
         exerciseHashMap.put("muscleGroup", muscleGroup);
@@ -158,11 +238,35 @@ public class ExerciseFragment extends Fragment {
         protected void onPostExecute(String exerciseString) {
             try {
                 getData(exerciseString);
-                exerciseTv.setText(exerciseString);
-                exerciseImg.loadUrl(exerciseHashMap.get("gifUrl"));
+//                https://www.youtube.com/watch?v=sHLu6-liUL0
+//                https://www.youtube.com/embed/sHLu6-liUL0
+                nameTv.setText(exerciseHashMap.get("name"));
+                repsTv.setText(exerciseHashMap.get("reps"));
+                setsTv.setText(exerciseHashMap.get("sets"));
+                typeTv.setText(exerciseHashMap.get("type"));
+                muscleTv.setText(exerciseHashMap.get("muscleGroup"));
+
+////                exerciseTv.setText(exerciseString);
+                String frameVideo = "<iframe width=100% height=100% src=\""
+                        + exerciseHashMap.get("gifUrl")
+                        + "\" target=\"_parent\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
+
+//                String frameVideo = "<iframe width=100% height=100% " +
+//                        "src=\"https://www.youtube.com/embed/sHLu6-liUL0\" " +
+//                        "target=\"_parent\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
+
+                exerciseImg.setWebChromeClient(new WebChromeClient());
+
+                WebSettings webSettings = exerciseImg.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+                exerciseImg.loadData(frameVideo, "text/html", "utf-8");
                 exerciseImg.getSettings().setLoadWithOverviewMode(true);
                 exerciseImg.getSettings().setUseWideViewPort(true);
-                logBtn.setVisibility(View.VISIBLE);
+                view.setVisibility(View.VISIBLE);
+
+                if (exerciseHashMap.get("modifications").equals("None")) {
+                    moreBtn.setVisibility(View.INVISIBLE);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }

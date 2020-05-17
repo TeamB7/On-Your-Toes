@@ -71,7 +71,7 @@ public class SuggestActivityFragment extends Fragment {
     private void addData() {
         name = new String[]{"Bicycle Crunch", "Bounds", "Burpee", "Butt Kickers",
                 "Flutter Kick", "High Knees", "Jump Lunges", "Jump Rope",
-                "Jumping Jacks", "Knee Drive", "Leg Raise", "Literally Just Jumping",
+                "Jumping Jacks", "Knee Drive", "Jumping",
                 "Lying Leg Raises", "Plank", "Pushup", "Reverse Crunches", "Seal Jacks",
                 "Side Plank", "Skaters", "Skipping", "Superman", "Touchdown",
                 "Mountain Climbers", "Deadbug"};

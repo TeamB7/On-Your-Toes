@@ -97,7 +97,7 @@ public class App_Home extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.commit();
-                DrawerLayout drawer = (DrawerLayout) homeView.findViewById(R.id.main_layout);
+//                DrawerLayout drawer = (DrawerLayout) homeView.findViewById(R.id.main_layout);
             }
         });
 
@@ -113,7 +113,7 @@ public class App_Home extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.commit();
-                DrawerLayout drawer = (DrawerLayout) homeView.findViewById(R.id.main_layout);
+//                DrawerLayout drawer = (DrawerLayout) homeView.findViewById(R.id.main_layout);
             }
         });
 
@@ -123,13 +123,11 @@ public class App_Home extends Fragment {
                 Fragment fragment = null;
                 fragment = new SuggestActivityFragment();
                 Bundle args = new Bundle();
-                args.putString("page", "safety");
-                fragment.setArguments(args);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.commit();
-                DrawerLayout drawer = (DrawerLayout) homeView.findViewById(R.id.main_layout);
+//                DrawerLayout drawer = (DrawerLayout) homeView.findViewById(R.id.main_layout);
             }
         });
 

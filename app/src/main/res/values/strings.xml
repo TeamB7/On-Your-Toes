@@ -8,7 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="info_line">Victorian Travel Safety and Fitness App for Elder Women</string>
     <string name="disclaimer">The information on this app comes from a variety of third-party sources and are not intended to be a substitute for professional or medical advice. Consult your physician or healthcare professional before following any training instructions you receive through the app. On Your Toes is not liable for any health problems you may suffer by performing activities provided in the app. The safety information provided in the app is based on crime statistics made available by the Victorian Government for previous years and real-time safety may not be in accordance with historic data.
-        You are acknowledging that your health and safety is your sole responsibility and  you would not hold On Your Toes accountable for loss, liability, claim, damage, and expenses arising from or in connection with your use of the information in this app.</string>
+        \n\nYou are acknowledging that your health and safety is your sole responsibility and  you would not hold On Your Toes accountable for loss, liability, claim, damage, and expenses arising from or in connection with your use of the information in this app.</string>
     <string name="travel_fitness_card_line">Add a Trip and Fitness Plan</string>
     <string name="action_1">Start</string>
     <string name="action_2">Delete</string>
@@ -24,4 +24,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="set_your_loc">Or manually select a location:</string>
+    <string name="recommendation">Recommendation for age 50+</string>
+
 </resources>

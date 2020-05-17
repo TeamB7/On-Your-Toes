@@ -58,7 +58,7 @@ public class AmenitiesListFragment extends Fragment {
         TextView locTv = amenitiesView.findViewById(R.id.textViewloc);
         String str = "Location: " + address;
         if (address.equals("")) {
-            str = "Location: Current Location";
+            str = "Location: Device Location";
         }
         locTv.setText(str);
 
