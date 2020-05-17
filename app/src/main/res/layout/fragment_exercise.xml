@@ -40,12 +40,14 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="Save my workout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/type_tv"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_tv" />
 
     <WebView
         android:id="@+id/exercise_image"

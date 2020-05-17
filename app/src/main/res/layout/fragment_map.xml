@@ -18,7 +18,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/ic_rectangle_39"
+        android:background="@drawable/display_card_aqua"
         android:padding="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,12 +28,22 @@
             android:id="@+id/tv_map_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="8dp"
             android:background="@android:color/transparent"
+            android:gravity="center"
             android:paddingLeft="10dp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:fontFamily="@font/open_sans"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.67"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,13 +60,13 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:paddingStart="15dp"
         android:paddingLeft="15dp"
+        android:paddingTop="16dp"
         android:paddingEnd="15dp"
-        android:text="Facilities"
+        android:text="Outdoor Activity Locations"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="20sp"
         app:fontFamily="@font/open_sans"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -158,9 +168,10 @@
     <com.google.android.gms.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="504dp"
         android:layout_below="@+id/cl_legend"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
@@ -168,8 +179,7 @@
         android:layout_marginTop="9dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginBottom="26dp"
-        android:layout_alignParentLeft="true" />
+        android:layout_marginBottom="5dp" />
 
 <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
 

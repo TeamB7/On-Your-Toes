@@ -37,7 +37,7 @@ public class LocationSelectionFragment extends Fragment {
 
         if (page.equals("safety")) {
             TextView textView = view.findViewById(R.id.textView10);
-            String str = "Help us provide you with safety information";
+            String str = "Concerned about safety? Tell us your location to know about the suburb risk rating.";
             textView.setText(str);
         }
 

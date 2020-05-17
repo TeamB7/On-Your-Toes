@@ -84,7 +84,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         }
 
         if (!searchString.equals("")) {
-            String title =  "Location: "+searchString + "\n" + "Activity: "+ recreationType;
+            String title =  "Location Selected: "+searchString + "\n" + "Activity Selected: "+ recreationType;
             mapTitle.setText(title);
         }
 
@@ -202,7 +202,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 //
 //            markerOptions.position(latLng);
 //            markerOptions.title(placeName + " : " + vicinity);
-            String title = "Location: "+ addressList.get(0).getLocality() + "\n" + "Activity: " + recreationType;
+            String title = "Location Selected: "+ addressList.get(0).getLocality() + "\n" + "Activity Selected: " + recreationType;
             mapTitle.setText(title);
             String str = addressList.get(0).getLocality() + ", ";
             str += addressList.get(0).getThoroughfare();
@@ -451,7 +451,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 String vicinity = googlePlace.get("vicinity");
                 String open = googlePlace.get("open");
                 if (open.equals("CLOSED_TEMPORARILY")) {
-                    open = "Closed";
+                    open = "Closed Now";
                 } else {
                     open = "Open Now";
                 }

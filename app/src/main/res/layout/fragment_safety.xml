@@ -20,15 +20,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:padding="10dp"
+        android:gravity="bottom|left"
         android:paddingStart="15dp"
         android:paddingLeft="15dp"
+        android:paddingTop="16dp"
         android:paddingEnd="15dp"
-        android:text="Suburb Safety Map"
+        android:text="Suburb Risk Map"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="20sp"
         app:fontFamily="@font/open_sans"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:tint="#7fbb38"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -74,7 +77,7 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="Below Average"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
@@ -112,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="52dp"
             android:layout_marginLeft="52dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:tint="#fede8a"
             app:layout_constraintStart_toEndOf="@+id/textView16"
             app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -122,7 +125,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="68dp"
             android:layout_marginRight="68dp"
             android:text="Average"
@@ -137,6 +140,7 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:paddingRight="16dp"
             android:text="No Data Available"
             android:textColor="@color/colorPrimary"
@@ -145,7 +149,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView10"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="0.615" />
+            app:layout_constraintVertical_bias="0.1" />
 
         <ImageView
             android:id="@+id/imageView10"
@@ -159,7 +163,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/imageView9"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_rectangle_41" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -167,9 +171,11 @@
     <com.google.android.gms.maps.MapView
         android:id="@+id/safety_map"
         android:layout_width="match_parent"
-        android:layout_height="540dp"
-        android:layout_margin="5dp"
+        android:layout_height="440dp"
+        android:layout_marginTop="4dp"
         android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_legend" />
 
 <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
