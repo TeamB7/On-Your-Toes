@@ -83,7 +83,7 @@ public class ExerciseFragment extends Fragment {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = inflater.inflate(R.layout.pop_up_window, null);
 
-                popupWindow = new PopupWindow(popupView, 950, 750);
+                popupWindow = new PopupWindow(popupView, 1000, 800);
 
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
@@ -168,7 +168,7 @@ public class ExerciseFragment extends Fragment {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = inflater.inflate(R.layout.pop_up_window_exercise_more, null);
 
-                popupWindow = new PopupWindow(popupView, 950,750);
+                popupWindow = new PopupWindow(popupView, 1000,800);
 
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
