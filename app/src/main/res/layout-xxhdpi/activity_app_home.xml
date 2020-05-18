@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/ic_homescreen"
+    android:layout_height="match_parent"
+    tools:context=".App_Home">
+
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/bag"-->
+    <!--            android:layout_width="94dp"-->
+    <!--            android:layout_height="100dp"-->
+    <!--            android:layout_alignParentLeft="true"-->
+    <!--            android:layout_alignParentBottom="true"-->
+    <!--            android:layout_marginLeft="5dp"-->
+    <!--            android:layout_marginBottom="17dp"-->
+    <!--            android:src="@drawable/bag"></ImageView>-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_below="@+id/tv_greeting"-->
+    <!--            android:layout_alignParentEnd="true"-->
+    <!--            android:layout_alignParentRight="true"-->
+    <!--            android:layout_alignParentBottom="true"-->
+    <!--            android:layout_gravity="left"-->
+    <!--            android:layout_marginStart="-3dp"-->
+    <!--            android:layout_marginLeft="-3dp"-->
+    <!--            android:layout_marginTop="102dp"-->
+    <!--            android:layout_marginEnd="37dp"-->
+    <!--            android:layout_marginRight="37dp"-->
+    <!--            android:layout_marginBottom="20dp"-->
+    <!--            android:layout_toEndOf="@+id/bag"-->
+    <!--            android:layout_toRightOf="@+id/bag"-->
+    <!--            android:text="Upcoming Trip: Caulfield on 29/05/2020 "-->
+    <!--            android:textColor="@color/white"-->
+    <!--            android:textSize="20sp" />-->
+    <ImageView
+        android:id="@+id/logo_home"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logovector" />
+
+
+    <TextView
+        android:id="@+id/tv_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Hi Susan"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_home" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="384dp"
+        android:layout_height="275dp"
+        android:layout_gravity="center_horizontal"
+        android:alignmentMode="alignMargins"
+        android:background="@android:color/transparent"
+        android:columnCount="1"
+        android:columnOrderPreserved="false"
+        android:rowCount="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grid_log">
+
+        <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_height="67dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/display_card_pink"
+            android:elevation="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/exercise_card"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent">
+
+
+                    <ImageView
+                        android:id="@+id/card_img2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="@android:color/transparent"
+                        android:tint="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_fitness_center_black_24dp"
+                        tools:srcCompat="@drawable/ic_fitness_center_black_24dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_TravelPlan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Indoor Exercises"
+                        android:textColor="@color/Font"
+                        android:textSize="18sp"
+                        app:fontFamily="@font/open_sans"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.23"
+                        app:layout_constraintStart_toEndOf="@+id/card_img2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.37" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
+                    <!--                        android:layout_marginRight="8dp"-->
+                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
+                    <!--                        android:ems="8"-->
+                    <!--                        android:fontFamily="sans-serif-black"-->
+                    <!--                        android:text="Easy to do anywhere exercises"-->
+                    <!--                        android:textColor="#8E8B91"-->
+                    <!--                        android:textSize="16sp"-->
+                    <!--                        app:fontFamily="@font/open_sans" />-->
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/display_card_pink"
+            android:elevation="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/amenities_card"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent">
+
+
+                    <ImageView
+                        android:id="@+id/card_img1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="@android:color/transparent"
+                        android:tint="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_nature_people_black_24dp"
+                        tools:srcCompat="@drawable/ic_nature_people_black_24dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_Amenities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Outdoor Exercises"
+                        android:textColor="@color/Font"
+                        android:textSize="18sp"
+                        app:fontFamily="@font/open_sans"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.23"
+                        app:layout_constraintStart_toEndOf="@+id/card_img1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.37" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
+                    <!--                        android:layout_marginRight="8dp"-->
+                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
+                    <!--                        android:ems="8"-->
+                    <!--                        android:fontFamily="sans-serif-black"-->
+                    <!--                        android:text="Easy to do anywhere exercises"-->
+                    <!--                        android:textColor="#8E8B91"-->
+                    <!--                        android:textSize="16sp"-->
+                    <!--                        app:fontFamily="@font/open_sans" />-->
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/display_card_pink"
+            android:elevation="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/safety_card"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent">
+
+
+                    <ImageView
+                        android:id="@+id/card_img3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="@android:color/transparent"
+                        android:tint="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_security_black_24dp"
+                        tools:srcCompat="@drawable/ic_security_black_24dp" />
+
+
+                    <TextView
+
+                        android:id="@+id/tv_SafetyInformation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Suburb Safety "
+                        android:textColor="@color/Font"
+                        android:textSize="18sp"
+                        app:fontFamily="@font/open_sans"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.19"
+                        app:layout_constraintStart_toEndOf="@+id/card_img3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.47000003" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
+                    <!--                        android:layout_marginRight="8dp"-->
+                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
+                    <!--                        android:ems="8"-->
+                    <!--                        android:fontFamily="sans-serif-black"-->
+                    <!--                        android:text="Easy to do anywhere exercises"-->
+                    <!--                        android:textColor="#8E8B91"-->
+                    <!--                        android:textSize="16sp"-->
+                    <!--                        app:fontFamily="@font/open_sans" />-->
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/tv_recent_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Here's Your Recent Activity"
+        android:textSize="18sp"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView21" />
+
+    <TextView
+        android:id="@+id/empty_activity_tv"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="Let's try your first Indoor Exercise"
+        android:textSize="18sp"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView21" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Great to see you!"
+
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
+
+    <GridLayout
+        android:id="@+id/grid_log"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:columnCount="1"
+        android:columnOrderPreserved="false"
+        android:rowCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_recent_activity">
+
+        <LinearLayout
+            android:id="@+id/ly_ac_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/date_tv_1"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:gravity="end"
+                android:text="Empty"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:tint="@color/colorPrimaryDark"
+                app:srcCompat="@drawable/ic_repeat_grid_8" />
+
+            <TextView
+                android:id="@+id/name_tv_1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Start a New Activity"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="208dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_ac_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ly_ac_1">
+
+            <TextView
+                android:id="@+id/date_tv_2"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:gravity="end"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:tint="@color/colorPrimaryDark"
+                app:srcCompat="@drawable/ic_repeat_grid_8" />
+
+
+            <TextView
+                android:id="@+id/name_tv_2"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="208dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_ac_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ly_ac_2"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/date_tv_3"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:gravity="end"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:tint="@color/colorPrimaryDark"
+                app:srcCompat="@drawable/ic_repeat_grid_8" />
+
+            <TextView
+                android:id="@+id/name_tv_3"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="208dp" />
+        </LinearLayout>
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
