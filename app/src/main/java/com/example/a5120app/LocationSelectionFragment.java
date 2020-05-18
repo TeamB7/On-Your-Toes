@@ -30,6 +30,8 @@ public class LocationSelectionFragment extends Fragment {
         submitLocBtn = view.findViewById(R.id.submit_loc_btn);
         suburbEd = view.findViewById(R.id.ed_suburb);
 
+        view.setFocusable(false);
+
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             page = bundle.getString("page", null);
@@ -63,7 +65,7 @@ public class LocationSelectionFragment extends Fragment {
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
-                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+//                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
                         } else if (page.equals("safety")) {
                             Fragment fragment = null;
                             fragment = new SafetyFragment();
@@ -71,7 +73,7 @@ public class LocationSelectionFragment extends Fragment {
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
-                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+//                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
                         }
                     }
                 }
@@ -94,7 +96,7 @@ public class LocationSelectionFragment extends Fragment {
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
-                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+//                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
                         } else if (!address.equals("") && page.equals("safety")) {
                             GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
                             getSuburbAsyncTask.execute();
@@ -127,7 +129,7 @@ public class LocationSelectionFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.commit();
-                DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
+//                DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
             } else {
                 Toast.makeText(getContext(), "Suburb is invalid", Toast.LENGTH_SHORT).show();
             }
