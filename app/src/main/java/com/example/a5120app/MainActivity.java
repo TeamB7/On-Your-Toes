@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
 
 
         SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
-//        SharedPreferences exercisesp = getSharedPreferences("Exercise", MODE_PRIVATE);
+        SharedPreferences exercisesp = getSharedPreferences("Exercise", MODE_PRIVATE);
 //        sp.edit().clear().commit();
 //        exercisesp.edit().clear().commit();
 
@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         } else if (currentFragment instanceof AmenitiesListFragment) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
             ft.replace(R.id.content_frame, new LocationSelectionFragment());
             ft.commit();
         } else if (currentFragment instanceof SafetyFragment) {
@@ -143,9 +144,15 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         } else if (currentFragment instanceof MapsFragment) {
             Bundle args = currentFragment.getArguments();
+//            String address = "";
+//            if (args != null) {
+//                address = args.getString("Address");
+//                args.putString("Address", address);
+//            }
+            Fragment newFragment = new AmenitiesListFragment();
+            newFragment.setArguments(args);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, new AmenitiesListFragment());
-            getSupportFragmentManager().findFragmentById(R.id.content_frame).setArguments(args);
+            ft.replace(R.id.content_frame, newFragment);
             ft.commit();
         } else if (currentFragment instanceof ExerciseFragment) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

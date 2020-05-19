@@ -27,6 +27,8 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import pl.droidsonroids.gif.GifImageView;
+
 
 import androidx.fragment.app.Fragment;
 
@@ -36,10 +38,13 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
     private UiSettings mUiSettings;
     private String address = "", suburbAndPostcode = "", score = "";
+    private GifImageView gifImageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_safety, container, false);
+        gifImageView = (GifImageView) view.findViewById(R.id.loading_img);
+        gifImageView.setImageResource(R.drawable.loading);
         mapView = (MapView) view.findViewById(R.id.safety_map);
 
         Bundle args = this.getArguments();
@@ -144,6 +149,8 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
             mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
         }
 
+        mapView.setVisibility(View.VISIBLE);
+        gifImageView.setVisibility(View.GONE);
     }
 
     private class GetScoreAsyncTask extends AsyncTask<Void, Void, String> {

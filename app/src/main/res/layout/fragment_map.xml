@@ -165,6 +165,7 @@
 <!--        android:textAlignment="center"-->
 <!--        android:textSize="20sp" />-->
 
+
     <com.google.android.gms.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"

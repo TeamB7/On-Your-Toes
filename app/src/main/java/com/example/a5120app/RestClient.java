@@ -21,8 +21,9 @@ public class RestClient {
         String methodPath = "getSuburbByName/\"" + suburb + ",_____\"";
         String result = "";
         String connReturn = getData(methodPath);
-        if (!connReturn.equals("[]")) {
-            result = connReturn.replaceAll("[^\\d.]", "").substring(0, 4);
+        result = connReturn.replaceAll("[^\\d.]", "");
+        if (!result.equals("")) {
+            result = result.substring(0, 4);
         }
         return result;
     }
