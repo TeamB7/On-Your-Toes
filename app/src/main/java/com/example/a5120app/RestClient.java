@@ -1,5 +1,13 @@
 package com.example.a5120app;
 
+import android.util.Log;
+
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -70,29 +78,48 @@ public class RestClient {
         return result;
     }
 
-//    public static void postData(String urlStr, String data) {
-//        URL url = null;
-//        HttpURLConnection conn = null;
-//        try {
-//            url = new URL(BASE_URL + urlStr);
-//            conn = (HttpURLConnection) url.openConnection();
-//            conn.setReadTimeout(10000);
-//            conn.setConnectTimeout(15000);
-//            conn.setRequestMethod("POST");
-//            conn.setDoOutput(true);
-//            conn.setFixedLengthStreamingMode(data.getBytes().length);
-//            conn.setRequestProperty("Content-Type", "application/json");
-//            PrintWriter out = new PrintWriter(conn.getOutputStream());
-//            out.print(data);
-//            out.close();
-//            int responseCode = conn.getResponseCode();
-//            Log.i("error", new Integer(responseCode).toString());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            conn.disconnect();
-//        }
-//    }
+    public static String getUserPasswordByName(String username){
+        String methodPath = "getUserPasswordByName/\"" + username + "\"";
+        String dataReturn = getData(methodPath);
+        String result = dataReturn;
+        if(result.equals("[]")){
+            return "";
+        }
+        return  result;
+    }
+
+    public static void postUser(String userName, String passwordHash) throws JSONException {
+        int userId = getMaxId() + 1;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("USER_ID", userId);
+        jsonObject.put("USER_NAME", userName);
+        jsonObject.put("PASSWORD_HASH", passwordHash);
+        postData("postUser", jsonObject.toString());
+    }
+
+    public static void postData(String urlStr, String data) {
+        URL url = null;
+        HttpURLConnection conn = null;
+        try {
+            url = new URL(BASE_URL + urlStr);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setFixedLengthStreamingMode(data.getBytes().length);
+            conn.setRequestProperty("Content-Type", "application/json");
+            PrintWriter out = new PrintWriter(conn.getOutputStream());
+            out.print(data);
+            out.close();
+            int responseCode = conn.getResponseCode();
+            Log.i("error", new Integer(responseCode).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conn.disconnect();
+        }
+    }
 
 //    public static void updateData(String urlStr, String id, String data) {
 //        URL url = null;
@@ -119,53 +146,38 @@ public class RestClient {
 //    }
 
 
-//    public static int getMaxId(String type) {
-//        int id = 0;
-//        URL url = null;
-//        String idStr = "";
-//        String idUrlStr = "";
-//
-//        switch (type) {
-//            case "user":
-//                idUrlStr = "calorietracker.users/count/";
-//                break;
-//            case "cred":
-//                idUrlStr = "calorietracker.credential/count/";
-//                break;
-//            case "consumption":
-//                idUrlStr = "calorietracker.consumption/count/";
-//                break;
-//            case "food":
-//                idUrlStr = "calorietracker.food/count/";
-//                break;
-//            case "report":
-//                idUrlStr = "calorietracker.report/count/";
-//                break;
-//        }
-//
-//        HttpURLConnection conn = null;
-//
-//        String urlStr = BASE_URL + idUrlStr;
-//        try {
-//            url = new URL(urlStr);
-//            conn = (HttpURLConnection) url.openConnection();
-//            conn.setReadTimeout(10000);
-//            conn.setConnectTimeout(15000);
-//            conn.setRequestMethod("GET");
-//            conn.setRequestProperty("Content-Type", "text/plain");
-//            conn.setRequestProperty("Accept", "text/plain");
-//            Scanner inStream = new Scanner(conn.getInputStream());
-//            while (inStream.hasNextLine()) {
-//                idStr = inStream.nextLine();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            conn.disconnect();
-//        }
-//        id = Integer.parseInt(idStr);
-//        return id;
-//    }
+    public static int getMaxId() {
+        int id = 0;
+        URL url = null;
+        String idStr = "";
+        String idUrlStr = "";
+
+        idUrlStr = "CredentialCount";
+
+        HttpURLConnection conn = null;
+
+        String urlStr = BASE_URL + idUrlStr;
+        try {
+            url = new URL(urlStr);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-Type", "text/plain");
+            conn.setRequestProperty("Accept", "text/plain");
+            Scanner inStream = new Scanner(conn.getInputStream());
+            while (inStream.hasNextLine()) {
+                idStr = inStream.nextLine();
+                id = Integer.parseInt(idStr.replaceAll("[^\\d.]", ""));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conn.disconnect();
+        }
+//        [{ "COUNT(*)": 5 }]
+        return id;
+    }
 
     public static String getData(String urlStr) {
         URL url = null;

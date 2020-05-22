@@ -11,10 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class LocationSelectionFragment extends Fragment {
     private Button myLocBtn, submitLocBtn;
@@ -61,6 +62,13 @@ public class LocationSelectionFragment extends Fragment {
                         if (page.equals("amenity") || page.equals("")) {
                             Fragment fragment = null;
                             fragment = new AmenitiesListFragment();
+                            Bundle args = new Bundle();
+                            String currentAd = getContext().getSharedPreferences("Login", MODE_PRIVATE).getString("Address", "");
+                            if (!currentAd.equals("")) {
+                                currentAd += ", Victoria, Australia";
+                                args.putString("Address", currentAd);
+                                fragment.setArguments(args);
+                            }
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, fragment);

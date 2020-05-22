@@ -1,13 +1,18 @@
 package com.example.a5120app;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +31,7 @@ public class App_Home extends Fragment {
     private CardView amenitiesCard, safetyCard, exerciseCard;
     private GridLayout recentGrid;
     private LinearLayout linearLayout1, linearLayout2, linearLayout3;
+    private SharedPreferences sp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,7 +43,9 @@ public class App_Home extends Fragment {
         safetyCard = homeView.findViewById(R.id.safety_card);
         exerciseCard = homeView.findViewById(R.id.exercise_card);
 
-        SharedPreferences sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
+        final BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+
+        sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
         String firstName = sp.getString("FirstName", null);
 //        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MainActivity", MODE_PRIVATE);
 //        String name = sharedPreferences.getString("userName", null);
@@ -46,6 +54,25 @@ public class App_Home extends Fragment {
             greeting = "Hi " + firstName;
         }
         greetingTv.setText(greeting);
+
+        ImageView logoutIcon = homeView.findViewById(R.id.logout_icon);
+        logoutIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sp.edit().remove("FirstName").commit();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();;
+            }
+        });
+
+
+
+//        sp.edit().remove("FirstName").commit();
+
+        String address = sp.getString("Address", "");
+        TextView addressTv = homeView.findViewById(R.id.address_home_tv);
+        addressTv.setText(address);
 
         TextView dateTV1 = homeView.findViewById(R.id.date_tv_1);
         TextView dateTV2 = homeView.findViewById(R.id.date_tv_2);
@@ -105,6 +132,9 @@ public class App_Home extends Fragment {
         amenitiesCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                bottomNavigationView.getMenu().getItem(2).setChecked(true);
+
                 Fragment fragment = null;
                 fragment = new LocationSelectionFragment();
                 Bundle args = new Bundle();
@@ -121,6 +151,9 @@ public class App_Home extends Fragment {
         safetyCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                bottomNavigationView.getMenu().getItem(3).setChecked(true);
+
                 Fragment fragment = null;
                 fragment = new LocationSelectionFragment();
                 Bundle args = new Bundle();
@@ -137,6 +170,9 @@ public class App_Home extends Fragment {
         exerciseCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                bottomNavigationView.getMenu().getItem(1).setChecked(true);
+
                 Fragment fragment = null;
                 fragment = new SuggestActivityFragment();
                 Bundle args = new Bundle();
@@ -145,6 +181,19 @@ public class App_Home extends Fragment {
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.commit();
 //                DrawerLayout drawer = (DrawerLayout) homeView.findViewById(R.id.main_layout);
+            }
+        });
+
+        Button changeAddressBtn = homeView.findViewById(R.id.change_address_btn);
+        changeAddressBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = null;
+                fragment = new ChangeAddressFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.content_frame, fragment);
+                fragmentTransaction.commit();
             }
         });
 

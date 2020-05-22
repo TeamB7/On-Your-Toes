@@ -89,21 +89,3 @@ public class AmenitiesListFragment extends Fragment {
         dataSet.add("Wheelchair Sports");
     }
 }
-
-
-//        "Aerobics",
-//        "Badminton",
-//        "Callisthenics",
-//        "Carpet Bowls",
-//        "Croquet",
-//        "Cycling",
-//        "Dancing",
-//        "Disk Golf",
-//        "Fitness / Gymnasium Workouts",
-//        "Golf",
-//        "Open Space",
-//        "Swimming",
-//        "Table Tennis",
-//        "Ten Pin Bowling",
-//        "Tennis (Outdoor)",
-//        "Wheelchair Sports"

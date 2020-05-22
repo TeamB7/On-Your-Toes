@@ -14,13 +14,14 @@ import androidx.fragment.app.FragmentTransaction;
 public class SuggestActivityFragment extends Fragment {
     private String[] name, type;
     private ListView listView;
+    private int[] imageId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_indoor, container, false);
 
         addData();
-        AdapterIndoor adapter = new AdapterIndoor(getActivity(), name, type);
+        AdapterIndoor adapter = new AdapterIndoor(getActivity(), name, type, imageId);
 
         listView = (ListView) view.findViewById(R.id.exercise_list);
         listView.setAdapter(adapter);
@@ -44,42 +45,24 @@ public class SuggestActivityFragment extends Fragment {
         return view;
     }
 
-    //    Bicycle Crunch
-//    Bounds
-//            Burpee
-//    Butt Kickers
-//    Flutter Kick
-//    High Knees
-//    Jump Lunges
-//    Jump Rope
-//    Jumping Jacks
-//    Knee Drive
-//    Leg Raise
-//    Literally Just Jumping
-//    Lying Leg Raises
-//            Plank
-//    Pushup
-//    Reverse Crunches
-//    Seal Jacks
-//    Side Plank
-//    Skaters
-//            Skipping
-//    Superman
-//            Touchdown
-//    Mountain Climbers
-//    Deadbug
     private void addData() {
-        name = new String[]{"Bicycle Crunch", "Bounds", "Burpee", "Butt Kickers",
-                "Flutter Kick", "High Knees", "Jump Lunges", "Jump Rope",
-                "Jumping Jacks", "Knee Drive", "Jumping",
-                "Lying Leg Raises", "Plank", "Pushup", "Reverse Crunches", "Seal Jacks",
-                "Side Plank", "Skaters", "Skipping", "Superman", "Touchdown",
-                "Mountain Climbers", "Deadbug"};
-        type = new String[]{"Strength", "Cardio, Laps", "Plyo", "Cardio",
-                "Strength", "Cardio", "Plyo, Cardio", "Cardio", "Cardio",
-                "Plyo", "Strength", "Plyo", "Strength", "Strength", "Strength",
+        name = new String[]{"Bicycle Crunch", "Bounds", "Burpee", "Butt Kickers", "Deadbug",
+                "Flutter Kick", "High Knees", "Jump Lunges", "Jump Rope", "Jumping",
+                "Jumping Jacks", "Knee Drive", "Leg Raise", "Lying Leg Raises",
+                "Plank", "Pushup", "Reverse Crunches", "Seal Jacks",
+                "Side Plank", "Skaters", "Skipping",
+                "Touchdown", "Mountain Climbers"};
+        type = new String[]{"Strength", "Cardio, Laps", "Plyo", "Cardio", "Strength",
+                "Strength", "Cardio", "Plyo, Cardio", "Cardio", "Plyo",
+                "Cardio", "Plyo", "Strength", "Strength", "Strength", "Strength",
                 "Strength", "Cardio", "Strength", "Cardio", "Cardio, Laps",
-                "Strength", "Plyo", "Cardio", "Strength"};
+                "Plyo", "Cardio"};
+        imageId = new int[]{R.drawable.bicycle_crunch, R.drawable.bounds, R.drawable.burpees, R.drawable.butt_kickers,
+                R.drawable.deadbug, R.drawable.flutter_kick, R.drawable.high_knees, R.drawable.jump_lunges,
+                R.drawable.jump_rope, R.drawable.jumping, R.drawable.jumping_jacks, R.drawable.knee_drive,
+                R.drawable.leg_raise, R.drawable.lying_leg_raise, R.drawable.planks, R.drawable.push_up,
+                R.drawable.reverse_crunch, R.drawable.seal_jacks, R.drawable.side_planks, R.drawable.skaters,
+                R.drawable.skipping, R.drawable.touchdown, R.drawable.mountain_climbers};
     }
 
 }

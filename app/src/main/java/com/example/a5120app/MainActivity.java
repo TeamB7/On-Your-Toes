@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     private GoogleMap gMap;
     private Bundle bundle;
     private Button btnFacility;
+    private BottomNavigationView navigationView;
 
 
     @Override
@@ -53,8 +55,9 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences exercisesp = getSharedPreferences("Exercise", MODE_PRIVATE);
 //        sp.edit().clear().commit();
 //        exercisesp.edit().clear().commit();
-
+//        sp.edit().remove("FirstName").commit();
         String firstName = sp.getString("FirstName", null);
+
 //        String lastName = sp.getString("LastName", null);
         if (firstName == null || firstName == "") {
 
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity
 
         RelativeLayout navLayout = (RelativeLayout) findViewById(R.id.main_layout);
 
-        BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        navigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -125,11 +128,17 @@ public class MainActivity extends AppCompatActivity
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
         if (currentFragment instanceof App_Home)
             super.onBackPressed();
-        else if (currentFragment instanceof LocationSelectionFragment) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, new App_Home());
-            ft.commit();
-        } else if (currentFragment instanceof AmenitiesListFragment) {
+//        else if (currentFragment instanceof LocationSelectionFragment) {
+//            navigationView.getMenu().getItem(3).setChecked(true);
+//            navigationView.getMenu().getItem(1).setChecked(false);
+//            navigationView.getMenu().getItem(2).setChecked(false);
+//            navigationView.getMenu().getItem(0).setChecked(false);
+//
+//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//            ft.replace(R.id.content_frame, new App_Home());
+//            ft.commit();
+//        }
+        else if (currentFragment instanceof AmenitiesListFragment) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
             ft.replace(R.id.content_frame, new LocationSelectionFragment());
@@ -144,11 +153,6 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
         } else if (currentFragment instanceof MapsFragment) {
             Bundle args = currentFragment.getArguments();
-//            String address = "";
-//            if (args != null) {
-//                address = args.getString("Address");
-//                args.putString("Address", address);
-//            }
             Fragment newFragment = new AmenitiesListFragment();
             newFragment.setArguments(args);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -159,6 +163,11 @@ public class MainActivity extends AppCompatActivity
             ft.replace(R.id.content_frame, new SuggestActivityFragment());
             ft.commit();
         } else {
+            navigationView.getMenu().getItem(3).setChecked(true);
+            navigationView.getMenu().getItem(1).setChecked(false);
+            navigationView.getMenu().getItem(2).setChecked(false);
+            navigationView.getMenu().getItem(0).setChecked(false);
+
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, new App_Home());
             ft.commit();

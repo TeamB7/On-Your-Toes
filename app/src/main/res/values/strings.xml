@@ -19,6 +19,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="crime_title">Suburb Risk Level for 2017-19 </string>
     <string name="next">    Next    </string>
+    <string name="login_link">I already have an account</string>
     <string name="previous">Previous</string>
     <string name="location_purpose">Need to know where to go for outdoor exercise? Provide your suburb name to find out.</string>
     <string name="hello_first_fragment">Hello first fragment</string>

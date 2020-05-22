@@ -48,6 +48,20 @@
         app:srcCompat="@drawable/logovector" />
 
 
+    <ImageView
+        android:id="@+id/logout_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:background="@null"
+        android:tint="@color/white"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logout" />
+
     <TextView
         android:id="@+id/tv_greeting"
         android:layout_width="wrap_content"
@@ -61,6 +75,20 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_home" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logout_icon" />
 
     <GridLayout
         android:id="@+id/gridLayout"
@@ -329,14 +357,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Great to see you!"
+        android:text="Your are in: "
         android:textColor="@color/colorPrimary"
-
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:fontFamily="@font/open_sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
+
+    <TextView
+        android:id="@+id/address_home_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:text="Melbourne"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
+
+    <Button
+        android:id="@+id/change_address_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/send_location_button"
+        android:text="Edit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:fontFamily="@font/open_sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toEndOf="@id/address_home_tv"
         app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
 
     <GridLayout

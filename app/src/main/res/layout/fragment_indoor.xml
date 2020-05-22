@@ -26,8 +26,9 @@
 
     <ListView
         android:id="@+id/exercise_list"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:transcriptMode="alwaysScroll"
+        android:layout_width="330dp"
+        android:layout_height="480dp"
         android:layout_marginTop="16dp"
         android:background="@color/white"
         android:divider="@android:color/transparent"

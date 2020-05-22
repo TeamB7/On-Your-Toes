@@ -93,7 +93,7 @@
 
     <TextView
         android:id="@+id/sets_tv"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -108,12 +108,10 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
         android:layout_marginTop="8dp"
         android:text="Reps:"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toEndOf="@+id/sets_tv"
+        app:layout_constraintStart_toStartOf="@+id/textView30"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <TextView
@@ -193,7 +191,7 @@
         android:textSize="16sp"
         app:fontFamily="@font/open_sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.197"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 

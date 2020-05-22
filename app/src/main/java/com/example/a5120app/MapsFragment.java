@@ -2,7 +2,6 @@ package com.example.a5120app;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -84,7 +83,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         }
 
         if (!searchString.equals("")) {
-            String title =  "Location Selected: "+searchString + "\n" + "Activity Selected: "+ recreationType;
+            String title = "Location Selected: " + searchString + "\n" + "Activity Selected: " + recreationType;
             mapTitle.setText(title);
         }
 
@@ -202,10 +201,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 //
 //            markerOptions.position(latLng);
 //            markerOptions.title(placeName + " : " + vicinity);
-            String title = "Location Selected: "+ addressList.get(0).getLocality() + "\n" + "Activity Selected: " + recreationType;
+            String title = "Location Selected: " + addressList.get(0).getLocality() + "\n" + "Activity Selected: " + recreationType;
             mapTitle.setText(title);
-            String str = addressList.get(0).getLocality() + ", ";
-            str += addressList.get(0).getThoroughfare();
+            String str = addressList.get(0).getLocality();
+//            str += addressList.get(0).getFeatureName();
             gMap.clear();
             gMap.addMarker(new MarkerOptions().position(latLng).title(str)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));

@@ -31,7 +31,8 @@
         app:itemRippleColor="@color/Button"
         app:itemTextColor="@color/bottom_nv_color"
         app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/bottom_navigation" />
+        app:menu="@menu/bottom_navigation"
+        android:layout_alignParentLeft="true" />
 
     <include layout="@layout/content_main" />
 

@@ -1,5 +1,6 @@
 package com.example.a5120app;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
@@ -27,10 +28,11 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import pl.droidsonroids.gif.GifImageView;
-
 
 import androidx.fragment.app.Fragment;
+import pl.droidsonroids.gif.GifImageView;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class SafetyFragment extends Fragment implements OnMapReadyCallback {
     private View view;
@@ -50,6 +52,10 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
         Bundle args = this.getArguments();
         if (args != null) {
             address = args.getString("Address");
+        } else {
+
+            SharedPreferences sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
+            address = sp.getString("Address", "");
         }
 
         mapView.onCreate(savedInstanceState);
