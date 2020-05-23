@@ -11,11 +11,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+/**
+ * The SuggestActivityFragment program implements an class that
+ * show the indoor exercises list for user to select by list
+ * view on screen
+ */
+
 public class SuggestActivityFragment extends Fragment {
     private String[] name, type;
     private ListView listView;
     private int[] imageId;
 
+    /**
+     * initialize the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_indoor, container, false);
@@ -45,6 +54,9 @@ public class SuggestActivityFragment extends Fragment {
         return view;
     }
 
+    /**
+     * add data for the list view
+     */
     private void addData() {
         name = new String[]{"Bicycle Crunch", "Bounds", "Burpee", "Butt Kickers", "Deadbug",
                 "Flutter Kick", "High Knees", "Jump Lunges", "Jump Rope", "Jumping",

@@ -14,6 +14,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * The AmenitiesListFragment program implements an class that
+ * show the amenities list by recycler view for user to select
+ * on screen
+ */
 
 public class AmenitiesListFragment extends Fragment {
     private View amenitiesView;
@@ -23,7 +28,9 @@ public class AmenitiesListFragment extends Fragment {
     private ArrayList<String> dataSet;
     private String address = "";
 
-
+    /**
+     * redirect to map page and pass address and amenity data when user select amenity
+     */
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -45,6 +52,9 @@ public class AmenitiesListFragment extends Fragment {
         }
     };
 
+    /**
+     * receive date from previous program and initialize the page
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         amenitiesView = inflater.inflate(R.layout.fragment_amenities, container, false);
@@ -74,6 +84,9 @@ public class AmenitiesListFragment extends Fragment {
         return amenitiesView;
     }
 
+    /**
+     * add amenities name for the recycler view page
+     */
     private void addData() {
         dataSet = new ArrayList<>();
         dataSet.add("Aerobics");

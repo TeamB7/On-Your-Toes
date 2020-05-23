@@ -12,18 +12,27 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+/**
+ * The RestClient program implements an class that
+ * use url to connect to the rest api
+ */
+
 public class RestClient {
     private static final String BASE_URL = "https://test-api-on-your-toes.herokuapp.com/";
     // private static final String MAP_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
 
-
+    /**
+     * get all suburbs
+     */
     public static String getSuburb() {
         // http://localhost:8080/getSuburb
         String methodPath = "getSuburb";
-        String result = getData(methodPath).replaceAll("[^\\d.]", "");
-        return result;
+        return getData(methodPath).replaceAll("[^\\d.]", "");
     }
 
+    /**
+     * get postcode by suburb name
+     */
     public static String getSuburbByAddress(String suburb) {
         // http://localhost:8080/getSuburb
         String methodPath = "getSuburbByName/\"" + suburb + ",_____\"";
@@ -36,6 +45,9 @@ public class RestClient {
         return result;
     }
 
+    /**
+     * get exercise by name
+     */
     public static String getExerciseByName(String name) {
         // http://localhost:8080/getSuburb
         String methodPath = "getExerciseByName/\"" + name + "\"";
@@ -47,6 +59,9 @@ public class RestClient {
         return result;
     }
 
+    /**
+     * get suburb risk score
+     */
     public static String getSuburbScore(String suburbAndPostcode) {
         // http://localhost:8080/getSuburbScore/"Aubrey, 3393"
         String methodPath = "getSuburbScore/\"" + suburbAndPostcode + "\"";
@@ -54,21 +69,15 @@ public class RestClient {
         return result;
     }
 
+    /**
+     * get suburb risk indicator
+     */
     public static String getSuburbIndicator(String suburbAndPostcode) {
         // http://localhost:8080/getSuburbScore/"Aubrey, 3393"
         String methodPath = "getSuburbIndicator/\"" + suburbAndPostcode + "\"";
         String result = getData(methodPath).replaceAll("[^a-zA-Z ]", "").substring(9);
         return result;
     }
-
-//    '/getLocationPercentage/:SuburbPostcode'
-//    [{"LGA":"Melbourne","Location":"Beach Foreshore","Percentage":0.004269672516118014},
-//    {"LGA":"Melbourne","Location":"Other Open Space","Percentage":2.0238247726399385},
-//    {"LGA":"Melbourne","Location":"Other Rec./Sports","Percentage":2.228769053413603},
-//    {"LGA":"Melbourne","Location":"Parkland/Reserve","Percentage":3.7445027966354982},
-//    {"LGA":"Melbourne","Location":"Sport Area/Facility","Percentage":3.7487724691516164},
-//    {"LGA":"Melbourne","Location":"Street/Lane/Footpath","Percentage":88.1943554929337},
-//    {"LGA":"Melbourne","Location":"Vacant Block","Percentage":0.05550574270953418}]
 
     public static String getLocationPercentage(String suburbAndPostcode) {
         // http://localhost:8080/getLocationPercentage/"Aubrey, 3393"
@@ -78,6 +87,9 @@ public class RestClient {
         return result;
     }
 
+    /**
+     * get password hash by user name
+     */
     public static String getUserPasswordByName(String username){
         String methodPath = "getUserPasswordByName/\"" + username + "\"";
         String dataReturn = getData(methodPath);
@@ -88,6 +100,9 @@ public class RestClient {
         return  result;
     }
 
+    /**
+     * post user in the database
+     */
     public static void postUser(String userName, String passwordHash) throws JSONException {
         int userId = getMaxId() + 1;
         JSONObject jsonObject = new JSONObject();
@@ -97,6 +112,9 @@ public class RestClient {
         postData("postUser", jsonObject.toString());
     }
 
+    /**
+     * post data to database by rest api
+     */
     public static void postData(String urlStr, String data) {
         URL url = null;
         HttpURLConnection conn = null;
@@ -146,6 +164,9 @@ public class RestClient {
 //    }
 
 
+    /**
+     * count user amount
+     */
     public static int getMaxId() {
         int id = 0;
         URL url = null;
@@ -179,6 +200,9 @@ public class RestClient {
         return id;
     }
 
+    /**
+     * get data from database by rest api
+     */
     public static String getData(String urlStr) {
         URL url = null;
         HttpURLConnection conn = null;

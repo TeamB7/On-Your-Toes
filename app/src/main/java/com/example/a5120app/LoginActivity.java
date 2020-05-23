@@ -18,11 +18,20 @@ import java.security.MessageDigest;
 
 import static android.text.TextUtils.isEmpty;
 
+/**
+ * The LoginActivity program implements an class that
+ * show the page for user to login with their registered
+ * account
+ */
+
 public class LoginActivity extends Activity {
     private EditText edUserName, edPassword;
     private String name = "", password = "";
     private SharedPreferences sp;
 
+    /**
+     * initialize the view
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +94,9 @@ public class LoginActivity extends Activity {
 
     }
 
+    /**
+     * get password hash
+     */
     private String convertSHA(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -104,6 +116,11 @@ public class LoginActivity extends Activity {
         }
     }
 
+    /**
+     * check if username is existing, if existing get password hash
+     * by username and validate the password, if valid go to home
+     * page
+     */
     private class CheckExistAsyncTask extends AsyncTask<String, Void, Boolean> {
 
         @Override

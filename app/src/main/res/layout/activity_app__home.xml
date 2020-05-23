@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@drawable/ic_homescreen"
-    android:layout_height="match_parent"
     tools:context=".App_Home">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:background="@drawable/ic_homescreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
         <!--        <ImageView-->
@@ -50,14 +54,14 @@
 
     <ImageView
         android:id="@+id/logout_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="6dp"
         android:background="@null"
         android:tint="@color/white"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_logout" />
@@ -76,19 +80,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_home" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/open_sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout_icon" />
 
     <GridLayout
         android:id="@+id/gridLayout"
@@ -328,6 +319,16 @@
     </GridLayout>
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Logout"
+        app:fontFamily="@font/open_sans"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logout_icon" />
+
+    <TextView
         android:id="@+id/tv_recent_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -357,7 +358,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Your are in: "
+        android:text="You are in: "
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:fontFamily="@font/open_sans"
@@ -371,12 +372,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:text="Melbourne"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
-        android:text="Melbourne"
         app:fontFamily="@font/open_sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
 
@@ -517,3 +518,4 @@
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

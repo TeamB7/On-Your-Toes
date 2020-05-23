@@ -16,11 +16,19 @@ import androidx.fragment.app.FragmentTransaction;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * The ChangeAddressFragment program implements an class that
+ * show the page for user to change their address on screen
+ */
+
 public class ChangeAddressFragment extends Fragment {
     private Button submitBtn, cancelBtn;
     private EditText addressEd;
     private String address;
 
+    /**
+     * initialize the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -66,6 +74,10 @@ public class ChangeAddressFragment extends Fragment {
         return view;
     }
 
+    /**
+     * check if the suburb name is vaild, if it is valid
+     * update the user location
+     */
     private class ChangeAddressAsync extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {

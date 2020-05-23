@@ -25,6 +25,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * The App_Home program implements an class that
+ * show the home page of the app on screen
+ */
+
 public class App_Home extends Fragment {
     private View homeView;
     private TextView greetingTv, recentActivityTv;
@@ -33,6 +38,9 @@ public class App_Home extends Fragment {
     private LinearLayout linearLayout1, linearLayout2, linearLayout3;
     private SharedPreferences sp;
 
+    /**
+     * initialize the home page
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

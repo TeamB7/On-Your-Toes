@@ -17,6 +17,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * The LocationSelectionFragment program implements an class that
+ * show the page for user to select the address for input of
+ * safety map page and amenities map page
+ */
+
 public class LocationSelectionFragment extends Fragment {
     private Button myLocBtn, submitLocBtn;
     private AutoCompleteTextView suburbACText;
@@ -24,7 +30,9 @@ public class LocationSelectionFragment extends Fragment {
     private String address = "", page = "";
     private View view;
 
-
+    /**
+     * initialize the view
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_user_location, container, false);
         myLocBtn = view.findViewById(R.id.use_my_loc_btn);
@@ -62,18 +70,17 @@ public class LocationSelectionFragment extends Fragment {
                         if (page.equals("amenity") || page.equals("")) {
                             Fragment fragment = null;
                             fragment = new AmenitiesListFragment();
-                            Bundle args = new Bundle();
-                            String currentAd = getContext().getSharedPreferences("Login", MODE_PRIVATE).getString("Address", "");
-                            if (!currentAd.equals("")) {
-                                currentAd += ", Victoria, Australia";
-                                args.putString("Address", currentAd);
-                                fragment.setArguments(args);
-                            }
+//                            Bundle args = new Bundle();
+//                            String currentAd = getContext().getSharedPreferences("Login", MODE_PRIVATE).getString("Address", "");
+//                            if (!currentAd.equals("")) {
+//                                currentAd += ", Victoria, Australia";
+//                                args.putString("Address", currentAd);
+//                                fragment.setArguments(args);
+//                            }
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
-//                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
                         } else if (page.equals("safety")) {
                             Fragment fragment = null;
                             fragment = new SafetyFragment();
@@ -81,7 +88,6 @@ public class LocationSelectionFragment extends Fragment {
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction.replace(R.id.content_frame, fragment);
                             fragmentTransaction.commit();
-//                            DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
                         }
                     }
                 }
@@ -119,6 +125,10 @@ public class LocationSelectionFragment extends Fragment {
         return view;
     }
 
+    /**
+     * check if address is valid, if valid
+     * pass the data and go to safety map
+     */
     private class GetSuburbAsyncTask extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {

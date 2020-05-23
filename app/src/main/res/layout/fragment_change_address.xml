@@ -59,10 +59,12 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintHorizontal_bias="0.762"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_change_suburb" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_change_suburb"
+        app:layout_constraintVertical_bias="0.156" />
 
     <Button
         android:id="@+id/cancel_change_btn"
@@ -80,16 +82,18 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_change_suburb" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_change_suburb"
+        app:layout_constraintVertical_bias="0.156" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="212dp"
         android:ems="14"
         android:gravity="start|center_horizontal"
         android:justificationMode="inter_word"

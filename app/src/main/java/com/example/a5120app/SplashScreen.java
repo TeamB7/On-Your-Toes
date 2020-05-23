@@ -8,6 +8,12 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+/**
+ * The SplashScreen program class shows the splash
+ * screen when user start the app
+ */
+
+
 public class SplashScreen extends AppCompatActivity {
     private final static int TAG_CODE_PERMISSION_LOCATION = 0;
 

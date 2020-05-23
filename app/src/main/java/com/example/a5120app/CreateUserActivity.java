@@ -17,6 +17,11 @@ import java.security.MessageDigest;
 
 import static android.text.TextUtils.isEmpty;
 
+/**
+ * The CreateUserActivity program implements an class that
+ * show the page for sign up an account for the app
+ */
+
 public class CreateUserActivity extends Activity {
     private EditText edUserName, edPassword, edAddress;
     private View loginView;
@@ -24,6 +29,9 @@ public class CreateUserActivity extends Activity {
     private String firstName = "", password = "";
     private SharedPreferences sp;
 
+    /**
+     * initialize the view
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +95,9 @@ public class CreateUserActivity extends Activity {
 
     }
 
+    /**
+     * back to disclaimer page
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(CreateUserActivity.this, DisclaimerFragment.class);
@@ -94,6 +105,9 @@ public class CreateUserActivity extends Activity {
         finish();
     }
 
+    /**
+     * hash the password
+     */
     private String convertSHA(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -113,6 +127,10 @@ public class CreateUserActivity extends Activity {
         }
     }
 
+    /**
+     * check if user name is unique, and if address is valid,
+     * if both are valid post the user date to the database
+     */
     private class CheckExistAsyncTask extends AsyncTask<String, Void, String[]> {
 
         @Override

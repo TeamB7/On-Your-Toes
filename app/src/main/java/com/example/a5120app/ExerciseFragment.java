@@ -34,6 +34,12 @@ import androidx.fragment.app.Fragment;
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * The ExerciseFragment program implements an class that
+ * show the page for displaying single indoor exercise details
+ * and record exercise function
+ */
+
 public class ExerciseFragment extends Fragment {
     private View view;
     private Button logBtn, finishBtn, likeBtn;
@@ -46,9 +52,9 @@ public class ExerciseFragment extends Fragment {
     private ImageView check1, check2, check3;
     private ImageButton moreBtn;
 
-    public ExerciseFragment() {
-    }
-
+    /**
+     * initialize the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_exercise, container, false);
@@ -192,11 +198,9 @@ public class ExerciseFragment extends Fragment {
         return view;
     }
 
-    //    [{"Exercise":"Burpee","ExerciseType":"Plyo",
-//    "MuscleGroup":"Full Body",
-//    "Modifications":"Easier: Don't Jump after, and break down motion squat, step legs back and no pushup\nHarder: Speed",
-//    "Sets":"1-2","Reps":"10-12","Example":"https://dl.airtable.com/xDZ3bhDQqG3erLNNwgyF_Burpee.gif","e_id":3,"Likes":null,
-//    "Image":{"type":"Buffer","data":[]}}]
+    /**
+     * parsing the json data and add them into a hash map
+     */
     private void getData(String exerciseString) throws JSONException {
         JSONArray exerciseJson = new JSONArray(exerciseString);
         exerciseHashMap = new HashMap<String, String>();
@@ -235,6 +239,9 @@ public class ExerciseFragment extends Fragment {
         exerciseHashMap.put("gifUrl", gifUrl);
     }
 
+    /**
+     * get exercise details from database
+     */
     private class GetExerciseAsyncTask extends AsyncTask<Void, Void, String> {
         @Override
         protected void onPostExecute(String exerciseString) {

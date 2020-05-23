@@ -34,6 +34,12 @@ import pl.droidsonroids.gif.GifImageView;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * The SafetyFragment program implements an class that
+ * show the map display safety information for user to
+ * do exercises outdoor by retrieving data from our database
+ */
+
 public class SafetyFragment extends Fragment implements OnMapReadyCallback {
     private View view;
     private MapView mapView;
@@ -42,6 +48,9 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
     private String address = "", suburbAndPostcode = "", score = "";
     private GifImageView gifImageView;
 
+    /**
+     * initialize the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_safety, container, false);
@@ -65,6 +74,9 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
         return view;
     }
 
+    /**
+     * apply geojson file to the map and locate the user
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -127,6 +139,9 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+    /**
+     * locate the user and add marker
+     */
     private void geoLocate() {
 //        String search = edSearch.getText().toString();
 

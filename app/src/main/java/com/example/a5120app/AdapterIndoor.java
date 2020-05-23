@@ -11,12 +11,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+/**
+ * The AdapterIndoor program implements an class that
+ * can accept lists of indoor activities data
+ * to the indoor exercise list screen output.
+ */
+
 public class AdapterIndoor extends ArrayAdapter<String> {
+
     private final Activity context;
     private final String[] name;
     private final String[] type;
     private int[] picture;
 
+    /**
+     * Initialize the adapter
+     */
     public AdapterIndoor(Activity context, String[] name, String[] type, int[] picture) {
         super(context, R.layout.listview_row, name);
         this.context = context;
@@ -25,6 +35,9 @@ public class AdapterIndoor extends ArrayAdapter<String> {
         this.picture = picture;
     }
 
+    /**
+     * Set the arrays to the list view's row
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();

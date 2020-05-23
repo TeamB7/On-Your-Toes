@@ -47,6 +47,13 @@ import androidx.fragment.app.Fragment;
 import static android.location.LocationManager.GPS_PROVIDER;
 import static android.location.LocationManager.NETWORK_PROVIDER;
 
+/**
+ * The MapsFragment program implements an class that
+ * show the map display nearby facilities for user to
+ * do exercises outdoor by retrieving data from google
+ * map api
+ */
+
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
     private final static int TAG_CODE_PERMISSION_LOCATION = 0;
     //    private Button searchFacilitiesBtn, btnSecurity;
@@ -66,6 +73,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     private View view;
     private Address localAddress;
 
+    /**
+     * initialize the view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_map, container, false);
@@ -168,6 +178,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         return view;
     }
 
+    /**
+     * get user location and add marker to the map
+     */
     private void geoLocate() {
 //        String search = edSearch.getText().toString();
 
@@ -214,6 +227,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+    /**
+     * get device location
+     */
     public void getLocalLocation() {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -326,6 +342,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    /**
+     * get user location and get nearby facilities
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gMap = googleMap;
@@ -347,9 +366,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+    /**
+     * format url for google map api
+     */
     private String getUrl(double latitude, double longitude, String nearbyPlace) {
-
-//https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=park&keyword=Aerobics&key=AIzaSyD6xOdM_HrZN3jzNr38x4JAqGAPvgtqXh0
+//        https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=park&keyword=Aerobics&key=AIzaSyD6xOdM_HrZN3jzNr38x4JAqGAPvgtqXh0
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
         googlePlacesUrl.append("&radius=" + 1500);
@@ -408,6 +429,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         mapView.onLowMemory();
     }
 
+    /**
+     * search nearby place and show them on map
+     */
     public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
 
         String googlePlacesData;
@@ -471,6 +495,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    /**
+     * get nearby search result
+     */
     public class DownloadUrl {
 
         public String readUrl(String strUrl) throws IOException {
@@ -501,6 +528,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    /**
+     * paring the nearby search result
+     */
     public class DataParser {
         public List<HashMap<String, String>> parse(String jsonData) {
             JSONArray jsonArray = null;

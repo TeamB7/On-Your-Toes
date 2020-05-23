@@ -12,8 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+/**
+ * The DisclaimerFragment program implements an class that
+ * show the page of disclaimer of the app when user start
+ * the app at the first time
+ */
+
 public class DisclaimerFragment extends Activity {
 
+    /**
+     * initialize the view
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +40,9 @@ public class DisclaimerFragment extends Activity {
 
     }
 
+    /**
+     * back to start page
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(DisclaimerFragment.this, StartActivity.class);

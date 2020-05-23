@@ -12,6 +12,12 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * The MyAdapter program implements an class that
+ * can accept lists of amenities name data
+ * to the outdoor exercise recycler view screen output.
+ */
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<String> mDataset;
     private View.OnClickListener mOnItemClickListener;
@@ -40,15 +46,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return mDataset.size();
     }
 
-    public void setOnItemClickListener(View.OnClickListener itemClickListener) {
+    void setOnItemClickListener(View.OnClickListener itemClickListener) {
         mOnItemClickListener = itemClickListener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView textView;
+        TextView textView;
 
-        public MyViewHolder(View v) {
+        MyViewHolder(View v) {
             super(v);
             textView = v.findViewById(R.id.amenity_name);
             itemView.setTag(this);

@@ -30,19 +30,20 @@ import androidx.fragment.app.FragmentTransaction;
 //import android.support.v7.app.AppCompatActivity;
 //import android.support.v7.widget.Toolbar;
 
+/**
+ * The MainActivity program implements an class that
+ * handle navigation and redirect of multiple screens
+ */
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static String userStr = "";
     private static String userName = "";
-    private static int userId = 1;
-    private String location;
-    private GoogleMap gMap;
-    private Bundle bundle;
-    private Button btnFacility;
     private BottomNavigationView navigationView;
 
-
+    /**
+     * initialize the view
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +120,9 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * back button redirection
+     */
     @Override
     public void onBackPressed() {
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_layout);
@@ -198,6 +202,9 @@ public class MainActivity extends AppCompatActivity
 //    }
 
 
+    /**
+     * bottom navigation
+     */
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
