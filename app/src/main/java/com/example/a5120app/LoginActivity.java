@@ -149,7 +149,10 @@ public class LoginActivity extends Activity {
                 if (sp.getString("Address", "").equals("")) {
                     Ed.putString("Address", "Melbourne");
                 }
-                Ed.commit();
+                Ed.apply();
+
+                SharedPreferences exerciseSP = getSharedPreferences("Exercise", MODE_PRIVATE);
+                exerciseSP.edit().clear().apply();
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);

@@ -2,8 +2,6 @@ package com.example.a5120app;
 
 import android.util.Log;
 
-import com.google.gson.JsonObject;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,16 +22,16 @@ public class RestClient {
     /**
      * get all suburbs
      */
-    public static String getSuburb() {
-        // http://localhost:8080/getSuburb
-        String methodPath = "getSuburb";
-        return getData(methodPath).replaceAll("[^\\d.]", "");
-    }
+//    public static String getSuburb() {
+//        // http://localhost:8080/getSuburb
+//        String methodPath = "getSuburb";
+//        return getData(methodPath).replaceAll("[^\\d.]", "");
+//    }
 
     /**
      * get postcode by suburb name
      */
-    public static String getSuburbByAddress(String suburb) {
+    static String getSuburbByAddress(String suburb) {
         // http://localhost:8080/getSuburb
         String methodPath = "getSuburbByName/\"" + suburb + ",_____\"";
         String result = "";
@@ -48,7 +46,7 @@ public class RestClient {
     /**
      * get exercise by name
      */
-    public static String getExerciseByName(String name) {
+    static String getExerciseByName(String name) {
         // http://localhost:8080/getSuburb
         String methodPath = "getExerciseByName/\"" + name + "\"";
         String result = "";
@@ -62,7 +60,7 @@ public class RestClient {
     /**
      * get suburb risk score
      */
-    public static String getSuburbScore(String suburbAndPostcode) {
+    static String getSuburbScore(String suburbAndPostcode) {
         // http://localhost:8080/getSuburbScore/"Aubrey, 3393"
         String methodPath = "getSuburbScore/\"" + suburbAndPostcode + "\"";
         String result = getData(methodPath).replaceAll("[^\\d.]", "");
@@ -72,54 +70,53 @@ public class RestClient {
     /**
      * get suburb risk indicator
      */
-    public static String getSuburbIndicator(String suburbAndPostcode) {
+    static String getSuburbIndicator(String suburbAndPostcode) {
         // http://localhost:8080/getSuburbScore/"Aubrey, 3393"
         String methodPath = "getSuburbIndicator/\"" + suburbAndPostcode + "\"";
         String result = getData(methodPath).replaceAll("[^a-zA-Z ]", "").substring(9);
         return result;
     }
 
-    public static String getLocationPercentage(String suburbAndPostcode) {
-        // http://localhost:8080/getLocationPercentage/"Aubrey, 3393"
-        String methodPath = "getLocationPercentage/\"" + suburbAndPostcode + "\"";
-        String dataReturn = getData(methodPath);
-        String result = dataReturn;
-        return result;
-    }
+//    public static String getLocationPercentage(String suburbAndPostcode) {
+//        // http://localhost:8080/getLocationPercentage/"Aubrey, 3393"
+//        String methodPath = "getLocationPercentage/\"" + suburbAndPostcode + "\"";
+//        String dataReturn = getData(methodPath);
+//        String result = dataReturn;
+//        return result;
+//    }
 
     /**
      * get password hash by user name
      */
-    public static String getUserPasswordByName(String username){
+    static String getUserPasswordByName(String username) {
         String methodPath = "getUserPasswordByName/\"" + username + "\"";
         String dataReturn = getData(methodPath);
-        String result = dataReturn;
-        if(result.equals("[]")){
+        if (dataReturn.equals("[]")) {
             return "";
         }
-        return  result;
+        return dataReturn;
     }
 
     /**
      * post user in the database
      */
-    public static void postUser(String userName, String passwordHash) throws JSONException {
+    static void postUser(String userName, String passwordHash) throws JSONException {
         int userId = getMaxId() + 1;
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("USER_ID", userId);
         jsonObject.put("USER_NAME", userName);
         jsonObject.put("PASSWORD_HASH", passwordHash);
-        postData("postUser", jsonObject.toString());
+        postData(jsonObject.toString());
     }
 
     /**
      * post data to database by rest api
      */
-    public static void postData(String urlStr, String data) {
-        URL url = null;
+    private static void postData(String data) {
+        URL url;
         HttpURLConnection conn = null;
         try {
-            url = new URL(BASE_URL + urlStr);
+            url = new URL(BASE_URL + "postUser");
             conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000);
             conn.setConnectTimeout(15000);
@@ -131,7 +128,7 @@ public class RestClient {
             out.print(data);
             out.close();
             int responseCode = conn.getResponseCode();
-            Log.i("error", new Integer(responseCode).toString());
+            Log.i("error", Integer.valueOf(responseCode).toString());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -167,11 +164,11 @@ public class RestClient {
     /**
      * count user amount
      */
-    public static int getMaxId() {
+    private static int getMaxId() {
         int id = 0;
-        URL url = null;
-        String idStr = "";
-        String idUrlStr = "";
+        URL url;
+        String idStr;
+        String idUrlStr;
 
         idUrlStr = "CredentialCount";
 
@@ -203,8 +200,8 @@ public class RestClient {
     /**
      * get data from database by rest api
      */
-    public static String getData(String urlStr) {
-        URL url = null;
+    private static String getData(String urlStr) {
+        URL url;
         HttpURLConnection conn = null;
         StringBuilder result = new StringBuilder();
         try {

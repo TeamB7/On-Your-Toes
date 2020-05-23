@@ -149,16 +149,19 @@ public class CreateUserActivity extends Activity {
                 Ed.putString("FirstName", firstName);
                 String address = edAddress.getText().toString();
                 Ed.putString("Address", address);
-                Ed.commit();
+                Ed.apply();
+
+                SharedPreferences exerciseSP = getSharedPreferences("Exercise", MODE_PRIVATE);
+                exerciseSP.edit().clear().apply();
 
                 PostUserAsynctack postUserAsynctack = new PostUserAsynctack();
                 postUserAsynctack.execute();
                 Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-            } else if(!s[1].equals("")) {
+            } else if (!s[1].equals("")) {
                 Toast.makeText(getApplicationContext(), "Name is existing.", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 Toast.makeText(getApplicationContext(), "Invalid address, please enter Suburb name in Victoria.", Toast.LENGTH_SHORT).show();
             }
         }

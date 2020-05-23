@@ -24,7 +24,7 @@
         android:paddingEnd="15dp"
         android:text="Exercise Name"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="20sp"
         app:fontFamily="@font/open_sans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
