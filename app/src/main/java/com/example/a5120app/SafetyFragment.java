@@ -96,7 +96,7 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
 
         GeoJsonLayer layer = null;
         try {
-            layer = new GeoJsonLayer(mMap, R.raw.suburbbounds_updated, getContext());
+            layer = new GeoJsonLayer(mMap, R.raw.suburbbounds, getContext());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

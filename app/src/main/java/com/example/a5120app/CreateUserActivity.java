@@ -74,7 +74,7 @@ public class CreateUserActivity extends Activity {
                             CheckExistAsyncTask checkExistAsyncTask = new CheckExistAsyncTask();
                             checkExistAsyncTask.execute(firstName, address);
                         } else {
-                            Toast.makeText(getApplicationContext(), "Name, address and password cannot be empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Username, password and suburb cannot be empty", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -160,9 +160,9 @@ public class CreateUserActivity extends Activity {
                 startActivity(intent);
                 finish();
             } else if (!s[1].equals("")) {
-                Toast.makeText(getApplicationContext(), "Name is existing.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Username already exists", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), "Invalid address, please enter Suburb name in Victoria.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Invalid suburb name, please enter a suburb name in Victoria", Toast.LENGTH_SHORT).show();
             }
         }
     }
