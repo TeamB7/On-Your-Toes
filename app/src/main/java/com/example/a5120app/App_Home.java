@@ -67,7 +67,7 @@ public class App_Home extends Fragment {
         logoutIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sp.edit().remove("FirstName").commit();
+                sp.edit().remove("FirstName").apply();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();;
