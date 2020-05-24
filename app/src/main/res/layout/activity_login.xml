@@ -152,18 +152,18 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:background="@android:color/transparent"
+        android:drawableBottom="@drawable/ic_rectangle_higlight"
         android:text="Sign Up"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:drawableBottom="@drawable/ic_rectangle_higlight"
         app:fontFamily="@font/open_sans"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/login_button"
-        app:layout_constraintVertical_bias="0.328" />
+        app:layout_constraintTop_toTopOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.0" />
 
     <!--    <View-->
 <!--        android:layout_width="180dp"-->
