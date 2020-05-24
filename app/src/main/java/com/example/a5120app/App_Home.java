@@ -63,7 +63,7 @@ public class App_Home extends Fragment {
         }
         greetingTv.setText(greeting);
 
-        ImageView logoutIcon = homeView.findViewById(R.id.logout_icon);
+        TextView logoutIcon = homeView.findViewById(R.id.tv_logout);
         logoutIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,7 +192,7 @@ public class App_Home extends Fragment {
             }
         });
 
-        Button changeAddressBtn = homeView.findViewById(R.id.change_address_btn);
+        TextView changeAddressBtn = homeView.findViewById(R.id.change_address_btn);
         changeAddressBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

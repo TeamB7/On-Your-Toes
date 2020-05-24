@@ -169,12 +169,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.gms.maps.MapView
-        android:visibility="invisible"
         android:id="@+id/safety_map"
         android:layout_width="match_parent"
-        android:layout_height="440dp"
+        android:layout_height="500dp"
         android:layout_marginTop="4dp"
         android:padding="5dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_legend" />
@@ -182,11 +182,11 @@
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/loading_img"
         android:layout_width="match_parent"
-        android:layout_height="440dp"
+        android:layout_height="0dp"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_legend"/>
+        app:layout_constraintTop_toBottomOf="@+id/cl_legend" />
 
 <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:id="@+id/bottomNavigationView"-->

@@ -487,9 +487,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
                 if (nearbyPlacesList.size() != 0) {
-                    Toast.makeText(getContext(), "Nearby Facilities", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Nearby facilities found", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(), "No Facilities Found", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "No matching facilities found", Toast.LENGTH_LONG).show();
                 }
             }
         }

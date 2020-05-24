@@ -48,7 +48,11 @@ public class LocationSelectionFragment extends Fragment {
 
         if (page.equals("safety")) {
             TextView textView = view.findViewById(R.id.textView10);
-            String str = "Concerned about safety? Tell us your location to know about the suburb risk rating.";
+            String str = "Concerned about safety? Tell us your location to find out the suburb risk rating.";
+            textView.setText(str);
+        }else{
+            TextView textView = view.findViewById(R.id.textView9);
+            String str = "or manually enter your address";
             textView.setText(str);
         }
 
@@ -62,6 +66,8 @@ public class LocationSelectionFragment extends Fragment {
                 }
             }
         });
+
+
 
         myLocBtn.setOnClickListener(
                 new View.OnClickListener() {
