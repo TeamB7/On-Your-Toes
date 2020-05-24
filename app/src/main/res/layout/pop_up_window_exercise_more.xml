@@ -22,7 +22,7 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="217dp"
+        android:layout_height="233dp"
         android:layout_below="@+id/pou_up_tv"
         android:layout_marginTop="30dp"
         android:background="@drawable/popbox_background">
