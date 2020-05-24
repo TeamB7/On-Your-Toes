@@ -80,7 +80,7 @@ public class LoginActivity extends Activity {
                     public void onClick(View v) {
                         if (!isEmpty(edUserName.getText().toString()) && !isEmpty(edPassword.getText().toString())) {
                             name = edUserName.getText().toString().trim();
-                            password = edUserName.getText().toString().trim();
+                            password = edPassword.getText().toString().trim();
                             String passwordHash = convertSHA(password);
                             CheckExistAsyncTask checkExistAsyncTask = new CheckExistAsyncTask();
                             checkExistAsyncTask.execute(name, passwordHash);
