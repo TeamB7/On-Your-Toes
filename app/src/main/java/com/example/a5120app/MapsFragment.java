@@ -379,7 +379,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         }
 //        googlePlacesUrl.append("&name=tennis");
         googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyD6xOdM_HrZN3jzNr38x4JAqGAPvgtqXh0");
+        googlePlacesUrl.append("&key=" + "AIzaSyBYsKnizkMZZcu38CWd0hwBj6bOLom4Ko4");//AIzaSyCYZOuvnAFrPF2X_Yh4NHMBfAZRJTiM7C8
+
+
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
     }
