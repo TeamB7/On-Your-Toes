@@ -486,11 +486,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));//snippet(placeName).
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
-                if (nearbyPlacesList.size() != 0) {
-                    Toast.makeText(getContext(), "Nearby facilities found", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "No matching facilities found", Toast.LENGTH_LONG).show();
-                }
+            }
+            if (nearbyPlacesList.size() != 0) {
+                Toast.makeText(getContext(), "Nearby facilities found", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "No matching facilities found", Toast.LENGTH_LONG).show();
             }
         }
     }

@@ -92,10 +92,10 @@
         android:rowCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grid_log"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.45">
 
         <RelativeLayout
             android:layout_width="340dp"
@@ -247,9 +247,9 @@
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/display_card_pink"
-            android:elevation="10dp"
-            android:layout_marginBottom="20dp">
+            android:elevation="10dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/safety_card"
@@ -362,7 +362,7 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="44dp"
         android:text="You are in: "
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
@@ -381,10 +381,12 @@
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:fontFamily="@font/open_sans"
+        app:layout_constraintBottom_toBottomOf="@+id/textView21"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/change_address_btn"
@@ -400,10 +402,12 @@
         android:textColor="@color/colorSecond"
         android:textSize="18sp"
         app:fontFamily="@font/open_sans"
+        app:layout_constraintBottom_toBottomOf="@+id/address_home_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toEndOf="@id/address_home_tv"
-        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
+        app:layout_constraintTop_toTopOf="@+id/address_home_tv"
+        app:layout_constraintVertical_bias="0.969" />
 
     <GridLayout
         android:id="@+id/grid_log"

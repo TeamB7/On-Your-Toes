@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -172,6 +173,8 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
 
         mapView.setVisibility(View.VISIBLE);
         gifImageView.setVisibility(View.GONE);
+        TextView loadingTv = view.findViewById(R.id.loading_tv);
+        loadingTv.setVisibility(View.GONE);
     }
 
     private class GetScoreAsyncTask extends AsyncTask<Void, Void, String> {
