@@ -8,41 +8,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintHome1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.3">
 
-    <!--        <ImageView-->
-    <!--            android:id="@+id/bag"-->
-    <!--            android:layout_width="94dp"-->
-    <!--            android:layout_height="100dp"-->
-    <!--            android:layout_alignParentLeft="true"-->
-    <!--            android:layout_alignParentBottom="true"-->
-    <!--            android:layout_marginLeft="5dp"-->
-    <!--            android:layout_marginBottom="17dp"-->
-    <!--            android:src="@drawable/bag"></ImageView>-->
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are in: "
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:fontFamily="@font/open_sans"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.11"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <!--        <TextView-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_below="@+id/tv_greeting"-->
-    <!--            android:layout_alignParentEnd="true"-->
-    <!--            android:layout_alignParentRight="true"-->
-    <!--            android:layout_alignParentBottom="true"-->
-    <!--            android:layout_gravity="left"-->
-    <!--            android:layout_marginStart="-3dp"-->
-    <!--            android:layout_marginLeft="-3dp"-->
-    <!--            android:layout_marginTop="102dp"-->
-    <!--            android:layout_marginEnd="37dp"-->
-    <!--            android:layout_marginRight="37dp"-->
-    <!--            android:layout_marginBottom="20dp"-->
-    <!--            android:layout_toEndOf="@+id/bag"-->
-    <!--            android:layout_toRightOf="@+id/bag"-->
-    <!--            android:text="Upcoming Trip: Caulfield on 29/05/2020 "-->
-    <!--            android:textColor="@color/white"-->
-    <!--            android:textSize="20sp" />-->
+        <TextView
+            android:id="@+id/address_home_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="Melbourne"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:fontFamily="@font/open_sans"
+            app:layout_constraintBottom_toBottomOf="@+id/textView21"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/textView21"
+            app:layout_constraintTop_toTopOf="@+id/textView21"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/change_address_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="64dp"
+            android:drawableBottom="@drawable/ic_rectangle_higlight_pink"
+            android:paddingRight="4dp"
+            android:text="Change"
+            android:textAllCaps="false"
+            android:textColor="@color/colorSecond"
+            android:textSize="18sp"
+            app:fontFamily="@font/open_sans"
+            app:layout_constraintBottom_toBottomOf="@+id/address_home_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.086"
+            app:layout_constraintStart_toEndOf="@id/address_home_tv"
+            app:layout_constraintTop_toTopOf="@+id/address_home_tv"
+            app:layout_constraintVertical_bias="0.969" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageView
         android:id="@+id/logo_home"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -80,7 +108,7 @@
 
     <GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="385dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
@@ -150,20 +178,6 @@
                         app:layout_constraintStart_toEndOf="@+id/card_img2"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.37" />
-
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
-                    <!--                        android:layout_marginRight="8dp"-->
-                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
-                    <!--                        android:ems="8"-->
-                    <!--                        android:fontFamily="sans-serif-black"-->
-                    <!--                        android:text="Easy to do anywhere exercises"-->
-                    <!--                        android:textColor="#8E8B91"-->
-                    <!--                        android:textSize="16sp"-->
-                    <!--                        app:fontFamily="@font/open_sans" />-->
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -298,20 +312,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.47000003" />
 
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
-                    <!--                        android:layout_marginRight="8dp"-->
-                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
-                    <!--                        android:ems="8"-->
-                    <!--                        android:fontFamily="sans-serif-black"-->
-                    <!--                        android:text="Easy to do anywhere exercises"-->
-                    <!--                        android:textColor="#8E8B91"-->
-                    <!--                        android:textSize="16sp"-->
-                    <!--                        app:fontFamily="@font/open_sans" />-->
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -343,7 +343,7 @@
         app:fontFamily="@font/open_sans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView21" />
+        app:layout_constraintTop_toBottomOf="@id/constraintHome1" />
 
     <TextView
         android:id="@+id/empty_activity_tv"
@@ -356,58 +356,8 @@
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView21" />
+        app:layout_constraintTop_toBottomOf="@id/constraintHome1" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
-        android:text="You are in: "
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:fontFamily="@font/open_sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
-
-    <TextView
-        android:id="@+id/address_home_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Melbourne"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:fontFamily="@font/open_sans"
-        app:layout_constraintBottom_toBottomOf="@+id/textView21"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/textView21"
-        app:layout_constraintTop_toTopOf="@+id/textView21"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/change_address_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="64dp"
-        android:drawableBottom="@drawable/ic_rectangle_higlight_pink"
-        android:paddingRight="4dp"
-        android:text="Change"
-        android:textAllCaps="false"
-        android:textColor="@color/colorSecond"
-        android:textSize="18sp"
-        app:fontFamily="@font/open_sans"
-        app:layout_constraintBottom_toBottomOf="@+id/address_home_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toEndOf="@id/address_home_tv"
-        app:layout_constraintTop_toTopOf="@+id/address_home_tv"
-        app:layout_constraintVertical_bias="0.969" />
 
     <GridLayout
         android:id="@+id/grid_log"

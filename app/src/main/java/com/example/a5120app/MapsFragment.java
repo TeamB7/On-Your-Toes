@@ -190,6 +190,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
             try {
                 addressList = geocoder.getFromLocationName(searchString, 1);
+                Log.d("getUrl", addressList.toString());
             } catch (IOException e) {
                 Log.e("GeoLocate", "Exception" + e.getMessage());
                 return;
@@ -375,6 +376,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
         googlePlacesUrl.append("&radius=" + 1500);
         if (!recreationType.equals("")) {
+            recreationType = recreationType.replace(" ", "+");
             googlePlacesUrl.append("&keyword=" + recreationType);
         }
 //        googlePlacesUrl.append("&name=tennis");

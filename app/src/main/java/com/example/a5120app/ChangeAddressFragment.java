@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -75,18 +77,25 @@ public class ChangeAddressFragment extends Fragment {
     }
 
     /**
-     * check if the suburb name is vaild, if it is valid
+     * check if the suburb name is valid, if it is valid
      * update the user location
      */
-    private class ChangeAddressAsync extends AsyncTask<Void, Void, String> {
+    private class ChangeAddressAsync extends AsyncTask<Void, Void, String[]> {
         @Override
-        protected String doInBackground(Void... voids) {
-            return RestClient.getSuburbByAddress(address);
+        protected String[] doInBackground(Void... voids) {
+            String[] result = new String[2];
+            try {
+                result[0] = RestClient.getSuburbByAddress(address);
+                result[1] = RestClient.getSuburbByPostcode(address);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return result;
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            if (!s.equals("")) {
+        protected void onPostExecute(String[] s) {
+            if (!s[0].equals("")) {
                 SharedPreferences sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
                 SharedPreferences.Editor Ed = sp.edit();
                 String change = address.substring(0, 1).toUpperCase() + address.substring(1);
@@ -98,8 +107,20 @@ public class ChangeAddressFragment extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content_frame, fragment);
                 fragmentTransaction.commit();
-//                DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
-            } else {
+            }else if (!s[1].equals("")){
+                SharedPreferences sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
+                SharedPreferences.Editor Ed = sp.edit();
+                String change = s[1].replaceAll("[^a-zA-Z ]", "");
+                Ed.putString("Address", change);
+                Ed.commit();
+                Fragment fragment = null;
+                fragment = new App_Home();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.content_frame, fragment);
+                fragmentTransaction.commit();
+            }
+            else {
                 Toast.makeText(getContext(), "Suburb is invalid", Toast.LENGTH_SHORT).show();
             }
         }

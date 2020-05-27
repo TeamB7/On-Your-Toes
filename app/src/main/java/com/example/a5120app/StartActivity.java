@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,16 +17,16 @@ import android.widget.Button;
  * time
  */
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        try
-        {
-            this.getSupportActionBar().hide();
-        }
-        catch (NullPointerException e){}
+//        try
+//        {
+//            this.getSupportActionBar().hide();
+//        }
+//        catch (NullPointerException e){}
 
         Button startBtn = findViewById(R.id.bt_get_started);
 

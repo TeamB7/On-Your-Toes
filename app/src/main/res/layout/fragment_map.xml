@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map_container"
@@ -50,10 +50,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.Toolbar
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/toolbar3"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <TextView
@@ -70,117 +71,21 @@
         app:fontFamily="@font/open_sans"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <TextView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:fontFamily="@font/open_sans"-->
-    <!--        android:text="On Your Toes"-->
-    <!--        android:textAlignment="center"-->
-    <!--        android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-    <!--        android:textColor="#f5555f"-->
-    <!--        android:textSize="20sp"-->
-    <!--        android:gravity="center_horizontal" />-->
-
-
-<!--    <RadioGroup-->
-<!--        android:id="@+id/relLayout2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/relLayout1"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/radio_parks"-->
-<!--            android:checked="true"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="15dp"-->
-<!--            android:onClick="onRadioButtonClicked"-->
-<!--            android:text="Parks" />-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/radio_gyms"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignRight="@id/radio_parks"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:onClick="onRadioButtonClicked"-->
-<!--            android:text="Gyms" />-->
-
-<!--        <Spinner-->
-<!--            android:id="@+id/sp_facility_type"-->
-<!--            android:layout_width="190dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:imeOptions="actionSearch"-->
-<!--            android:spinnerMode="dropdown"-->
-<!--            android:text="Recreation Type"-->
-<!--            android:textSize="15sp" />-->
-<!--    </RadioGroup>-->
-
-
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/relLayout1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="40dp">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/search_facilities"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:fontFamily="@font/open_sans"-->
-<!--            android:layout_alignLeft="@id/ed_search"-->
-<!--            android:layout_marginLeft="320dp"-->
-<!--            android:background="@drawable/rounded_button"-->
-<!--            android:text="Done"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textSize="12sp" />-->
-
-
-
-<!--        <EditText-->
-<!--            android:id="@+id/ed_search"-->
-<!--            android:layout_width="320dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:background="@drawable/roundedtext"-->
-<!--            android:hint="Enter Postcode or Address"-->
-<!--            android:imeOptions="actionSearch"-->
-<!--            android:textColor="#000000"-->
-<!--            android:textSize="15sp" />-->
-
-<!--    </RelativeLayout>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/title"-->
-<!--        android:background="@color/colorPrimary"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="24dp"-->
-<!--        android:gravity="center_horizontal"-->
-<!--        android:textColor="#FFFFFF"-->
-<!--        android:text="Search Nearby Facility"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="20sp" />-->
-
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="504dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/cl_legend"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="5dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.8"
+        app:layout_constraintTop_toBottomOf="@+id/cl_legend" />
 
 <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
 
@@ -196,4 +101,4 @@
 <!--        app:menu="@menu/menu_bot_nav" />-->
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

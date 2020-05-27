@@ -1,51 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".App_Home">
-
-<androidx.constraintlayout.widget.ConstraintLayout
+    tools:context=".App_Home"
     android:background="@drawable/ic_homescreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintHome1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.3">
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/bag"-->
-        <!--            android:layout_width="94dp"-->
-        <!--            android:layout_height="100dp"-->
-        <!--            android:layout_alignParentLeft="true"-->
-        <!--            android:layout_alignParentBottom="true"-->
-        <!--            android:layout_marginLeft="5dp"-->
-        <!--            android:layout_marginBottom="17dp"-->
-        <!--            android:src="@drawable/bag"></ImageView>-->
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are in: "
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:fontFamily="@font/open_sans"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.11"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <!--        <TextView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_below="@+id/tv_greeting"-->
-        <!--            android:layout_alignParentEnd="true"-->
-        <!--            android:layout_alignParentRight="true"-->
-        <!--            android:layout_alignParentBottom="true"-->
-        <!--            android:layout_gravity="left"-->
-        <!--            android:layout_marginStart="-3dp"-->
-        <!--            android:layout_marginLeft="-3dp"-->
-        <!--            android:layout_marginTop="102dp"-->
-        <!--            android:layout_marginEnd="37dp"-->
-        <!--            android:layout_marginRight="37dp"-->
-        <!--            android:layout_marginBottom="20dp"-->
-        <!--            android:layout_toEndOf="@+id/bag"-->
-        <!--            android:layout_toRightOf="@+id/bag"-->
-        <!--            android:text="Upcoming Trip: Caulfield on 29/05/2020 "-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="20sp" />-->
+        <TextView
+            android:id="@+id/address_home_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="Melbourne"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:fontFamily="@font/open_sans"
+            app:layout_constraintBottom_toBottomOf="@+id/textView21"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/textView21"
+            app:layout_constraintTop_toTopOf="@+id/textView21"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/change_address_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="64dp"
+            android:drawableBottom="@drawable/ic_rectangle_higlight_pink"
+            android:paddingRight="4dp"
+            android:text="Change"
+            android:textAllCaps="false"
+            android:textColor="@color/colorSecond"
+            android:textSize="18sp"
+            app:fontFamily="@font/open_sans"
+            app:layout_constraintBottom_toBottomOf="@+id/address_home_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.086"
+            app:layout_constraintStart_toEndOf="@id/address_home_tv"
+            app:layout_constraintTop_toTopOf="@+id/address_home_tv"
+            app:layout_constraintVertical_bias="0.969" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageView
         android:id="@+id/logo_home"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -54,14 +79,14 @@
 
     <ImageView
         android:id="@+id/logout_icon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="6dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
         android:background="@null"
         android:tint="@color/white"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintHorizontal_bias="0.821"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_logout" />
@@ -83,19 +108,22 @@
 
     <GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="340dp"
-        android:layout_height="240dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:alignmentMode="alignMargins"
         android:background="@android:color/transparent"
         android:columnCount="1"
         android:columnOrderPreserved="false"
+        android:padding="16dp"
         android:rowCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/grid_log">
+        app:layout_constraintTop_toBottomOf="@+id/grid_log"
+        app:layout_constraintVertical_bias="0.45">
 
         <RelativeLayout
             android:layout_width="340dp"
@@ -151,20 +179,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.37" />
 
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
-                    <!--                        android:layout_marginRight="8dp"-->
-                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
-                    <!--                        android:ems="8"-->
-                    <!--                        android:fontFamily="sans-serif-black"-->
-                    <!--                        android:text="Easy to do anywhere exercises"-->
-                    <!--                        android:textColor="#8E8B91"-->
-                    <!--                        android:textSize="16sp"-->
-                    <!--                        app:fontFamily="@font/open_sans" />-->
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -176,7 +190,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:background="@drawable/display_card_pink"
-            android:elevation="12dp">
+            android:elevation="10dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/amenities_card"
@@ -247,6 +261,7 @@
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/display_card_pink"
             android:elevation="10dp">
 
@@ -297,20 +312,6 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.47000003" />
 
-                    <!--                    <TextView-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_below="@id/tv_TravelPlan"-->
-                    <!--                        android:layout_marginRight="8dp"-->
-                    <!--                        android:layout_toRightOf="@+id/card_img2"-->
-                    <!--                        android:ems="8"-->
-                    <!--                        android:fontFamily="sans-serif-black"-->
-                    <!--                        android:text="Easy to do anywhere exercises"-->
-                    <!--                        android:textColor="#8E8B91"-->
-                    <!--                        android:textSize="16sp"-->
-                    <!--                        app:fontFamily="@font/open_sans" />-->
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -319,14 +320,18 @@
     </GridLayout>
 
     <TextView
+        android:id="@+id/tv_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
         android:text="Logout"
-        app:fontFamily="@font/open_sans"
         android:textColor="@color/white"
+        app:fontFamily="@font/open_sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout_icon" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/logout_icon"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_recent_activity"
@@ -337,13 +342,12 @@
         android:textSize="18sp"
         app:fontFamily="@font/open_sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView21" />
+        app:layout_constraintTop_toBottomOf="@id/constraintHome1" />
 
     <TextView
         android:id="@+id/empty_activity_tv"
-        android:layout_width="280dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:text="Let's try your first Indoor Exercise"
@@ -352,59 +356,14 @@
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView21" />
+        app:layout_constraintTop_toBottomOf="@id/constraintHome1" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="You are in: "
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:fontFamily="@font/open_sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
-
-    <TextView
-        android:id="@+id/address_home_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Melbourne"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:fontFamily="@font/open_sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
-
-    <Button
-        android:id="@+id/change_address_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="38dp"
-        android:background="@drawable/display_card_bg"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:text="Change location"
-        android:textAllCaps="false"
-        android:textColor="@color/colorSecond"
-        android:textSize="14sp"
-        app:fontFamily="@font/open_sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toEndOf="@id/address_home_tv"
-        app:layout_constraintTop_toBottomOf="@+id/tv_greeting" />
 
     <GridLayout
         android:id="@+id/grid_log"
         android:layout_width="316dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:columnCount="1"
         android:columnOrderPreserved="false"
         android:rowCount="3"
@@ -521,4 +480,3 @@
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>

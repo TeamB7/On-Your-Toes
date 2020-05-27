@@ -1,6 +1,7 @@
 package com.example.a5120app;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import androidx.core.app.ActivityCompat;
  */
 
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends Activity {
     private final static int TAG_CODE_PERMISSION_LOCATION = 0;
 
     @Override

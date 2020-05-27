@@ -92,8 +92,8 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
         if (address.equals("")) {
             address = "Melbourne";
         }
-        GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
-        getSuburbAsyncTask.execute();
+//        GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
+//        getSuburbAsyncTask.execute();
 
         GeoJsonLayer layer = null;
         try {
@@ -110,7 +110,7 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
                 //String group = feature.getProperty("TEST_EXPORT_GROUP");
                 int rating = Integer.parseInt(feature.getProperty("SAFETY_EXPORT_GROUP"));
 
-                Log.d("ADebugTag", "Value:" + feature.getProperty("SAFETY_EXPORT_GROUP"));
+//                Log.d("ADebugTag", "Value:" + feature.getProperty("SAFETY_EXPORT_GROUP"));
 
 
                 if (rating == 3) {
@@ -137,7 +137,7 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
                 }
             }
         }
-
+        geoLocate();
     }
 
     /**

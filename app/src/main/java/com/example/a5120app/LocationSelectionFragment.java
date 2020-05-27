@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -62,7 +64,7 @@ public class LocationSelectionFragment extends Fragment {
                 if (!suburbEd.getText().toString().isEmpty()) {
                     address = suburbEd.getText().toString();
                 } else {
-                    Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -138,7 +140,15 @@ public class LocationSelectionFragment extends Fragment {
     private class GetSuburbAsyncTask extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {
-            return RestClient.getSuburbByAddress(address);
+            String result = RestClient.getSuburbByAddress(address);
+            if (result.equals("")){
+                try {
+                    result = RestClient.getSuburbByPostcode(address).replaceAll("[^a-zA-Z ]", "");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return result;
         }
 
         @Override

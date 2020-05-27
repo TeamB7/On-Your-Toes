@@ -32,7 +32,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class App_Home extends Fragment {
     private View homeView;
-    private TextView greetingTv, recentActivityTv;
+    private TextView greetingTv, recentActivityTv, logoutIcon;
     private CardView amenitiesCard, safetyCard, exerciseCard;
     private GridLayout recentGrid;
     private LinearLayout linearLayout1, linearLayout2, linearLayout3;
@@ -63,7 +63,7 @@ public class App_Home extends Fragment {
         }
         greetingTv.setText(greeting);
 
-        TextView logoutIcon = homeView.findViewById(R.id.tv_logout);
+        logoutIcon = homeView.findViewById(R.id.tv_logout);
         logoutIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

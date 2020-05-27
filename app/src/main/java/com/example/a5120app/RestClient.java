@@ -2,6 +2,7 @@ package com.example.a5120app;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -39,6 +40,21 @@ public class RestClient {
         result = connReturn.replaceAll("[^\\d.]", "");
         if (!result.equals("")) {
             result = result.substring(0, 4);
+        }
+        return result;
+    }
+
+    /**
+     * get suburb by postcode
+     */
+    static String getSuburbByPostcode(String postcode) throws JSONException {
+        // http://localhost:8080/getSuburb
+        String methodPath = "getSuburbByPostcode/\"%25" + postcode + "\"";
+        String result = "";
+        String connReturn = getData(methodPath);
+        if (!connReturn.equals("[]")) {
+            JSONArray jsonArray = new JSONArray(connReturn);
+            result = jsonArray.getJSONObject(0).getString("SuburbPostcode");
         }
         return result;
     }

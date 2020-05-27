@@ -137,8 +137,14 @@ public class CreateUserActivity extends Activity {
         protected String[] doInBackground(String... strings) {
             String nameCheck = strings[0];
             String addressValid = RestClient.getSuburbByAddress(strings[1]);
+            String addressValid2 = "";
+            try {
+                addressValid2 = RestClient.getSuburbByPostcode(strings[1]);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             String nameValid = RestClient.getUserPasswordByName(nameCheck);
-            String[] result = {addressValid, nameValid};
+            String[] result = {addressValid, nameValid, addressValid2};
             return result;
         }
 
@@ -148,6 +154,21 @@ public class CreateUserActivity extends Activity {
                 SharedPreferences.Editor Ed = sp.edit();
                 Ed.putString("FirstName", firstName);
                 String address = edAddress.getText().toString();
+                Ed.putString("Address", address);
+                Ed.apply();
+
+                SharedPreferences exerciseSP = getSharedPreferences("Exercise", MODE_PRIVATE);
+                exerciseSP.edit().clear().apply();
+
+                PostUserAsynctack postUserAsynctack = new PostUserAsynctack();
+                postUserAsynctack.execute();
+                Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            } else if (s[1].equals("") && !s[2].equals((""))) {
+                SharedPreferences.Editor Ed = sp.edit();
+                Ed.putString("FirstName", firstName);
+                String address = s[2].replaceAll("[^a-zA-Z ]", "");
                 Ed.putString("Address", address);
                 Ed.apply();
 
