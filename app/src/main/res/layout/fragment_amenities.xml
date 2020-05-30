@@ -6,36 +6,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_user_4">
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/select_loc_bar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?attr/actionBarSize"-->
-<!--        android:background="?attr/colorPrimary"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:popupTheme="@style/AppTheme.PopupOverlay" />-->
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="15dp"
-        android:paddingLeft="15dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="15dp"
-        android:text="Select Outdoor Activity"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:fontFamily="@font/open_sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="180dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.725"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -47,43 +24,53 @@
             android:id="@+id/lv_amenities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="44dp"
+            android:foregroundGravity="center_horizontal"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18">
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="15dp"
+            android:text="Select Outdoor Activity"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:fontFamily="@font/open_sans"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="-1dp" />
 
         <TextView
             android:id="@+id/textViewloc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:text="Location: "
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             app:fontFamily="@font/open_sans"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-
+            tools:layout_editor_absoluteY="139dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

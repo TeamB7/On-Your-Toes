@@ -19,6 +19,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
@@ -46,7 +47,7 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
     private MapView mapView;
     private GoogleMap mMap;
     private UiSettings mUiSettings;
-    private String address = "", suburbAndPostcode = "", score = "";
+    private String address = "", suburbAndPostcode = "", indicator = "";
     private GifImageView gifImageView;
 
     /**
@@ -92,8 +93,8 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
         if (address.equals("")) {
             address = "Melbourne";
         }
-//        GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
-//        getSuburbAsyncTask.execute();
+        GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
+        getSuburbAsyncTask.execute();
 
         GeoJsonLayer layer = null;
         try {
@@ -137,8 +138,9 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
                 }
             }
         }
-        geoLocate();
     }
+
+
 
     /**
      * locate the user and add marker
@@ -166,11 +168,21 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
             double longitude = address.getLongitude();
             LatLng latLng = new LatLng(latitude, longitude);
 
-            mMap.addMarker(new MarkerOptions().position(latLng).title(str));
+            Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(str));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    Bundle args = new Bundle();
+                    args.putString("indicator", indicator);
+                    BottomPopup bottomPopup = new BottomPopup();
+                    bottomPopup.setArguments(args);
+                    bottomPopup.show(getFragmentManager(), "BottomPopup");
+                    return false;
+                }
+            });
         }
-
         mapView.setVisibility(View.VISIBLE);
         gifImageView.setVisibility(View.GONE);
         TextView loadingTv = view.findViewById(R.id.loading_tv);
@@ -180,14 +192,14 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
     private class GetScoreAsyncTask extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {
-            String score = RestClient.getSuburbScore(suburbAndPostcode);
+//            String score = RestClient.getSuburbScore(suburbAndPostcode);
             String indicator = RestClient.getSuburbIndicator(suburbAndPostcode);
-            return score;
+            return indicator;
         }
 
         @Override
         protected void onPostExecute(String s) {
-            score = s;
+            indicator = s;
             geoLocate();
         }
     }

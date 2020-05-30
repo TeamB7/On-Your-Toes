@@ -110,7 +110,8 @@ public class App_Home extends Fragment {
             linearLayout1.setVisibility(View.VISIBLE);
             try {
                 JSONArray exerciseJson = new JSONArray(exerciseSP.getString(String.valueOf(0), ""));
-                nameTV1.setText(exerciseJson.getString(0));
+                String exercise = exerciseJson.getString(0) + " Sets: " + exerciseJson.getString(1) + " Reps: " + exerciseJson.getString(2);
+                nameTV1.setText(exercise);
                 dateTV1.setText(exerciseJson.getString(3));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -120,7 +121,8 @@ public class App_Home extends Fragment {
             linearLayout2.setVisibility(View.VISIBLE);
             try {
                 JSONArray exerciseJson = new JSONArray(exerciseSP.getString(String.valueOf(1), ""));
-                nameTV2.setText(exerciseJson.getString(0));
+                String exercise = exerciseJson.getString(0) + " Sets: " + exerciseJson.getString(1) + " Reps: " + exerciseJson.getString(2);
+                nameTV2.setText(exercise);
                 dateTV2.setText(exerciseJson.getString(3));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -130,7 +132,8 @@ public class App_Home extends Fragment {
             linearLayout3.setVisibility(View.VISIBLE);
             try {
                 JSONArray exerciseJson = new JSONArray(exerciseSP.getString(String.valueOf(2), ""));
-                nameTV3.setText(exerciseJson.getString(0));
+                String exercise = exerciseJson.getString(0) + " Sets: " + exerciseJson.getString(1) + " Reps: " + exerciseJson.getString(2);
+                nameTV3.setText(exercise);
                 dateTV3.setText(exerciseJson.getString(3));
             } catch (JSONException e) {
                 e.printStackTrace();

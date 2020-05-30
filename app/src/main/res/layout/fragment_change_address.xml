@@ -20,6 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+<!--    android:drawableLeft="@drawable/ic_my_location_black_24dp"-->
 
     <EditText
         android:id="@+id/ed_change_suburb"
@@ -27,7 +28,6 @@
         android:layout_height="48dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/roundedtext"
-        android:drawableLeft="@drawable/ic_my_location_black_24dp"
         android:drawablePadding="16dp"
         android:hint="E.g. Melbourne "
         android:includeFontPadding="true"

@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
@@ -154,6 +156,18 @@ public class ExerciseFragment extends Fragment {
 
                             ed.commit();
                             popupWindow.dismiss();
+                            LayoutInflater inflater = getLayoutInflater();
+                            View customToastroot = inflater.inflate(R.layout.toast, null);
+                            TextView msg = (TextView) customToastroot.findViewById(R.id.toastMsg);
+                            msg.setText("Workout Saved !");
+                            Toast toast = new Toast(getContext());
+                            toast.setView(customToastroot);
+                            toast.setDuration(Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                            ft.replace(R.id.content_frame, new SuggestActivityFragment());
+                            ft.commit();
                         }else {
                             if(!sets.matches("^[0-9]*[1-9][0-9]*$")){
                                 setsEd.setHint("Invalid");

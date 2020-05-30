@@ -59,12 +59,12 @@
             android:textColor="@color/colorSecond"
             android:textSize="18sp"
             app:fontFamily="@font/open_sans"
-            app:layout_constraintBottom_toBottomOf="@+id/address_home_tv"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.086"
+            app:layout_constraintHorizontal_bias="0.052"
             app:layout_constraintStart_toEndOf="@id/address_home_tv"
             app:layout_constraintTop_toTopOf="@+id/address_home_tv"
-            app:layout_constraintVertical_bias="0.969" />
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
@@ -337,13 +337,14 @@
         android:id="@+id/tv_recent_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="Here's Your Recent Activity"
         android:textSize="18sp"
         app:fontFamily="@font/open_sans"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintHome1" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintHome1"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/empty_activity_tv"
@@ -361,14 +362,14 @@
 
     <GridLayout
         android:id="@+id/grid_log"
-        android:layout_width="316dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:columnCount="1"
         android:columnOrderPreserved="false"
         android:rowCount="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_recent_activity">
 
@@ -397,7 +398,7 @@
 
             <TextView
                 android:id="@+id/name_tv_1"
-                android:layout_width="180dp"
+                android:layout_width="265dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Start a New Activity"
@@ -434,7 +435,7 @@
 
             <TextView
                 android:id="@+id/name_tv_2"
-                android:layout_width="180dp"
+                android:layout_width="265dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="18sp"
@@ -470,7 +471,7 @@
 
             <TextView
                 android:id="@+id/name_tv_3"
-                android:layout_width="180dp"
+                android:layout_width="265dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="18sp"

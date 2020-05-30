@@ -44,9 +44,10 @@ public class ChangeAddressFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!addressEd.getText().toString().isEmpty()) {
                     address = addressEd.getText().toString();
-                } else {
-                    Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
                 }
+//                else {
+//                    Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
