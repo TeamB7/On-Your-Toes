@@ -54,7 +54,7 @@ public class LocationSelectionFragment extends Fragment {
             textView.setText(str);
         }else{
             TextView textView = view.findViewById(R.id.textView9);
-            String str = "or manually enter your address";
+            String str = "or manually enter your suburb or postcode";
             textView.setText(str);
         }
 
@@ -64,7 +64,7 @@ public class LocationSelectionFragment extends Fragment {
                 if (!suburbEd.getText().toString().isEmpty()) {
                     address = suburbEd.getText().toString();
                 } else {
-//                    Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
+                   //Toast.makeText(getContext(), "Invalid Suburb", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -123,7 +123,7 @@ public class LocationSelectionFragment extends Fragment {
                             GetSuburbAsyncTask getSuburbAsyncTask = new GetSuburbAsyncTask();
                             getSuburbAsyncTask.execute();
                         } else {
-                            Toast.makeText(getContext(), "Address cannot be empty", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Suburb name cannot be empty", Toast.LENGTH_SHORT).show();
                             suburbEd.setText("");
                         }
                     }
@@ -165,7 +165,7 @@ public class LocationSelectionFragment extends Fragment {
                 fragmentTransaction.commit();
 //                DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.main_layout);
             } else {
-                Toast.makeText(getContext(), "Suburb is invalid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Suburb name is invalid", Toast.LENGTH_SHORT).show();
             }
         }
     }

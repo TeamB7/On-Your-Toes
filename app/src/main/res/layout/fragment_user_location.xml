@@ -51,6 +51,7 @@
             app:layout_constraintVertical_bias="0.916" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <Button
         android:id="@+id/use_my_loc_btn"
         android:layout_width="wrap_content"
@@ -60,6 +61,7 @@
         android:drawableLeft="@drawable/ic_near_me_black_24dp"
         android:drawablePadding="8dp"
         android:elevation="8dp"
+        android:gravity="center|center_horizontal|center_vertical"
         android:includeFontPadding="false"
         android:paddingHorizontal="8dp"
         android:paddingRight="4dp"
@@ -77,8 +79,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="or manually enter your suburb or postcode"
-        android:textSize="16sp"
+        android:text="or manually enter your suburb"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +93,7 @@
         android:layout_marginTop="36dp"
         android:background="@drawable/roundedtext"
         android:drawablePadding="16dp"
-        android:hint="E.g. Melbourne "
+        android:hint="E.g. Melbourne"
         android:includeFontPadding="true"
         android:maxLength="50"
         android:paddingLeft="18dp"

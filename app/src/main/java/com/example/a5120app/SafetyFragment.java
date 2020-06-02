@@ -193,7 +193,8 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
         @Override
         protected String doInBackground(Void... voids) {
 //            String score = RestClient.getSuburbScore(suburbAndPostcode);
-            String indicator = RestClient.getSuburbIndicator(suburbAndPostcode);
+            //String indicator = RestClient.getSuburbIndicator(suburbAndPostcode);
+            String indicator= "What would you like to do today?";
             return indicator;
         }
 
@@ -221,7 +222,7 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
             } else {
                 address = "";
                 suburbAndPostcode = "";
-                Toast.makeText(getContext(), "Invalid Address", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Invalid Suburb", Toast.LENGTH_SHORT).show();
             }
 
         }

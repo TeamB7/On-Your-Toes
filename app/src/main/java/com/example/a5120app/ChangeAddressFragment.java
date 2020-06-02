@@ -122,7 +122,7 @@ public class ChangeAddressFragment extends Fragment {
                 fragmentTransaction.commit();
             }
             else {
-                Toast.makeText(getContext(), "Suburb is invalid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Suburb name is invalid", Toast.LENGTH_SHORT).show();
             }
         }
     }
