@@ -111,7 +111,7 @@ public class ChangeAddressFragment extends Fragment {
             }else if (!s[1].equals("")){
                 SharedPreferences sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
                 SharedPreferences.Editor Ed = sp.edit();
-                String change = s[1].replaceAll("[^a-zA-Z ]", "");
+                String change = s[1].replaceAll("[^a-zA-Z ]", "").trim();
                 Ed.putString("Address", change);
                 Ed.commit();
                 Fragment fragment = null;

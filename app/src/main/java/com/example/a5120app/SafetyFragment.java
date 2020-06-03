@@ -64,9 +64,8 @@ public class SafetyFragment extends Fragment implements OnMapReadyCallback {
         if (args != null) {
             address = args.getString("Address");
         } else {
-
             SharedPreferences sp = getContext().getSharedPreferences("Login", MODE_PRIVATE);
-            address = sp.getString("Address", "");
+            address = sp.getString("Address", "").trim();
         }
 
         mapView.onCreate(savedInstanceState);
